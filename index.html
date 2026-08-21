@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Kalkulator Harga Samsung Store SMB</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f6f8;
+      color: #111;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .header {
+      background: #111;
+      color: white;
+      padding: 25px 20px;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .header h1 {
+      font-size: 23px;
+      margin-bottom: 7px;
+    }
+
+    .header p {
+      color: #bbb;
+      font-size: 14px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 18px;
+      margin-bottom: 7px;
+    }
+
+    select,
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      background: white;
+    }
+
+    .price-box {
+      background: #f1f5ff;
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 10px;
+    }
+
+    .price-box small {
+      color: #666;
+    }
+
+    .price {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .result {
+      margin-top: 25px;
+      background: #111;
+      color: white;
+      border-radius: 16px;
+      padding: 22px;
+      text-align: center;
+    }
+
+    .result small {
+      color: #aaa;
+    }
+
+    .total {
+      font-size: 30px;
+      font-weight: bold;
+      margin: 8px 0 18px;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      padding: 15px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .whatsapp {
+      background: #25D366;
+      color: white;
+    }
+
+    .reset {
+      background: #eee;
+      color: #111;
+    }
+
+    .promo {
+      margin-top: 15px;
+      padding: 12px;
+      background: #fff5d9;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 15px;
+      color: #888;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>Samsung Store SMB</h1>
+    <p>Price Calculator</p>
+  </div>
+
+  <div class="card">
+
+    <label>Pilih Produk</label>
+
+    <select id="product" onchange="hitung()">
+      <option value="s26ultra">Galaxy S26 Ultra</option>
+      <option value="s26">Galaxy S26</option>
+      <option value="a57">Galaxy A57</option>
+      <option value="a37">Galaxy A37</option>
+      <option value="a17">Galaxy A17</option>
+      <option value="a07">Galaxy A07</option>
+    </select>
+
+    <div class="price-box">
+      <small>Harga Produk</small>
+      <div class="price" id="hargaProduk">
+        Rp 24.499.000
+      </div>
+    </div>
+
+    <div class="promo" id="promoProduk">
+      🎁 Free Buds + Case + Adaptor
+    </div>
+
+    <label>Trade In</label>
+
+    <select id="tradein" onchange="hitung()">
+      <option value="0">Tidak</option>
+     
