@@ -283,7 +283,7 @@ input:focus,select:focus{
 
 .statgrid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(6,1fr);
   gap:8px
 }
 
@@ -302,6 +302,95 @@ input:focus,select:focus{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px
+}
+.twocol{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px
+}
+
+.progrid{
+  display:grid;
+  grid-template-columns:1.35fr .65fr;
+  gap:12px
+}
+
+.chart{
+  display:flex;
+  align-items:flex-end;
+  gap:7px;
+  height:150px;
+  padding:12px 4px 0
+}
+
+.barbox{
+  flex:1;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  align-items:center;
+  min-width:0
+}
+
+.bar{
+  width:100%;
+  max-width:38px;
+  min-height:3px;
+  border-radius:6px 6px 2px 2px;
+  background:#087bea
+}
+
+.barvalue{
+  font-size:8px;
+  color:#667085;
+  margin-bottom:3px
+}
+
+.barlabel{
+  font-size:8px;
+  color:#667085;
+  margin-top:5px;
+  white-space:nowrap
+}
+
+.kpi-blue{color:#087bea!important}
+.kpi-green{color:#087a4b!important}
+.kpi-orange{color:#d97706!important}
+
+.ranknum{
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:#edf2f7;
+  margin-right:7px;
+  font-weight:800
+}
+
+.rankmain{display:flex;align-items:center;min-width:0}
+.rankmain span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.progress{
+  width:85px;
+  height:6px;
+  background:#edf2f7;
+  border-radius:10px;
+  overflow:hidden;
+  margin-left:8px
+}
+.progress i{display:block;height:100%;background:#087bea}
+
+.mini-note{font-size:9px;color:#98a2b3;margin-top:-7px;margin-bottom:8px}
+
+.filterrow{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.filterbtn{border:1px solid #d8dee8;background:#fff;border-radius:20px;padding:6px 10px;font-size:10px;font-weight:700;color:#667085;cursor:pointer}
+.filterbtn.active{background:#e8f3ff;border-color:#b9dcff;color:#087bea}
+
+@media(max-width:760px){
+  .progrid{grid-template-columns:1fr}
 }
 
 .listrow{
@@ -455,6 +544,12 @@ th{
 .receipt-pay small{display:block;font-size:10px}.receipt-pay strong{font-size:20px}
 @media(max-width:600px){.acc-grid{grid-template-columns:repeat(2,1fr)}.checkitem{font-size:11px;padding:8px}}
 
+
+/* ===== DASHBOARD PRO ===== */
+.dash-hero{background:linear-gradient(135deg,#087bea,#075fb7);color:#fff;border-radius:14px;padding:16px 18px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:12px;box-shadow:0 8px 22px rgba(8,123,234,.18)}
+.dash-kicker{font-size:9px;letter-spacing:1.3px;font-weight:800;opacity:.82}.dash-hero h1{margin:3px 0;font-size:20px}.dash-hero p{margin:0;font-size:11px;opacity:.9}.dash-actions{display:flex;align-items:center;gap:8px}.live-dot{font-size:9px;font-weight:900;background:rgba(255,255,255,.14);padding:7px 9px;border-radius:20px}.btn-light{background:#fff!important;color:#075fb7!important}.pro-filter{margin-top:2px}.filterrow{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px}.filterbtn{border:1px solid #dce5ef;background:#fff;color:#51617a;padding:7px 11px;border-radius:20px;font-size:10px;font-weight:800;cursor:pointer;white-space:nowrap}.filterbtn.active{background:#087bea;color:#fff;border-color:#087bea}.pro-kpis{grid-template-columns:repeat(6,minmax(0,1fr))}.pro-stat{position:relative;min-height:105px;overflow:hidden}.pro-stat .kpi-icon{position:absolute;right:10px;top:9px;font-size:10px;font-weight:900;color:#087bea;background:#edf6ff;border-radius:7px;padding:5px 6px}.pro-stat small:first-of-type{display:block;padding-right:28px}.pro-stat b{font-size:19px;display:block;margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pro-stat small:last-child{margin-top:4px;display:block}.pro-card{border:1px solid #e7edf5}.card-head-pro{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}.section-pill{font-size:8px;font-weight:900;letter-spacing:.7px;padding:5px 7px;border-radius:20px;background:#edf5ff;color:#087bea;white-space:nowrap}.mini-note{font-size:9px;color:#8a97aa;margin-top:-6px;margin-bottom:7px}.value-stack{margin-top:4px}.value-row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #edf1f5;font-size:11px}.value-row span{color:#64748b}.value-row b{white-space:nowrap}.value-row.final{border-bottom:0;background:#f3f9ff;margin:6px -6px 0;padding:11px 8px;border-radius:8px}.chart-card{min-height:210px}.chart{height:145px;display:flex;align-items:flex-end;gap:5px;padding:8px 2px 0;overflow-x:auto}.barbox{min-width:27px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:3px}.barvalue{font-size:8px;color:#64748b;font-weight:800}.bar{width:100%;max-width:24px;background:linear-gradient(180deg,#35a4ff,#087bea);border-radius:5px 5px 2px 2px;min-height:3px}.barlabel{font-size:7px;color:#8995a7;white-space:nowrap}.listrow{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #edf1f5;font-size:11px}.listrow:last-child{border-bottom:0}.rankmain{display:flex;align-items:center;gap:7px;min-width:0}.rankmain>span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ranknum{width:21px;height:21px;border-radius:7px;background:#edf5ff;color:#087bea;display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;flex:none}.progress{width:70px;height:5px;background:#edf1f5;border-radius:20px;overflow:hidden;margin-left:7px}.progress i{display:block;height:100%;background:#087bea;border-radius:20px}.badge{display:inline-block;padding:3px 6px;border-radius:12px;background:#edf5ff;color:#087bea;font-size:8px;font-weight:800}.loading{text-align:center;color:#8a97aa;font-size:11px;padding:20px 5px}.error{padding:10px;border-radius:8px;background:#fff1f1;color:#b42318;font-size:10px}.kpi-green{color:#13945b!important}.kpi-orange{color:#c96d00!important}
+@media(max-width:950px){.pro-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.dash-hero{padding:13px;border-radius:10px}.dash-hero h1{font-size:16px}.dash-hero p{font-size:9px}.dash-actions{flex-direction:column;align-items:flex-end}.pro-kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.pro-stat{min-height:91px;padding:10px}.pro-stat b{font-size:15px}.pro-stat .kpi-icon{right:7px;top:7px;font-size:8px}.progrid{grid-template-columns:1fr!important}.chart-card{min-height:190px}.chart{height:125px}.section-pill{font-size:7px}.value-row{padding:8px 0;font-size:10px}.listrow{font-size:10px;padding:7px 0}.progress{width:48px}}
 </style>
 </head>
 
@@ -583,75 +678,64 @@ th{
 
 <section id="overview">
 
-  <div class="statgrid">
-
-    <div class="stat">
-      <small>TOTAL SIMULASI</small>
-      <b id="ovTotal">0</b>
-      <small>Store</small>
+  <div class="dash-hero">
+    <div>
+      <div class="dash-kicker">DASHBOARD PERFORMANCE</div>
+      <h1>Overview Store</h1>
+      <p id="dashWelcome">Pantau performa simulasi secara real-time.</p>
     </div>
-
-    <div class="stat">
-      <small>HARI INI</small>
-      <b id="ovToday">0</b>
-      <small>Simulasi</small>
+    <div class="dash-actions">
+      <span class="live-dot">● LIVE</span>
+      <button class="btn btn-light" onclick="loadOverview()">↻ Refresh</button>
     </div>
-
-    <div class="stat">
-      <small>TOTAL BENEFIT</small>
-      <b id="ovBenefit">Rp 0</b>
-      <small>Semua simulasi</small>
-    </div>
-
-    <div class="stat">
-      <small>PRODUK TERATAS</small>
-      <b id="ovTop">-</b>
-      <small>Jumlah simulasi</small>
-    </div>
-
   </div>
 
+  <div class="filterrow pro-filter">
+    <button class="filterbtn active" onclick="setOverviewRange(7,this)">7 Hari</button>
+    <button class="filterbtn" onclick="setOverviewRange(30,this)">30 Hari</button>
+    <button class="filterbtn" onclick="setOverviewRange(0,this)">Semua</button>
+  </div>
+
+  <div class="statgrid pro-kpis">
+    <div class="stat pro-stat"><span class="kpi-icon">Σ</span><small>TOTAL SIMULASI</small><b id="ovTotal">0</b><small>periode terpilih</small></div>
+    <div class="stat pro-stat"><span class="kpi-icon">●</span><small>HARI INI</small><b id="ovToday">0</b><small>simulasi hari ini</small></div>
+    <div class="stat pro-stat"><span class="kpi-icon">Rp</span><small>NILAI TRANSAKSI</small><b id="ovSales" class="kpi-blue">Rp 0</b><small>yang dibayarkan</small></div>
+    <div class="stat pro-stat"><span class="kpi-icon">%</span><small>TOTAL BENEFIT</small><b id="ovBenefit" class="kpi-orange">Rp 0</b><small>cashback & potongan</small></div>
+    <div class="stat pro-stat"><span class="kpi-icon">AVG</span><small>RATA-RATA</small><b id="ovAvg">Rp 0</b><small>per simulasi</small></div>
+    <div class="stat pro-stat"><span class="kpi-icon">★</span><small>PRODUK TERATAS</small><b id="ovTop">-</b><small id="ovTopCount">0 simulasi</small></div>
+  </div>
+
+  <div class="progrid">
+    <div class="card pro-card chart-card">
+      <div class="card-head-pro"><div><div class="title">📈 Aktivitas Simulasi</div><div class="mini-note" id="chartNote">7 hari terakhir</div></div><span class="section-pill">TREND</span></div>
+      <div id="dailyChart" class="chart"><div class="loading">Memuat...</div></div>
+    </div>
+
+    <div class="card pro-card">
+      <div class="card-head-pro"><div><div class="title">💰 Ringkasan Nilai</div><div class="mini-note">Periode terpilih</div></div><span class="section-pill">VALUE</span></div>
+      <div class="value-stack">
+        <div class="value-row"><span>Total item</span><b id="ovItems">Rp 0</b></div>
+        <div class="value-row"><span>Total benefit</span><b id="ovBenefit2">Rp 0</b></div>
+        <div class="value-row"><span>Trade-in</span><b id="ovTrade">Rp 0</b></div>
+        <div class="value-row final"><span>Net / dibayar</span><b class="kpi-green" id="ovNet">Rp 0</b></div>
+      </div>
+    </div>
+  </div>
 
   <div class="twocol">
-
-    <div class="card">
-
-      <div class="title">
-        🏆 ERO Paling Aktif
-      </div>
-
-      <div id="eroRank" class="loading">
-        Memuat...
-      </div>
-
+    <div class="card pro-card">
+      <div class="card-head-pro"><div><div class="title">🏆 Ranking ERO</div><div class="mini-note">Berdasarkan jumlah simulasi</div></div><span class="section-pill">TOP 10</span></div>
+      <div id="eroRank" class="loading">Memuat...</div>
     </div>
-
-
-    <div class="card">
-
-      <div class="title">
-        📱 Produk Paling Banyak Disimulasikan
-      </div>
-
-      <div id="prodRank" class="loading">
-        Memuat...
-      </div>
-
+    <div class="card pro-card">
+      <div class="card-head-pro"><div><div class="title">📱 Produk Terlaris</div><div class="mini-note">Produk paling sering disimulasikan</div></div><span class="section-pill">TOP 10</span></div>
+      <div id="prodRank" class="loading">Memuat...</div>
     </div>
-
   </div>
 
-
-  <div class="card">
-
-    <div class="title">
-      📅 Aktivitas Hari Ini
-    </div>
-
-    <div id="today" class="loading">
-      Memuat...
-    </div>
-
+  <div class="card pro-card">
+    <div class="card-head-pro"><div><div class="title">⚡ Aktivitas Terbaru</div><div class="mini-note">20 simulasi terakhir</div></div><span class="section-pill">RECENT</span></div>
+    <div id="today" class="loading">Memuat...</div>
   </div>
 
 </section>
@@ -1806,188 +1890,98 @@ function loadFromHistory(x){
   calc(); renderReceipt(); window.scrollTo({top:0,behavior:'smooth'});
 }
 
-async function loadOverview(){
+let overviewRange=7;
 
-  if(!currentUser)
-    return;
-
-
-  try{
-
-    const r =
-      await api({
-        action:'history',
-        storeId:
-          currentUser.storeId,
-        nik:
-          currentUser.nik
-      });
-
-
-    if(!r.success)
-      throw Error(
-        r.message ||
-        'Gagal mengambil data'
-      );
-
-
-    historyData =
-      r.data ||
-      r.history ||
-      [];
-
-
-    renderOverview();
-
-
-  }catch(e){
-
-    $('today').innerHTML =
-      `<div class="error">
-        ${esc(e.message)}
-      </div>`;
-
-  }
-
+function setOverviewRange(days,btn){
+  overviewRange=days;
+  document.querySelectorAll('.filterbtn').forEach(x=>x.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  renderOverview();
 }
 
+function dateOnly(v){
+  const d=new Date(v);
+  if(isNaN(d))return '';
+  return new Date(d.getFullYear(),d.getMonth(),d.getDate()).getTime();
+}
+
+async function loadOverview(){
+  if(!currentUser)return;
+  $('today').innerHTML='<div class="loading">Memuat...</div>';
+  $('dailyChart').innerHTML='<div class="loading">Memuat...</div>';
+  try{
+    const r=await api({action:'history',storeId:currentUser.storeId,nik:currentUser.nik});
+    if(!r.success)throw Error(r.message||'Gagal mengambil data');
+    historyData=r.data||r.history||[];
+    renderOverview();
+  }catch(e){
+    $('today').innerHTML='<div class="error">'+esc(e.message)+'</div>';
+    $('dailyChart').innerHTML='<div class="error">Gagal memuat grafik.</div>';
+  }
+}
 
 function renderOverview(){
+  const all=Array.isArray(historyData)?historyData:[];
+  const now=new Date();
+  const todayKey=dateOnly(now);
+  const filtered=overviewRange===0?all:all.filter(x=>{
+    const k=dateOnly(x.timestamp); if(!k)return false;
+    const start=new Date(now.getFullYear(),now.getMonth(),now.getDate()-(overviewRange-1)).getTime();
+    return k>=start && k<=todayKey;
+  });
+  const today=all.filter(x=>dateOnly(x.timestamp)===todayKey);
+  const sum=(arr,key)=>arr.reduce((s,x)=>s+(Number(x[key])||0),0);
+  const sales=sum(filtered,'netPrice');
+  const itemTotal=sum(filtered,'totalItemPrice');
+  const benefit=sum(filtered,'totalBenefit');
+  const trade=sum(filtered,'tradeIn');
+  const avg=filtered.length?sales/filtered.length:0;
 
-  const h =
-    historyData;
-
-
-  $('ovTotal').textContent =
-    h.length;
-
-
-  const today =
-    h.filter(
-      x =>
-      sameDay(
-        x.timestamp,
-        new Date()
-      )
-    );
-
-
-  $('ovToday').textContent =
-    today.length;
-
-
-  $('ovBenefit').textContent =
-    rupiah(
-      h.reduce(
-        (s,x)=>
-        s +
-        (Number(x.totalBenefit)||0),
-        0
-      )
-    );
-
+  $('ovTotal').textContent=filtered.length;
+  $('ovToday').textContent=today.length;
+  $('ovSales').textContent=rupiah(sales);
+  $('ovBenefit').textContent=rupiah(benefit);
+  $('ovBenefit2').textContent=rupiah(benefit);
+  $('ovItems').textContent=rupiah(itemTotal);
+  $('ovTrade').textContent=rupiah(trade);
+  $('ovNet').textContent=rupiah(sales);
+  $('ovAvg').textContent=rupiah(avg);
+  $('chartNote').textContent=overviewRange===0?'Semua data':overviewRange+' hari terakhir';
 
   const pc={};
-
-
-  h.forEach(
-    x =>
-    pc[x.productName||'-'] =
-      (pc[x.productName||'-']||0)+1
-  );
-
-
-  const ps =
-    Object.entries(pc)
-    .sort(
-      (a,b)=>
-      b[1]-a[1]
-    );
-
-
-  $('ovTop').textContent =
-    ps[0]?.[0] || '-';
-
+  filtered.forEach(x=>{const k=x.productName||'-';pc[k]=(pc[k]||0)+1;});
+  const ps=Object.entries(pc).sort((a,b)=>b[1]-a[1]);
+  $('ovTop').textContent=ps[0]?.[0]||'-';
+  $('ovTopCount').textContent=(ps[0]?.[1]||0)+' simulasi';
 
   const er={};
+  filtered.forEach(x=>{const k=x.eroName||'-';er[k]=(er[k]||0)+1;});
+  const es=Object.entries(er).sort((a,b)=>b[1]-a[1]);
+  const maxE=es[0]?.[1]||1;
+  $('eroRank').innerHTML=es.slice(0,10).map((x,i)=>`<div class="listrow"><span class="rankmain"><span class="ranknum">${i+1}</span><span>${esc(x[0])}</span></span><span style="display:flex;align-items:center"><b>${x[1]}</b><span class="progress"><i style="width:${Math.round(x[1]/maxE*100)}%"></i></span></span></div>`).join('')||'<div class="empty">Belum ada data.</div>';
 
+  const maxP=ps[0]?.[1]||1;
+  $('prodRank').innerHTML=ps.slice(0,10).map((x,i)=>`<div class="listrow"><span class="rankmain"><span class="ranknum">${i+1}</span><span>${esc(x[0])}</span></span><span style="display:flex;align-items:center"><b>${x[1]}</b><span class="progress"><i style="width:${Math.round(x[1]/maxP*100)}%"></i></span></span></div>`).join('')||'<div class="empty">Belum ada data.</div>';
 
-  h.forEach(
-    x =>
-    er[x.eroName||'-'] =
-      (er[x.eroName||'-']||0)+1
-  );
+  renderDailyChart(all);
 
-
-  const es =
-    Object.entries(er)
-    .sort(
-      (a,b)=>
-      b[1]-a[1]
-    );
-
-
-  $('eroRank').innerHTML =
-    es.slice(0,10)
-    .map(
-      (x,i)=>
-      `<div class="listrow">
-        <span>
-          <b>${i+1}.</b>
-          ${esc(x[0])}
-        </span>
-        <b>${x[1]}</b>
-      </div>`
-    )
-    .join('')
-    ||
-    '<div class="empty">Belum ada data.</div>';
-
-
-  $('prodRank').innerHTML =
-    ps.slice(0,10)
-    .map(
-      (x,i)=>
-      `<div class="listrow">
-        <span>
-          ${i+1}. ${esc(x[0])}
-        </span>
-        <b>${x[1]}</b>
-      </div>`
-    )
-    .join('')
-    ||
-    '<div class="empty">Belum ada data.</div>';
-
-
-  $('today').innerHTML =
-    today.slice(0,20)
-    .map(
-      x =>
-      `<div class="listrow">
-
-        <span>
-
-          <span class="badge">
-            ${esc(x.eroName||'-')}
-          </span>
-
-          ${esc(x.productName||'-')}
-
-        </span>
-
-        <b>
-          ${rupiah(x.netPrice)}
-        </b>
-
-      </div>`
-    )
-    .join('')
-    ||
-    '<div class="empty">Belum ada simulasi hari ini.</div>';
-
+  const recent=all.slice().sort((a,b)=>new Date(b.timestamp)-new Date(a.timestamp)).slice(0,20);
+  $('today').innerHTML=recent.map(x=>`<div class="listrow"><span><span class="badge">${esc(x.eroName||'-')}</span> ${esc(x.productName||'-')}<br><small style="color:#98a2b3">${formatDate(x.timestamp)}</small></span><b>${rupiah(x.netPrice)}</b></div>`).join('')||'<div class="empty">Belum ada simulasi.</div>';
 }
 
+function renderDailyChart(all){
+  const days=overviewRange===0?14:Math.min(overviewRange,14);
+  const base=new Date();
+  const data=[];
+  for(let i=days-1;i>=0;i--){
+    const d=new Date(base.getFullYear(),base.getMonth(),base.getDate()-i);
+    const key=dateOnly(d);
+    const count=all.filter(x=>dateOnly(x.timestamp)===key).length;
+    data.push({d,count});
+  }
+  const max=Math.max(1,...data.map(x=>x.count));
+  $('dailyChart').innerHTML=data.map(x=>`<div class="barbox"><div class="barvalue">${x.count}</div><div class="bar" style="height:${Math.max(3,Math.round(x.count/max*105))}px"></div><div class="barlabel">${String(x.d.getDate()).padStart(2,'0')}/${String(x.d.getMonth()+1).padStart(2,'0')}</div></div>`).join('');
+}
 
 async function loadHistory(){
 
