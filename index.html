@@ -1360,7 +1360,7 @@ th{
 
   <div id="tshManagement" class="hidden">
     <div class="card">
-      <div class="title">👑 TSH Management <span class="badge">TSH ONLY</span></div>
+      <div class="title">👑 TSH / SL Management <span class="badge">TSH + SL</span></div>
       <div class="mini-note">Tambah Store dan User tanpa perlu mengedit Google Sheet langsung.</div>
 
       <div class="grid2">
@@ -1404,6 +1404,7 @@ th{
             <option value="SALES">SALES</option>
             <option value="ADMIN">ADMIN</option>
             <option value="TSH">TSH</option>
+            <option value="SL">SL</option>
           </select>
         </div>
         <div id="newUserStoreWrap">
@@ -1711,11 +1712,16 @@ async function login(){
   }
 }
 
+function isManagerRole(role){
+  const r=String(role||'').toUpperCase();
+  return r==='TSH'||r==='SL';
+}
+
 function openApp(){
   $('loginPage').classList.add('hidden');
   $('app').classList.remove('hidden');
 
-  const isTsh=currentUser.role==='TSH';
+  const isTsh=isManagerRole(currentUser.role);
   $('headStore').textContent=isTsh?'ALL STORE':(currentUser.storeName||'-');
   $('headEro').textContent=(currentUser.name||currentUser.eroName||'-')+' • '+currentUser.role;
 
@@ -1802,7 +1808,7 @@ function page(name,btn){
 
 
 function getSelectedStoreId(){
-  if(currentUser && currentUser.role==='TSH'){
+  if(currentUser && isManagerRole(currentUser.role)){
     return $('tshStoreSelect')?.value || 'ALL';
   }
   return currentUser?.storeId || '';
@@ -1822,11 +1828,11 @@ function userRoleChanged(){
   const role=$('newUserRole')?.value||'SALES';
   const wrap=$('newUserStoreWrap');
   if(!wrap)return;
-  wrap.style.display=role==='TSH'?'none':'block';
+  wrap.style.display=isManagerRole(role)?'none':'block';
 }
 
 async function addStoreUI(){
-  if(currentUser?.role!=='TSH') return alert('Hanya TSH yang dapat menambahkan Store.');
+  if(!isManagerRole(currentUser?.role)) return alert('Hanya TSH/SL yang dapat menambahkan Store.');
   const data={
     storeId:$('newStoreId').value.trim(),
     storeName:$('newStoreName').value.trim(),
@@ -1843,13 +1849,13 @@ async function addStoreUI(){
 }
 
 async function addUserUI(){
-  if(currentUser?.role!=='TSH') return alert('Hanya TSH yang dapat menambahkan User.');
+  if(!isManagerRole(currentUser?.role)) return alert('Hanya TSH/SL yang dapat menambahkan User.');
   const role=$('newUserRole').value;
   const data={
     nik:$('newUserNik').value.trim(),
     name:$('newUserName').value.trim(),
     role,
-    storeId:role==='TSH'?'ALL':$('newUserStore').value
+    storeId:isManagerRole(role)?'ALL':$('newUserStore').value
   };
   try{
     const r=await api({action:'adduser',data,actorNik:currentUser.nik});
@@ -2024,7 +2030,7 @@ function renderReceipt(){
 
 async function save(){
   const c=calc();
-  if(currentUser?.role==='TSH' && getSelectedStoreId()==='ALL') return msg('saveMsg','error','TSH harus memilih Store terlebih dahulu sebelum menyimpan simulasi.');
+  if(isManagerRole(currentUser?.role) && getSelectedStoreId()==='ALL') return msg('saveMsg','error','TSH/SL harus memilih Store terlebih dahulu sebelum menyimpan simulasi.');
   if(!c.p) return msg('saveMsg','error','Silakan pilih produk.');
   const data={storeId:getSelectedStoreId(),nik:currentUser.nik,productId:c.p.productId,customerName:$('customerName').value.trim(),customerPhone:$('customerPhone').value.trim(),customerEmail:$('customerEmail').value.trim(),accItems:c.acc.items,accCasing:num($('accCasing').value),accAntigores:num($('accAntigores').value),accAdaptor:num($('accAdaptor').value),accCable:num($('accCable').value),accAudio:num($('accAudio').value),accLainnya:num($('accLainnya').value),scpDuration:c.scpDuration,scpPrice:c.scpPrice,operator:c.operator,operatorPrice:c.operatorPrice,cbHp:c.cb,voucher:c.vo,tradeIn:c.tr,cashbackTambahanTradeIn:c.ct,cashbackPwp:c.pw,cashbackBank:c.bk,potonganLain:c.pl};
   $('saveBtn').disabled=true; $('saveBtn').textContent='Menyimpan...';
@@ -2104,7 +2110,7 @@ async function loadOverview(){
     const r=await api({action:'history',storeId:getSelectedStoreId(),nik:currentUser.nik});
     if(!r.success)throw Error(r.message||'Gagal mengambil data');
     historyData=r.data||r.history||[];
-    if(currentUser.role==='TSH' && getSelectedStoreId()!=='ALL'){
+    if(isManagerRole(currentUser.role) && getSelectedStoreId()!=='ALL'){
       historyData=historyData.filter(x=>String(x.storeId).toUpperCase()===String(getSelectedStoreId()).toUpperCase());
     }
     renderOverview();
@@ -2160,7 +2166,7 @@ function renderOverview(){
   renderDailyChart(all);
 
   const recent=all.slice().sort((a,b)=>new Date(b.timestamp)-new Date(a.timestamp)).slice(0,20);
-  $('today').innerHTML=recent.map(x=>`<div class="listrow"><span><span class="badge">${esc(x.eroName||'-')}</span> ${currentUser.role==='TSH'?`<span class="badge">${esc(x.storeName||x.storeId||'-')}</span> `:''}${esc(x.productName||'-')}<br><small style="color:#98a2b3">${formatDate(x.timestamp)}</small></span><b>${rupiah(x.netPrice)}</b></div>`).join('')||'<div class="empty">Belum ada simulasi.</div>';
+  $('today').innerHTML=recent.map(x=>`<div class="listrow"><span><span class="badge">${esc(x.eroName||'-')}</span> ${isManagerRole(currentUser.role)?`<span class="badge">${esc(x.storeName||x.storeId||'-')}</span> `:''}${esc(x.productName||'-')}<br><small style="color:#98a2b3">${formatDate(x.timestamp)}</small></span><b>${rupiah(x.netPrice)}</b></div>`).join('')||'<div class="empty">Belum ada simulasi.</div>';
 }
 
 function renderDailyChart(all){
@@ -2202,7 +2208,7 @@ async function loadHistory(){
       r.history ||
       [];
 
-    if(currentUser.role==='TSH' && getSelectedStoreId()!=='ALL'){
+    if(isManagerRole(currentUser.role) && getSelectedStoreId()!=='ALL'){
       h=h.filter(x=>String(x.storeId).toUpperCase()===String(getSelectedStoreId()).toUpperCase());
     }
 
@@ -2246,7 +2252,7 @@ async function loadHistory(){
 
             <th>Tanggal</th>
 
-            ${currentUser.role==='TSH'?'<th>Store</th>':''}
+            ${isManagerRole(currentUser.role)?'<th>Store</th>':''}
 
             <th>Customer</th>
 
@@ -2283,7 +2289,7 @@ async function loadHistory(){
                 )}
               </td>
 
-              ${currentUser.role==='TSH'?`<td><span class="badge">${esc(x.storeName||x.storeId||'-')}</span></td>`:''}
+              ${isManagerRole(currentUser.role)?`<td><span class="badge">${esc(x.storeName||x.storeId||'-')}</span></td>`:''}
 
               <td>
                 <b>
@@ -2412,7 +2418,7 @@ function renderMaster(){
         <b>${esc(x.name||'-')}</b>
         NIK: ${mask(x.nik)}
         <br>Role: <span class="badge">${esc(x.role||'-')}</span>
-        <br>Store: ${esc(x.role==='TSH'?'ALL':(x.storeId||'-'))}
+        <br>Store: ${esc(isManagerRole(x.role)?'ALL':(x.storeId||'-'))}
         <br>Status: ${esc(x.status||'-')}
       </div>`
     ).join('') || '<div class="empty">Belum ada user.</div>';
