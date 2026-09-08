@@ -528,11 +528,26 @@ th{
   }
 }
 
-.acc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
-.checkitem{display:flex;align-items:center;gap:7px;padding:9px 10px;border:1px solid #e5e9ef;border-radius:9px;background:#fff;font-size:12px;font-weight:700;cursor:pointer}
-.checkitem input{accent-color:#087bea}
+.acc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:10px}
+.acc-option{position:relative}
+.acc-option input.accCheck{position:absolute;opacity:0;pointer-events:none}
+.acc-card{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 13px;border:1px solid #e1e7ef;border-radius:11px;background:#fff;font-size:12px;font-weight:800;cursor:pointer;transition:.18s ease;min-height:50px}
+.acc-card:hover{border-color:#b8d9fa;background:#fbfdff}
+.acc-card .acc-left{display:flex;align-items:center;gap:9px;min-width:0}
+.acc-box{width:21px;height:21px;border:1.5px solid #aeb8c5;border-radius:6px;background:#fff;display:flex;align-items:center;justify-content:center;flex:none;transition:.18s ease}
+.acc-box::after{content:'✓';font-size:13px;font-weight:900;color:#fff;opacity:0;transform:scale(.7);transition:.15s ease}
+.acc-card .acc-status{font-size:9px;color:#98a2b3;font-weight:700}
+.acc-option input.accCheck:checked + .acc-card{border-color:#087bea;background:#f3f9ff;box-shadow:0 0 0 2px rgba(8,123,234,.08)}
+.acc-option input.accCheck:checked + .acc-card .acc-box{background:#087bea;border-color:#087bea}
+.acc-option input.accCheck:checked + .acc-card .acc-box::after{opacity:1;transform:scale(1)}
+.acc-option input.accCheck:checked + .acc-card .acc-status{color:#087bea}
 .radio-row{display:flex;flex-wrap:wrap;gap:8px}
 .acc-prices{margin-top:4px}
+.acc-price-item{display:none}
+.acc-price-item.active{display:block}
+.acc-price-item input:disabled{background:#f5f7fa;color:#98a2b3;cursor:not-allowed}
+.acc-hint{font-size:10px;color:#7b8798;margin:-2px 0 10px}
+@media(max-width:600px){.acc-grid{grid-template-columns:repeat(2,1fr)}.acc-card{font-size:11px;padding:10px;min-height:47px}.acc-status{font-size:8px!important}.acc-box{width:20px;height:20px}}
 .receipt{background:#fff;border:1px dashed #b8c1ce;border-radius:10px;padding:14px;font-size:12px}
 .receipt-head{text-align:center;font-weight:800;font-size:15px;padding-bottom:8px;border-bottom:1px dashed #cbd2dc;margin-bottom:8px}
 .receipt-section{font-weight:800;margin:10px 0 5px}
@@ -819,22 +834,85 @@ th{
   <!-- ACC -->
   <div class="card">
     <div class="title">ACC / Aksesoris</div>
+    <div class="acc-hint">Pilih kategori ACC terlebih dahulu. Kolom harga hanya muncul setelah kategori dipilih.</div>
+
     <div class="acc-grid">
-      <label class="checkitem"><input type="checkbox" class="accCheck" data-cat="Casing" onchange="calc()"> Casing</label>
-      <label class="checkitem"><input type="checkbox" class="accCheck" data-cat="Antigores" onchange="calc()"> Antigores</label>
-      <label class="checkitem"><input type="checkbox" class="accCheck" data-cat="Adaptor" onchange="calc()"> Adaptor</label>
-      <label class="checkitem"><input type="checkbox" class="accCheck" data-cat="Cable" onchange="calc()"> Cable</label>
-      <label class="checkitem"><input type="checkbox" class="accCheck" data-cat="Audio" onchange="calc()"> Audio</label>
-      <label class="checkitem"><input type="checkbox" class="accCheck" data-cat="Lainnya" onchange="calc()"> Lainnya</label>
+      <div class="acc-option">
+        <input type="checkbox" class="accCheck" id="accCheckCasing" data-cat="Casing" onchange="toggleAcc(this);calc()">
+        <label class="acc-card" for="accCheckCasing">
+          <span class="acc-left"><span class="acc-box"></span><span>Casing</span></span>
+          <span class="acc-status">Pilih</span>
+        </label>
+      </div>
+
+      <div class="acc-option">
+        <input type="checkbox" class="accCheck" id="accCheckAntigores" data-cat="Antigores" onchange="toggleAcc(this);calc()">
+        <label class="acc-card" for="accCheckAntigores">
+          <span class="acc-left"><span class="acc-box"></span><span>Antigores</span></span>
+          <span class="acc-status">Pilih</span>
+        </label>
+      </div>
+
+      <div class="acc-option">
+        <input type="checkbox" class="accCheck" id="accCheckAdaptor" data-cat="Adaptor" onchange="toggleAcc(this);calc()">
+        <label class="acc-card" for="accCheckAdaptor">
+          <span class="acc-left"><span class="acc-box"></span><span>Adaptor</span></span>
+          <span class="acc-status">Pilih</span>
+        </label>
+      </div>
+
+      <div class="acc-option">
+        <input type="checkbox" class="accCheck" id="accCheckCable" data-cat="Cable" onchange="toggleAcc(this);calc()">
+        <label class="acc-card" for="accCheckCable">
+          <span class="acc-left"><span class="acc-box"></span><span>Cable</span></span>
+          <span class="acc-status">Pilih</span>
+        </label>
+      </div>
+
+      <div class="acc-option">
+        <input type="checkbox" class="accCheck" id="accCheckAudio" data-cat="Audio" onchange="toggleAcc(this);calc()">
+        <label class="acc-card" for="accCheckAudio">
+          <span class="acc-left"><span class="acc-box"></span><span>Audio</span></span>
+          <span class="acc-status">Pilih</span>
+        </label>
+      </div>
+
+      <div class="acc-option">
+        <input type="checkbox" class="accCheck" id="accCheckLainnya" data-cat="Lainnya" onchange="toggleAcc(this);calc()">
+        <label class="acc-card" for="accCheckLainnya">
+          <span class="acc-left"><span class="acc-box"></span><span>Lainnya</span></span>
+          <span class="acc-status">Pilih</span>
+        </label>
+      </div>
     </div>
+
     <div class="grid2 acc-prices">
-      <div><label class="label">Casing</label><input id="accCasing" inputmode="numeric" placeholder="Rp 0" oninput="fmt(this);calc()"></div>
-      <div><label class="label">Antigores</label><input id="accAntigores" inputmode="numeric" placeholder="Rp 0" oninput="fmt(this);calc()"></div>
-      <div><label class="label">Adaptor</label><input id="accAdaptor" inputmode="numeric" placeholder="Rp 0" oninput="fmt(this);calc()"></div>
-      <div><label class="label">Cable</label><input id="accCable" inputmode="numeric" placeholder="Rp 0" oninput="fmt(this);calc()"></div>
-      <div><label class="label">Audio</label><input id="accAudio" inputmode="numeric" placeholder="Rp 0" oninput="fmt(this);calc()"></div>
-      <div><label class="label">Lainnya</label><input id="accLainnya" inputmode="numeric" placeholder="Rp 0" oninput="fmt(this);calc()"></div>
+      <div class="acc-price-item" id="accPriceWrapCasing">
+        <label class="label">Harga Casing</label>
+        <input id="accCasing" disabled inputmode="numeric" placeholder="Rp 0" oninput="fmt(this);calc()">
+      </div>
+      <div class="acc-price-item" id="accPriceWrapAntigores">
+        <label class="label">Harga Antigores</label>
+        <input id="accAntigores" disabled inputmode="numeric" placeholder="Rp 0" oninput="fmt(this);calc()">
+      </div>
+      <div class="acc-price-item" id="accPriceWrapAdaptor">
+        <label class="label">Harga Adaptor</label>
+        <input id="accAdaptor" disabled inputmode="numeric" placeholder="Rp 0" oninput="fmt(this);calc()">
+      </div>
+      <div class="acc-price-item" id="accPriceWrapCable">
+        <label class="label">Harga Cable</label>
+        <input id="accCable" disabled inputmode="numeric" placeholder="Rp 0" oninput="fmt(this);calc()">
+      </div>
+      <div class="acc-price-item" id="accPriceWrapAudio">
+        <label class="label">Harga Audio</label>
+        <input id="accAudio" disabled inputmode="numeric" placeholder="Rp 0" oninput="fmt(this);calc()">
+      </div>
+      <div class="acc-price-item" id="accPriceWrapLainnya">
+        <label class="label">Harga Lainnya</label>
+        <input id="accLainnya" disabled inputmode="numeric" placeholder="Rp 0" oninput="fmt(this);calc()">
+      </div>
     </div>
+
     <div class="price"><small>Total ACC</small><strong id="accTotal">Rp 0</strong></div>
   </div>
 
@@ -1756,6 +1834,50 @@ function productChanged(){
 }
 
 
+function toggleAcc(ch){
+  const map={
+    Casing:'accCasing',
+    Antigores:'accAntigores',
+    Adaptor:'accAdaptor',
+    Cable:'accCable',
+    Audio:'accAudio',
+    Lainnya:'accLainnya'
+  };
+  const wrapMap={
+    Casing:'accPriceWrapCasing',
+    Antigores:'accPriceWrapAntigores',
+    Adaptor:'accPriceWrapAdaptor',
+    Cable:'accPriceWrapCable',
+    Audio:'accPriceWrapAudio',
+    Lainnya:'accPriceWrapLainnya'
+  };
+
+  const inputId=map[ch.dataset.cat];
+  const wrapId=wrapMap[ch.dataset.cat];
+  const input=$(inputId);
+  const wrap=$(wrapId);
+
+  if(ch.checked){
+    input.disabled=false;
+    wrap.classList.add('active');
+    const card=ch.nextElementSibling;
+    const status=card ? card.querySelector('.acc-status') : null;
+    if(status) status.textContent='Aktif';
+    setTimeout(()=>input.focus(),50);
+  }else{
+    input.disabled=true;
+    input.value='';
+    wrap.classList.remove('active');
+    const card=ch.nextElementSibling;
+    const status=card ? card.querySelector('.acc-status') : null;
+    if(status) status.textContent='Pilih';
+  }
+}
+
+function syncAccUI(){
+  document.querySelectorAll('.accCheck').forEach(ch=>toggleAcc(ch));
+}
+
 function getAcc(){
   const map={
     Casing:['accCasing','Casing'],
@@ -1770,7 +1892,10 @@ function getAcc(){
     const cat=ch.dataset.cat;
     const ids=map[cat];
     const price=num($(ids[0]).value);
-    if(ch.checked){items.push({category:cat,price}); total+=price;}
+    if(ch.checked){
+      items.push({category:cat,price});
+      total+=price;
+    }
   });
   return {items,total};
 }
@@ -1850,7 +1975,7 @@ async function save(){
 
 function resetCalc(clear=true){
   ['productSelect','customerName','customerPhone','customerEmail','accCasing','accAntigores','accAdaptor','accCable','accAudio','accLainnya','scpPrice','operatorPrice','cbHp','voucher','tradeIn','cashbackTambahanTradeIn','cashbackPwp','cashbackBank','potonganLain'].forEach(id=>$(id).value='');
-  document.querySelectorAll('.accCheck').forEach(x=>x.checked=false); document.querySelectorAll('input[name="scpDuration"],input[name="operator"]').forEach(x=>x.checked=false);
+  document.querySelectorAll('.accCheck').forEach(x=>{x.checked=false;toggleAcc(x);}); document.querySelectorAll('input[name="scpDuration"],input[name="operator"]').forEach(x=>x.checked=false);
   $('productPrice').textContent=rupiah(0); $('accTotal').textContent=rupiah(0); $('resultPrice').textContent=rupiah(0); $('resultBenefit').textContent=rupiah(0); $('resultTrade').textContent=rupiah(0); $('resultPay').textContent=rupiah(0); [3,6,12,24].forEach(t=>$('i'+t).textContent=rupiah(0));
   $('receiptBox').innerHTML='<div class="empty">Pilih produk untuk melihat nota.</div>';
   if(clear)$('saveMsg').className='hidden';
@@ -1881,7 +2006,14 @@ function loadFromHistory(x){
   $('productSelect').value=x.productId||''; productChanged();
   $('customerName').value=x.customerName||''; $('customerPhone').value=x.customerPhone||''; $('customerEmail').value=x.customerEmail||'';
   const accMap={Casing:'accCasing',Antigores:'accAntigores',Adaptor:'accAdaptor',Cable:'accCable',Audio:'accAudio',Lainnya:'accLainnya'};
-  document.querySelectorAll('.accCheck').forEach(ch=>{const id=accMap[ch.dataset.cat];const val=Number(x[id]||0);ch.checked=val>0;$(id).value=val?String(val):'';if(val)fmt($(id));});
+  document.querySelectorAll('.accCheck').forEach(ch=>{
+    const id=accMap[ch.dataset.cat];
+    const val=Number(x[id]||0);
+    ch.checked=val>0;
+    $(id).value=val?String(val):'';
+    if(val)fmt($(id));
+    toggleAcc(ch);
+  });
   document.querySelectorAll('input[name="scpDuration"]').forEach(r=>r.checked=String(r.value)===String(x.scpDuration||''));
   $('scpPrice').value=x.scpPrice?String(x.scpPrice):''; if(x.scpPrice)fmt($('scpPrice'));
   document.querySelectorAll('input[name="operator"]').forEach(r=>r.checked=String(r.value)===String(x.operator||''));
@@ -2305,6 +2437,11 @@ function msg(
 
 init();
 
+
+// Pastikan semua input harga ACC terkunci saat pertama kali halaman dibuka.
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.accCheck').forEach(ch=>toggleAcc(ch));
+});
 </script>
 
 </body>
