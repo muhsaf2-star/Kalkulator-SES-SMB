@@ -2,697 +2,491 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Kalkulator NASA</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
   margin:0;
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:Arial,sans-serif;
   background:#f4f7fb;
-  color:#172033;
+  color:#172033
 }
 
-.hidden{
-  display:none!important;
-}
-
-/* ================= HEADER ================= */
+.hidden{display:none!important}
 
 .header{
   background:#087bea;
-  color:white;
-  padding:13px 18px;
+  color:#fff;
+  padding:12px 16px;
   position:sticky;
   top:0;
-  z-index:20;
-  box-shadow:0 2px 8px rgba(0,0,0,.12);
+  z-index:20
 }
 
-.header-inner{
+.header-in{
   max-width:1100px;
   margin:auto;
   display:flex;
   justify-content:space-between;
-  align-items:center;
+  align-items:center
 }
 
-.logo-title{
-  font-size:20px;
-  font-weight:800;
+.logo{
+  font-size:19px;
+  font-weight:800
 }
 
-.logo-sub{
+.sub{
+  font-size:10px;
+  opacity:.9
+}
+
+.user{
   font-size:11px;
-  margin-top:3px;
-  opacity:.9;
+  text-align:right
 }
-
-.user-info{
-  text-align:right;
-  font-size:11px;
-  line-height:1.4;
-}
-
-/* ================= NAV ================= */
 
 .nav{
-  background:white;
+  background:#fff;
   border-bottom:1px solid #e5e9ef;
   position:sticky;
-  top:62px;
-  z-index:10;
+  top:55px;
+  z-index:10
 }
 
-.nav-inner{
+.nav-in{
   max-width:1100px;
   margin:auto;
   display:flex;
   gap:4px;
-  overflow-x:auto;
-  padding:7px 15px;
+  overflow:auto;
+  padding:6px 12px
 }
 
 .nav button{
   border:0;
-  background:transparent;
-  padding:9px 14px;
+  background:none;
+  padding:8px 12px;
   border-radius:8px;
   font-size:12px;
   font-weight:700;
-  color:#667085;
-  cursor:pointer;
   white-space:nowrap;
+  color:#667085;
+  cursor:pointer
 }
 
 .nav button.active{
   background:#e8f3ff;
-  color:#087bea;
+  color:#087bea
 }
-
-/* ================= CONTAINER ================= */
 
 .container{
   max-width:1100px;
   margin:auto;
-  padding:15px;
+  padding:12px
 }
 
-.card{
-  background:white;
+.card,.stat{
+  background:#fff;
   border-radius:12px;
-  padding:16px;
-  margin-bottom:14px;
-  box-shadow:0 2px 8px rgba(0,0,0,.06);
+  padding:14px;
+  margin-bottom:12px;
+  box-shadow:0 2px 8px #0000000d
 }
 
-.card-title{
-  font-size:16px;
+.title{
+  font-size:15px;
   font-weight:800;
-  margin-bottom:13px;
+  margin-bottom:12px
 }
 
-/* ================= LOGIN ================= */
-
-.login-page{
+.login{
   min-height:100vh;
   display:flex;
-  justify-content:center;
   align-items:center;
-  padding:20px;
-  background:#f4f7fb;
+  justify-content:center;
+  padding:18px
 }
 
-.login-box{
+.loginbox{
+  background:#fff;
   width:100%;
-  max-width:430px;
-  background:white;
-  border-radius:16px;
+  max-width:420px;
   padding:25px;
-  box-shadow:0 5px 25px rgba(0,0,0,.09);
+  border-radius:16px;
+  box-shadow:0 5px 25px #00000012
 }
 
-.login-logo{
+.brand{
   text-align:center;
-  margin-bottom:23px;
-}
-
-.login-logo-main{
+  color:#087bea;
   font-size:27px;
   font-weight:800;
-  color:#087bea;
+  margin-bottom:20px
 }
 
-.login-logo-sub{
-  color:#667085;
-  font-size:12px;
-  margin-top:4px;
+.grid2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px
 }
 
-/* ================= FORM ================= */
+.grid4{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px
+}
 
-label{
+.label{
   display:block;
-  font-size:12px;
+  font-size:11px;
   font-weight:700;
-  margin-bottom:5px;
+  margin-bottom:4px
 }
 
-input,
-select{
+input,select{
   width:100%;
-  height:42px;
+  height:40px;
   border:1px solid #d8dee8;
   border-radius:8px;
-  padding:0 11px;
-  font-size:14px;
-  background:white;
-  color:#172033;
-  outline:none;
+  padding:0 10px;
+  font-size:13px;
+  outline:0
 }
 
-input:focus,
-select:focus{
-  border-color:#087bea;
-  box-shadow:0 0 0 2px rgba(8,123,234,.1);
+input:focus,select:focus{
+  border-color:#087bea
 }
 
-input[readonly]{
-  background:#f3f5f8;
-}
-
-.form-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-}
-
-.form-group{
-  margin-bottom:3px;
-}
-
-/* ================= BUTTON ================= */
-
-.button-row{
+.btnrow{
   display:flex;
   gap:8px;
   flex-wrap:wrap;
-  margin-top:13px;
+  margin-top:12px
 }
 
 .btn{
   border:0;
   border-radius:8px;
-  height:42px;
-  padding:0 17px;
-  font-size:13px;
+  height:40px;
+  padding:0 15px;
   font-weight:700;
-  cursor:pointer;
+  font-size:12px;
+  cursor:pointer
 }
 
-.btn-primary{
+.primary{
   background:#087bea;
-  color:white;
+  color:#fff
 }
 
-.btn-primary:hover{
-  background:#006bd6;
+.secondary{
+  background:#edf2f7;
+  color:#172033
 }
 
-.btn-secondary{
-  background:#eef3f8;
-  color:#172033;
-}
-
-.btn-danger{
+.danger{
   background:#e74c3c;
-  color:white;
+  color:#fff
 }
 
-.btn:disabled{
-  opacity:.5;
-  cursor:not-allowed;
-}
-
-/* ================= CALCULATOR ================= */
-
-.price-box{
+.price{
   background:#f0f7ff;
   border:1px solid #cfe6ff;
   border-radius:10px;
-  padding:13px;
-  margin-top:12px;
+  padding:12px;
+  margin-top:10px
 }
 
-.price-label{
-  font-size:11px;
-  color:#667085;
+.price small{
+  color:#667085
 }
 
-.price-value{
-  font-size:23px;
-  font-weight:800;
+.price strong{
+  display:block;
   color:#087bea;
-  margin-top:3px;
+  font-size:22px;
+  margin-top:3px
 }
 
-.benefit-grid{
+.benefits{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:10px;
+  gap:9px
 }
 
-.result-box{
+.result{
   background:#172033;
-  color:white;
+  color:#fff;
   border-radius:12px;
-  padding:17px;
-  margin-top:14px;
+  padding:15px;
+  margin-top:12px
 }
 
-.result-row{
+.row{
   display:flex;
   justify-content:space-between;
+  gap:10px;
   padding:7px 0;
-  font-size:13px;
-  border-bottom:1px solid rgba(255,255,255,.12);
+  border-bottom:1px solid #ffffff1f;
+  font-size:12px
 }
 
-.result-net{
-  margin-top:10px;
-  padding-top:13px;
-  border-top:1px solid rgba(255,255,255,.2);
+.pay{
+  padding-top:12px;
+  margin-top:5px;
+  border-top:1px solid #ffffff33
 }
 
-.result-net-label{
+.pay small{
+  opacity:.75
+}
+
+.pay strong{
+  display:block;
+  font-size:27px;
+  margin-top:3px
+}
+
+.install{
+  margin-top:12px
+}
+
+.install-title{
   font-size:11px;
-  opacity:.8;
+  font-weight:700;
+  margin-bottom:7px
 }
 
-.result-net-value{
-  font-size:26px;
-  font-weight:800;
-  margin-top:3px;
-}
-
-/* ================= MESSAGE ================= */
-
-.error-box{
-  background:#fff0ef;
-  border:1px solid #ffc8c4;
-  color:#c0392b;
-  border-radius:8px;
+.inst{
+  background:#fff;
+  color:#172033;
+  border-radius:9px;
   padding:10px;
-  font-size:12px;
-  margin-top:10px;
+  text-align:center
 }
 
-.success-box{
-  background:#ecfdf5;
-  border:1px solid #b7ebd3;
-  color:#087a4b;
-  border-radius:8px;
-  padding:10px;
-  font-size:12px;
-  margin-top:10px;
+.inst b{
+  display:block;
+  font-size:16px;
+  color:#087bea;
+  margin-top:3px
 }
 
-/* ================= OVERVIEW ================= */
+.inst span{
+  font-size:10px;
+  color:#667085
+}
 
-.dashboard-grid{
+.statgrid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:10px;
-  margin-bottom:14px;
+  gap:8px
 }
 
-.stat-card{
-  background:white;
-  border-radius:11px;
-  padding:14px;
-  box-shadow:0 2px 8px rgba(0,0,0,.06);
+.stat small{
+  font-size:9px;
+  color:#667085
 }
 
-.stat-label{
-  font-size:10px;
-  color:#667085;
-  font-weight:600;
+.stat b{
+  display:block;
+  font-size:18px;
+  margin-top:4px
 }
 
-.stat-value{
-  font-size:20px;
-  font-weight:800;
-  margin-top:5px;
-  color:#172033;
-}
-
-.stat-small{
-  font-size:10px;
-  color:#98a2b3;
-  margin-top:3px;
-}
-
-.overview-grid{
+.twocol{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:14px;
+  gap:12px
 }
 
-.rank-item{
+.listrow{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  padding:11px 0;
+  padding:9px 0;
   border-bottom:1px solid #edf0f4;
+  font-size:11px
 }
 
-.rank-item:last-child{
-  border-bottom:0;
-}
-
-.rank-left{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.rank-number{
-  width:28px;
-  height:28px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
+.badge{
   background:#e8f3ff;
   color:#087bea;
-  font-weight:800;
-  font-size:12px;
+  border-radius:20px;
+  padding:4px 7px;
+  font-weight:700
 }
 
-.rank-name{
-  font-size:12px;
-  font-weight:700;
-}
-
-.rank-detail{
-  font-size:10px;
-  color:#667085;
-  margin-top:2px;
-}
-
-.rank-value{
-  font-size:12px;
-  font-weight:800;
-}
-
-.product-bar{
-  margin-bottom:12px;
-}
-
-.product-bar-head{
-  display:flex;
-  justify-content:space-between;
-  font-size:11px;
-  margin-bottom:5px;
-}
-
-.product-bar-name{
-  font-weight:700;
-}
-
-.product-bar-value{
-  color:#667085;
-}
-
-.bar-bg{
-  height:7px;
-  background:#edf1f5;
-  border-radius:10px;
-  overflow:hidden;
-}
-
-.bar-fill{
-  height:100%;
-  background:#087bea;
-  border-radius:10px;
-}
-
-.today-list{
-  max-height:350px;
-  overflow-y:auto;
-}
-
-/* ================= HISTORY ================= */
-
-.history-table-wrap{
-  overflow-x:auto;
+.tablewrap{
+  overflow:auto
 }
 
 table{
   width:100%;
   border-collapse:collapse;
-  min-width:760px;
+  min-width:800px
 }
 
-th,
-td{
-  padding:9px 8px;
+th,td{
+  padding:8px;
   border-bottom:1px solid #e7ebf0;
-  font-size:11px;
-  text-align:left;
+  font-size:10px;
+  text-align:left
 }
 
 th{
-  background:#f5f7fa;
-  font-weight:700;
+  background:#f5f7fa
 }
 
-.amount{
+.amt{
   text-align:right;
-  white-space:nowrap;
+  white-space:nowrap
 }
 
-.badge{
-  display:inline-block;
-  padding:4px 7px;
-  border-radius:20px;
-  background:#eaf5ff;
-  color:#087bea;
-  font-size:10px;
-  font-weight:700;
+.empty,.loading{
+  text-align:center;
+  padding:25px;
+  color:#98a2b3;
+  font-size:12px
 }
 
-/* ================= MASTER ================= */
+.error{
+  background:#fff0ef;
+  color:#c0392b;
+  border:1px solid #ffc8c4;
+  border-radius:8px;
+  padding:9px;
+  font-size:11px;
+  margin-top:8px
+}
 
-.master-grid{
+.success{
+  background:#ecfdf5;
+  color:#087a4b;
+  border:1px solid #b7ebd3;
+  border-radius:8px;
+  padding:9px;
+  font-size:11px;
+  margin-top:8px
+}
+
+.mastergrid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:12px;
+  gap:9px
 }
 
-.master-item{
+.master{
   border:1px solid #e4e8ee;
-  border-radius:10px;
-  padding:12px;
+  border-radius:9px;
+  padding:10px;
+  font-size:10px
 }
 
-.master-name{
-  font-weight:700;
-  font-size:13px;
-  margin-bottom:5px;
+.master b{
+  font-size:12px;
+  display:block;
+  margin-bottom:4px
 }
-
-.master-detail{
-  font-size:11px;
-  color:#667085;
-  line-height:1.5;
-}
-
-/* ================= EMPTY / LOADING ================= */
-
-.loading{
-  text-align:center;
-  padding:30px 10px;
-  color:#667085;
-  font-size:13px;
-}
-
-.empty{
-  text-align:center;
-  padding:30px 10px;
-  color:#98a2b3;
-  font-size:13px;
-}
-
-/* ================= MOBILE ================= */
 
 @media(max-width:800px){
 
-  .dashboard-grid{
-    grid-template-columns:repeat(2,1fr);
+  .statgrid{
+    grid-template-columns:1fr 1fr
   }
 
-  .overview-grid{
-    grid-template-columns:1fr;
+  .twocol{
+    grid-template-columns:1fr
   }
 
-  .master-grid{
-    grid-template-columns:1fr;
+  .mastergrid{
+    grid-template-columns:1fr
   }
-
 }
 
 @media(max-width:600px){
 
-  .header{
-    padding:11px 13px;
+  .grid2,
+  .benefits{
+    grid-template-columns:1fr
   }
 
-  .logo-title{
-    font-size:16px;
-  }
-
-  .logo-sub{
-    font-size:9px;
-  }
-
-  .user-info{
-    font-size:9px;
-  }
-
-  .nav{
-    top:55px;
+  .grid4{
+    grid-template-columns:1fr 1fr
   }
 
   .container{
-    padding:10px;
+    padding:9px
   }
 
   .card{
-    padding:13px;
+    padding:12px
   }
 
-  .form-grid,
-  .benefit-grid{
-    grid-template-columns:1fr;
-    gap:9px;
+  .logo{
+    font-size:16px
   }
 
-  .dashboard-grid{
-    gap:8px;
+  .user{
+    font-size:9px
   }
 
-  .stat-card{
-    padding:11px;
+  .pay strong{
+    font-size:24px
   }
-
-  .stat-value{
-    font-size:17px;
-  }
-
-  .stat-label{
-    font-size:9px;
-  }
-
-  .button-row{
-    width:100%;
-  }
-
-  .button-row .btn{
-    flex:1;
-  }
-
-  .price-value{
-    font-size:20px;
-  }
-
 }
 </style>
 </head>
 
 <body>
 
-<!-- =====================================================
-LOGIN
-===================================================== -->
+<!-- LOGIN -->
+<div id="loginPage" class="login">
 
-<div id="loginPage" class="login-page">
+  <div class="loginbox">
 
-  <div class="login-box">
-
-    <div class="login-logo">
-
-      <div class="login-logo-main">
-        KALKULATOR NASA
-      </div>
-
-      <div class="login-logo-sub">
-        Samsung Sales Calculator
-      </div>
-
+    <div class="brand">
+      KALKULATOR NASA
     </div>
 
-    <div class="form-group">
-
-      <label>Store</label>
-
-      <select id="loginStore">
-
-        <option value="">
-          Memuat Store...
-        </option>
-
-      </select>
-
+    <div style="text-align:center;color:#667085;font-size:11px;margin-top:-14px;margin-bottom:20px">
+      Samsung Sales Calculator
     </div>
 
-    <div class="form-group" style="margin-top:12px;">
+    <label class="label">
+      Store
+    </label>
 
-      <label>NIK</label>
+    <select id="loginStore">
+      <option>Memuat Store...</option>
+    </select>
 
-      <input
-        type="text"
-        id="loginNik"
-        placeholder="Masukkan NIK"
-        autocomplete="off"
-      >
+    <div style="height:10px"></div>
 
-    </div>
+    <label class="label">
+      NIK
+    </label>
 
-    <div
-      id="loginMessage"
-      class="hidden"
-    ></div>
+    <input
+      id="loginNik"
+      placeholder="Masukkan NIK"
+      autocomplete="off"
+    >
 
-    <div class="button-row">
+    <div id="loginMsg" class="hidden"></div>
 
+    <div class="btnrow">
       <button
-        class="btn btn-primary"
-        style="width:100%;"
-        id="loginButton"
-        onclick="validateLogin()"
+        id="loginBtn"
+        class="btn primary"
+        style="width:100%"
+        onclick="login()"
       >
         Lanjut
       </button>
-
-    </div>
-
-    <div
-      style="
-        font-size:11px;
-        color:#667085;
-        margin-top:12px;
-        line-height:1.5;
-      "
-    >
-      Pilih Store sesuai lokasi Anda lalu masukkan NIK.
-      Sistem akan memvalidasi NIK dan otomatis mengambil
-      nama ERO.
     </div>
 
   </div>
@@ -700,239 +494,145 @@ LOGIN
 </div>
 
 
-<!-- =====================================================
-APP
-===================================================== -->
-
+<!-- APPLICATION -->
 <div id="app" class="hidden">
 
-  <header class="header">
+<header class="header">
 
-    <div class="header-inner">
+  <div class="header-in">
 
-      <div>
-
-        <div class="logo-title">
-          KALKULATOR NASA
-        </div>
-
-        <div class="logo-sub">
-          Samsung Sales Calculator
-        </div>
-
+    <div>
+      <div class="logo">
+        KALKULATOR NASA
       </div>
 
-      <div class="user-info">
-
-        <div id="headerStore">
-          -
-        </div>
-
-        <div id="headerEro">
-          -
-        </div>
-
+      <div class="sub">
+        Samsung Sales Calculator
       </div>
-
     </div>
 
-  </header>
-
-
-  <nav class="nav">
-
-    <div class="nav-inner">
-
-      <button
-        class="nav-btn active"
-        onclick="showPage('overview',this)"
-      >
-        Overview
-      </button>
-
-      <button
-        class="nav-btn"
-        onclick="showPage('calculator',this)"
-      >
-        Kalkulator
-      </button>
-
-      <button
-        class="nav-btn"
-        onclick="showPage('history',this)"
-      >
-        Riwayat
-      </button>
-
-      <button
-        class="nav-btn"
-        onclick="showPage('master',this)"
-      >
-        Master
-      </button>
-
-      <button
-        class="nav-btn"
-        onclick="logout()"
-      >
-        Keluar
-      </button>
-
+    <div class="user">
+      <div id="headStore">-</div>
+      <div id="headEro">-</div>
     </div>
 
-  </nav>
+  </div>
+
+</header>
 
 
-  <main class="container">
+<nav class="nav">
+
+  <div class="nav-in">
+
+    <button
+      class="active"
+      onclick="page('overview',this)"
+    >
+      Overview
+    </button>
+
+    <button
+      onclick="page('calculator',this)"
+    >
+      Kalkulator
+    </button>
+
+    <button
+      onclick="page('history',this)"
+    >
+      Riwayat
+    </button>
+
+    <button
+      onclick="page('master',this)"
+    >
+      Master
+    </button>
+
+    <button onclick="logout()">
+      Keluar
+    </button>
+
+  </div>
+
+</nav>
 
 
-<!-- =====================================================
-OVERVIEW
-===================================================== -->
+<main class="container">
 
-<section id="pageOverview">
 
-  <div class="dashboard-grid">
+<!-- OVERVIEW -->
 
-    <div class="stat-card">
+<section id="overview">
 
-      <div class="stat-label">
-        TOTAL SIMULASI
-      </div>
+  <div class="statgrid">
 
-      <div
-        class="stat-value"
-        id="ovTotal"
-      >
-        0
-      </div>
-
-      <div class="stat-small">
-        Semua simulasi Store
-      </div>
-
+    <div class="stat">
+      <small>TOTAL SIMULASI</small>
+      <b id="ovTotal">0</b>
+      <small>Store</small>
     </div>
 
-
-    <div class="stat-card">
-
-      <div class="stat-label">
-        SIMULASI HARI INI
-      </div>
-
-      <div
-        class="stat-value"
-        id="ovToday"
-      >
-        0
-      </div>
-
-      <div class="stat-small">
-        Hari ini
-      </div>
-
+    <div class="stat">
+      <small>HARI INI</small>
+      <b id="ovToday">0</b>
+      <small>Simulasi</small>
     </div>
 
-
-    <div class="stat-card">
-
-      <div class="stat-label">
-        TOTAL BENEFIT
-      </div>
-
-      <div
-        class="stat-value"
-        id="ovBenefit"
-      >
-        Rp 0
-      </div>
-
-      <div class="stat-small">
-        Semua simulasi
-      </div>
-
+    <div class="stat">
+      <small>TOTAL BENEFIT</small>
+      <b id="ovBenefit">Rp 0</b>
+      <small>Semua simulasi</small>
     </div>
 
-
-    <div class="stat-card">
-
-      <div class="stat-label">
-        PRODUK TERATAS
-      </div>
-
-      <div
-        class="stat-value"
-        id="ovTopProduct"
-        style="font-size:15px;"
-      >
-        -
-      </div>
-
-      <div class="stat-small">
-        Berdasarkan jumlah simulasi
-      </div>
-
+    <div class="stat">
+      <small>PRODUK TERATAS</small>
+      <b id="ovTop">-</b>
+      <small>Jumlah simulasi</small>
     </div>
 
   </div>
 
 
-  <div class="overview-grid">
-
-
-    <!-- RANKING ERO -->
+  <div class="twocol">
 
     <div class="card">
 
-      <div class="card-title">
+      <div class="title">
         🏆 ERO Paling Aktif
       </div>
 
-      <div id="eroRanking">
-
-        <div class="loading">
-          Memuat data...
-        </div>
-
+      <div id="eroRank" class="loading">
+        Memuat...
       </div>
 
     </div>
 
-
-    <!-- PRODUK -->
 
     <div class="card">
 
-      <div class="card-title">
+      <div class="title">
         📱 Produk Paling Banyak Disimulasikan
       </div>
 
-      <div id="productRanking">
-
-        <div class="loading">
-          Memuat data...
-        </div>
-
+      <div id="prodRank" class="loading">
+        Memuat...
       </div>
 
     </div>
-
 
   </div>
 
 
   <div class="card">
 
-    <div class="card-title">
+    <div class="title">
       📅 Aktivitas Hari Ini
     </div>
 
-    <div id="todayActivity">
-
-      <div class="loading">
-        Memuat data...
-      </div>
-
+    <div id="today" class="loading">
+      Memuat...
     </div>
 
   </div>
@@ -940,41 +640,40 @@ OVERVIEW
 </section>
 
 
-<!-- =====================================================
-CALCULATOR
-===================================================== -->
+<!-- CALCULATOR -->
 
-<section
-  id="pageCalculator"
-  class="hidden"
->
+<section id="calculator" class="hidden">
 
   <div class="card">
 
-    <div class="card-title">
+    <div class="title">
       Simulasi Harga
     </div>
 
-    <div class="form-grid">
 
-      <div class="form-group">
+    <div class="grid2">
 
-        <label>Store</label>
+      <div>
+
+        <label class="label">
+          Store
+        </label>
 
         <input
-          type="text"
           id="calcStore"
           readonly
         >
 
       </div>
 
-      <div class="form-group">
 
-        <label>ERO / Sales</label>
+      <div>
+
+        <label class="label">
+          ERO / Sales
+        </label>
 
         <input
-          type="text"
           id="calcEro"
           readonly
         >
@@ -984,38 +683,90 @@ CALCULATOR
     </div>
 
 
-    <div
-      class="form-group"
-      style="margin-top:12px;"
+    <div style="height:10px"></div>
+
+
+    <label class="label">
+      Produk
+    </label>
+
+    <select
+      id="productSelect"
+      onchange="productChanged()"
     >
+      <option value="">
+        Pilih Produk
+      </option>
+    </select>
 
-      <label>Produk</label>
 
-      <select
-        id="productSelect"
-        onchange="productChanged()"
-      >
+    <div class="price">
 
-        <option value="">
-          Pilih Produk
-        </option>
+      <small>
+        Harga Produk
+      </small>
 
-      </select>
+      <strong id="productPrice">
+        Rp 0
+      </strong>
 
     </div>
 
+  </div>
 
-    <div class="price-box">
 
-      <div class="price-label">
-        Harga Produk
+  <!-- CUSTOMER -->
+
+  <div class="card">
+
+    <div class="title">
+      Data Customer
+    </div>
+
+
+    <div class="grid2">
+
+      <div>
+
+        <label class="label">
+          Nama Customer
+        </label>
+
+        <input
+          id="customerName"
+          placeholder="Nama customer"
+        >
+
       </div>
 
-      <div
-        class="price-value"
-        id="productPrice"
-      >
-        Rp 0
+
+      <div>
+
+        <label class="label">
+          No. HP
+        </label>
+
+        <input
+          id="customerPhone"
+          placeholder="08xxxxxxxxxx"
+          inputmode="tel"
+        >
+
+      </div>
+
+
+      <div>
+
+        <label class="label">
+          Email
+        </label>
+
+        <input
+          id="customerEmail"
+          placeholder="email@contoh.com"
+          type="email"
+        >
+
       </div>
 
     </div>
@@ -1023,84 +774,118 @@ CALCULATOR
   </div>
 
 
+  <!-- BENEFITS -->
+
   <div class="card">
 
-    <div class="card-title">
+    <div class="title">
       Benefit / Potongan
     </div>
 
-    <div class="benefit-grid">
 
-      <div class="form-group">
+    <div class="benefits">
 
-        <label>CB HP</label>
+
+      <div>
+
+        <label class="label">
+          Cashback HP
+        </label>
 
         <input
-          type="text"
           id="cbHp"
           inputmode="numeric"
-          placeholder="0"
-          oninput="formatInput(this);calculate()"
+          oninput="fmt(this);calc()"
         >
 
       </div>
 
 
-      <div class="form-group">
+      <div>
 
-        <label>Voucher</label>
+        <label class="label">
+          Voucher
+        </label>
 
         <input
-          type="text"
           id="voucher"
           inputmode="numeric"
-          placeholder="0"
-          oninput="formatInput(this);calculate()"
+          oninput="fmt(this);calc()"
         >
 
       </div>
 
 
-      <div class="form-group">
+      <div>
 
-        <label>Trade In</label>
+        <label class="label">
+          Harga HP Trade In
+        </label>
 
         <input
-          type="text"
           id="tradeIn"
           inputmode="numeric"
-          placeholder="0"
-          oninput="formatInput(this);calculate()"
+          oninput="fmt(this);calc()"
         >
 
       </div>
 
 
-      <div class="form-group">
+      <div>
 
-        <label>Cashback Bank</label>
+        <label class="label">
+          Cashback Tambahan Trade In
+        </label>
 
         <input
-          type="text"
+          id="cashbackTambahanTradeIn"
+          inputmode="numeric"
+          oninput="fmt(this);calc()"
+        >
+
+      </div>
+
+
+      <div>
+
+        <label class="label">
+          Cashback PWP
+        </label>
+
+        <input
+          id="cashbackPwp"
+          inputmode="numeric"
+          oninput="fmt(this);calc()"
+        >
+
+      </div>
+
+
+      <div>
+
+        <label class="label">
+          Cashback Bank
+        </label>
+
+        <input
           id="cashbackBank"
           inputmode="numeric"
-          placeholder="0"
-          oninput="formatInput(this);calculate()"
+          oninput="fmt(this);calc()"
         >
 
       </div>
 
 
-      <div class="form-group">
+      <div>
 
-        <label>Potongan Lain</label>
+        <label class="label">
+          Potongan Lain
+        </label>
 
         <input
-          type="text"
           id="potonganLain"
           inputmode="numeric"
-          placeholder="0"
-          oninput="formatInput(this);calculate()"
+          oninput="fmt(this);calc()"
         >
 
       </div>
@@ -1108,45 +893,143 @@ CALCULATOR
     </div>
 
 
-    <div class="result-box">
+    <!-- RESULT -->
 
-      <div class="result-row">
+    <div class="result">
+
+
+      <div class="row">
 
         <span>
-          Harga Produk
+          Harga Normal
         </span>
 
-        <strong id="resultPrice">
+        <b id="resultPrice">
           Rp 0
-        </strong>
+        </b>
 
       </div>
 
 
-      <div class="result-row">
+      <div class="row">
 
         <span>
           Total Benefit
         </span>
 
-        <strong id="resultBenefit">
+        <b id="resultBenefit">
+          Rp 0
+        </b>
+
+      </div>
+
+
+      <div class="row">
+
+        <span>
+          Harga HP Trade In
+        </span>
+
+        <b id="resultTrade">
+          Rp 0
+        </b>
+
+      </div>
+
+
+      <div class="pay">
+
+        <small>
+          YANG DIBAYARKAN
+        </small>
+
+        <strong id="resultPay">
           Rp 0
         </strong>
 
       </div>
 
 
-      <div class="result-net">
+      <!-- INSTALLMENT -->
 
-        <div class="result-net-label">
-          NET PRICE
+      <div class="install">
+
+        <div class="install-title">
+          Cicilan 0%
         </div>
 
-        <div
-          class="result-net-value"
-          id="resultNet"
-        >
-          Rp 0
+
+        <div class="grid4">
+
+
+          <div class="inst">
+
+            <span>
+              3X
+            </span>
+
+            <b id="i3">
+              Rp 0
+            </b>
+
+            <span>
+              / bulan
+            </span>
+
+          </div>
+
+
+          <div class="inst">
+
+            <span>
+              6X
+            </span>
+
+            <b id="i6">
+              Rp 0
+            </b>
+
+            <span>
+              / bulan
+            </span>
+
+          </div>
+
+
+          <div class="inst">
+
+            <span>
+              12X
+            </span>
+
+            <b id="i12">
+              Rp 0
+            </b>
+
+            <span>
+              / bulan
+            </span>
+
+          </div>
+
+
+          <div class="inst">
+
+            <span>
+              24X
+            </span>
+
+            <b id="i24">
+              Rp 0
+            </b>
+
+            <span>
+              / bulan
+            </span>
+
+          </div>
+
+
         </div>
 
       </div>
@@ -1154,32 +1037,36 @@ CALCULATOR
     </div>
 
 
-    <div
-      id="saveMessage"
-      class="hidden"
-    ></div>
+    <div id="saveMsg" class="hidden"></div>
 
 
-    <div class="button-row">
+    <div class="btnrow">
 
       <button
-        class="btn btn-primary"
-        id="saveButton"
-        onclick="saveSimulation()"
+        id="saveBtn"
+        class="btn primary"
+        onclick="save()"
       >
         Simpan Simulasi
       </button>
 
       <button
-        class="btn btn-secondary"
+        class="btn secondary"
         onclick="copyResult()"
       >
         Copy Hasil
       </button>
 
       <button
-        class="btn btn-secondary"
-        onclick="resetCalculator()"
+        class="btn secondary"
+        onclick="copyWA()"
+      >
+        Copy WhatsApp
+      </button>
+
+      <button
+        class="btn secondary"
+        onclick="resetCalc()"
       >
         Reset
       </button>
@@ -1191,66 +1078,41 @@ CALCULATOR
 </section>
 
 
-<!-- =====================================================
-HISTORY
-===================================================== -->
+<!-- HISTORY -->
 
-<section
-  id="pageHistory"
-  class="hidden"
->
+<section id="history" class="hidden">
 
   <div class="card">
 
-    <div class="card-title">
-      Riwayat Simulasi Store
-    </div>
+    <div class="title">
 
-    <div class="dashboard-grid">
+      Riwayat Simulasi
 
-      <div class="stat-card">
-
-        <div class="stat-label">
-          TOTAL SIMULASI
-        </div>
-
-        <div
-          class="stat-value"
-          id="historyCount"
-        >
-          0
-        </div>
-
-      </div>
-
-
-      <div class="stat-card">
-
-        <div class="stat-label">
-          TOTAL BENEFIT
-        </div>
-
-        <div
-          class="stat-value"
-          id="historyBenefit"
-        >
-          Rp 0
-        </div>
-
-      </div>
+      <span
+        id="historyCount"
+        class="badge"
+      >
+        0
+      </span>
 
     </div>
 
-  </div>
 
+    <div
+      style="font-size:11px;color:#667085;margin-bottom:10px"
+    >
+      Total benefit:
+      <b id="historyBenefit">
+        Rp 0
+      </b>
+    </div>
 
-  <div class="card">
 
     <div
       id="historyContent"
       class="loading"
     >
-      Memuat riwayat...
+      Memuat...
     </div>
 
   </div>
@@ -1258,24 +1120,20 @@ HISTORY
 </section>
 
 
-<!-- =====================================================
-MASTER
-===================================================== -->
+<!-- MASTER -->
 
-<section
-  id="pageMaster"
-  class="hidden"
->
+<section id="master" class="hidden">
+
 
   <div class="card">
 
-    <div class="card-title">
-      Master Store
+    <div class="title">
+      Store
     </div>
 
     <div
-      id="storeMasterList"
-      class="master-grid"
+      id="storeMaster"
+      class="mastergrid"
     ></div>
 
   </div>
@@ -1283,13 +1141,13 @@ MASTER
 
   <div class="card">
 
-    <div class="card-title">
-      Master ERO
+    <div class="title">
+      ERO / Sales
     </div>
 
     <div
-      id="eroMasterList"
-      class="master-grid"
+      id="eroMaster"
+      class="mastergrid"
     ></div>
 
   </div>
@@ -1297,56 +1155,33 @@ MASTER
 
   <div class="card">
 
-    <div class="card-title">
-      Master Produk
+    <div class="title">
+      Produk
     </div>
 
     <div
-      id="productMasterList"
-      class="master-grid"
+      id="productMaster"
+      class="mastergrid"
     ></div>
 
   </div>
 
-
-  <div class="card">
-
-    <div
-      style="
-        font-size:11px;
-        color:#667085;
-        line-height:1.5;
-      "
-    >
-      Master saat ini bersifat read-only.
-      Pengelolaan Master Store, ERO, dan Produk
-      nantinya akan dibuat khusus untuk akses
-      TSH/Admin.
-    </div>
-
-  </div>
 
 </section>
 
 
-  </main>
+</main>
 
 </div>
 
 
 <script>
 
-/* =====================================================
-API
-===================================================== */
-
 const API_URL =
 'https://script.google.com/macros/s/AKfycbwN5G4zAEXZ27Qyu7WeUIsWmDgPHOCvjxBPWJ2-CHWDoqBjODud3sZ-8XFTW9YoAY5iMg/exec';
 
 
-/* =====================================================
-GLOBAL
-===================================================== */
+let currentUser = null;
 
 let masterData = {
   stores:[],
@@ -1354,366 +1189,262 @@ let masterData = {
   products:[]
 };
 
-let currentUser = null;
-
-let allHistory = [];
+let historyData = [];
 
 
-/* =====================================================
-RUPIAH
-===================================================== */
-
-function rupiah(value){
-
-  value = Number(value) || 0;
-
-  return new Intl.NumberFormat(
-    'id-ID',
-    {
-      style:'currency',
-      currency:'IDR',
-      maximumFractionDigits:0
-    }
-  ).format(value);
-
-}
+const $ = id =>
+document.getElementById(id);
 
 
-/* =====================================================
-NUMBER
-===================================================== */
+const rupiah = n =>
+'Rp ' + (Number(n)||0).toLocaleString('id-ID');
 
-function numberValue(value){
 
-  if(value === null || value === undefined){
-    return 0;
-  }
+const num = v =>
+Number(
+  String(v ?? '')
+  .replace(/\./g,'')
+  .replace(/,/g,'')
+  .replace(/[^\d-]/g,'')
+) || 0;
 
-  return Number(
-    String(value)
-      .replace(/\./g,'')
-      .replace(/,/g,'')
-      .replace(/[^\d-]/g,'')
-  ) || 0;
+
+function fmt(el){
+
+  let n = num(el.value);
+
+  el.value =
+    n
+      ? n.toLocaleString('id-ID')
+      : '';
 
 }
 
 
-/* =====================================================
-FORMAT INPUT
-===================================================== */
+function esc(v){
 
-function formatInput(input){
-
-  const value =
-    numberValue(input.value);
-
-  if(value === 0){
-
-    input.value = '';
-
-    return;
-
-  }
-
-  input.value =
-    new Intl.NumberFormat('id-ID')
-      .format(value);
+  return String(v ?? '')
+    .replace(
+      /[&<>"']/g,
+      m => ({
+        '&':'&amp;',
+        '<':'&lt;',
+        '>':'&gt;',
+        '"':'&quot;',
+        "'":'&#39;'
+      }[m])
+    );
 
 }
 
-
-/* =====================================================
-API CALL
-===================================================== */
 
 async function api(payload){
 
-  const response =
-    await fetch(
-      API_URL,
-      {
-        method:'POST',
-        headers:{
-          'Content-Type':
-            'text/plain;charset=utf-8'
-        },
-        body:JSON.stringify(payload)
-      }
-    );
+  const r = await fetch(
+    API_URL,
+    {
+      method:'POST',
+      headers:{
+        'Content-Type':
+        'text/plain;charset=utf-8'
+      },
+      body:JSON.stringify(payload)
+    }
+  );
 
-
-  const text =
-    await response.text();
-
-
-  let result;
+  const t = await r.text();
 
   try{
 
-    result =
-      JSON.parse(text);
+    return JSON.parse(t);
 
-  }catch(error){
+  }catch(e){
 
-    throw new Error(
+    throw Error(
       'Response server tidak valid.'
     );
 
   }
 
-
-  return result;
-
 }
 
 
-/* =====================================================
-LOAD MASTER
-===================================================== */
-
-async function loadMaster(){
+async function init(){
 
   try{
 
-    const result =
+    const r =
       await api({
         action:'master'
       });
 
 
-    if(!result.success){
-
-      throw new Error(
-        result.message ||
-        'Gagal mengambil master.'
+    if(!r.success)
+      throw Error(
+        r.message ||
+        'Gagal mengambil master'
       );
 
-    }
 
-
-    masterData.stores =
-      result.stores || [];
-
-    masterData.eros =
-      result.eros || [];
-
-    masterData.products =
-      result.products || [];
+    masterData = {
+      stores:r.stores || [],
+      eros:r.eros || [],
+      products:r.products || []
+    };
 
 
     renderStores();
 
     renderProducts();
 
-    renderMasterPage();
+    renderMaster();
 
 
-  }catch(error){
-
-    const box =
-      document.getElementById(
-        'loginMessage'
+    const s =
+      sessionStorage.getItem(
+        'nasa_user'
       );
 
-    box.className =
-      'error-box';
 
-    box.textContent =
-      error.message;
+    if(s){
+
+      currentUser =
+        JSON.parse(s);
+
+      if(
+        currentUser.storeId &&
+        currentUser.nik
+      ){
+
+        openApp();
+
+      }
+
+    }
+
+
+  }catch(e){
+
+    msg(
+      'loginMsg',
+      'error',
+      e.message
+    );
 
   }
 
 }
 
 
-/* =====================================================
-RENDER STORES
-===================================================== */
-
 function renderStores(){
 
-  const select =
-    document.getElementById(
-      'loginStore'
-    );
-
-
-  select.innerHTML =
+  $('loginStore').innerHTML =
     '<option value="">Pilih Store</option>';
 
 
   masterData.stores
     .filter(
-      store =>
-        String(
-          store.status || 'ACTIVE'
-        ).toUpperCase() === 'ACTIVE'
+      x =>
+      String(
+        x.status || 'ACTIVE'
+      ).toUpperCase()
+      === 'ACTIVE'
     )
-    .forEach(store => {
+    .forEach(x=>{
 
-      const option =
-        document.createElement('option');
-
-
-      option.value =
-        store.storeId;
-
-
-      option.textContent =
-        store.storeName;
-
-
-      select.appendChild(option);
+      $('loginStore').innerHTML +=
+      `<option value="${esc(x.storeId)}">
+        ${esc(x.storeName)}
+      </option>`;
 
     });
 
 }
 
 
-/* =====================================================
-RENDER PRODUCTS
-===================================================== */
-
 function renderProducts(){
 
-  const select =
-    document.getElementById(
-      'productSelect'
-    );
-
-
-  select.innerHTML =
+  $('productSelect').innerHTML =
     '<option value="">Pilih Produk</option>';
 
 
   masterData.products
     .filter(
-      product =>
-        String(
-          product.status || 'ACTIVE'
-        ).toUpperCase() === 'ACTIVE'
+      x =>
+      String(
+        x.status || 'ACTIVE'
+      ).toUpperCase()
+      === 'ACTIVE'
     )
-    .forEach(product => {
+    .forEach(x=>{
 
-      const option =
-        document.createElement('option');
-
-
-      option.value =
-        product.productId;
-
-
-      option.textContent =
-        product.productName;
-
-
-      select.appendChild(option);
+      $('productSelect').innerHTML +=
+      `<option value="${esc(x.productId)}">
+        ${esc(x.productName)}
+      </option>`;
 
     });
 
 }
 
 
-/* =====================================================
-LOGIN
-===================================================== */
-
-async function validateLogin(){
+async function login(){
 
   const storeId =
-    document.getElementById(
-      'loginStore'
-    ).value;
-
+    $('loginStore').value;
 
   const nik =
-    document.getElementById(
-      'loginNik'
-    ).value.trim();
+    $('loginNik').value.trim();
 
 
-  const message =
-    document.getElementById(
-      'loginMessage'
+  if(!storeId)
+    return msg(
+      'loginMsg',
+      'error',
+      'Silakan pilih Store.'
     );
 
 
-  const button =
-    document.getElementById(
-      'loginButton'
+  if(!nik)
+    return msg(
+      'loginMsg',
+      'error',
+      'Silakan masukkan NIK.'
     );
 
 
-  message.className =
-    'hidden';
+  $('loginBtn').disabled = true;
 
-
-  if(!storeId){
-
-    message.className =
-      'error-box';
-
-    message.textContent =
-      'Silakan pilih Store.';
-
-    return;
-
-  }
-
-
-  if(!nik){
-
-    message.className =
-      'error-box';
-
-    message.textContent =
-      'Silakan masukkan NIK.';
-
-    return;
-
-  }
-
-
-  button.disabled = true;
-
-  button.textContent =
+  $('loginBtn').textContent =
     'Memeriksa...';
 
 
   try{
 
-    const result =
+    const r =
       await api({
         action:'validate',
-        storeId:storeId,
-        nik:nik
+        storeId,
+        nik
       });
 
 
-    if(!result.success){
-
-      throw new Error(
-        result.message ||
+    if(!r.success)
+      throw Error(
+        r.message ||
         'NIK tidak valid.'
       );
-
-    }
 
 
     currentUser = {
 
-      nik:
-        result.user.nik,
+      nik:r.user.nik,
 
-      eroName:
-        result.user.eroName,
+      eroName:r.user.eroName,
 
-      storeId:
-        result.user.storeId,
+      storeId:r.user.storeId,
 
-      storeName:
-        result.user.storeName
+      storeName:r.user.storeName
 
     };
 
@@ -1727,19 +1458,20 @@ async function validateLogin(){
     openApp();
 
 
-  }catch(error){
+  }catch(e){
 
-    message.className =
-      'error-box';
+    msg(
+      'loginMsg',
+      'error',
+      e.message
+    );
 
-    message.textContent =
-      error.message;
 
   }finally{
 
-    button.disabled = false;
+    $('loginBtn').disabled = false;
 
-    button.textContent =
+    $('loginBtn').textContent =
       'Lanjut';
 
   }
@@ -1747,98 +1479,35 @@ async function validateLogin(){
 }
 
 
-/* =====================================================
-OPEN APP
-===================================================== */
-
 function openApp(){
 
-  document.getElementById(
-    'loginPage'
-  ).classList.add('hidden');
+  $('loginPage')
+    .classList
+    .add('hidden');
+
+  $('app')
+    .classList
+    .remove('hidden');
 
 
-  document.getElementById(
-    'app'
-  ).classList.remove('hidden');
-
-
-  document.getElementById(
-    'headerStore'
-  ).textContent =
+  $('headStore').textContent =
     currentUser.storeName;
 
-
-  document.getElementById(
-    'headerEro'
-  ).textContent =
+  $('headEro').textContent =
     currentUser.eroName;
 
 
-  document.getElementById(
-    'calcStore'
-  ).value =
+  $('calcStore').value =
     currentUser.storeName;
 
-
-  document.getElementById(
-    'calcEro'
-  ).value =
+  $('calcEro').value =
     currentUser.eroName;
 
 
-  showOverview();
+  loadOverview();
 
 }
 
-
-/* =====================================================
-SESSION
-===================================================== */
-
-function checkSession(){
-
-  const saved =
-    sessionStorage.getItem(
-      'nasa_user'
-    );
-
-
-  if(!saved){
-    return;
-  }
-
-
-  try{
-
-    currentUser =
-      JSON.parse(saved);
-
-
-    if(
-      currentUser &&
-      currentUser.storeId &&
-      currentUser.nik
-    ){
-
-      openApp();
-
-    }
-
-  }catch(error){
-
-    sessionStorage.removeItem(
-      'nasa_user'
-    );
-
-  }
-
-}
-
-
-/* =====================================================
-LOGOUT
-===================================================== */
 
 function logout(){
 
@@ -1846,203 +1515,237 @@ function logout(){
     !confirm(
       'Keluar dari Kalkulator NASA?'
     )
-  ){
+  )
     return;
-  }
 
 
   sessionStorage.removeItem(
     'nasa_user'
   );
 
-
-  currentUser = null;
-
-  allHistory = [];
-
-
-  document.getElementById(
-    'app'
-  ).classList.add('hidden');
-
-
-  document.getElementById(
-    'loginPage'
-  ).classList.remove('hidden');
-
-
-  document.getElementById(
-    'loginNik'
-  ).value = '';
+  location.reload();
 
 }
 
 
-/* =====================================================
-PRODUCT
-===================================================== */
+function page(name,btn){
+
+  [
+    'overview',
+    'calculator',
+    'history',
+    'master'
+  ]
+  .forEach(
+    x =>
+    $(x)
+    .classList
+    .add('hidden')
+  );
+
+
+  $(name)
+    .classList
+    .remove('hidden');
+
+
+  document
+    .querySelectorAll('.nav button')
+    .forEach(
+      x =>
+      x.classList.remove('active')
+    );
+
+
+  if(btn)
+    btn.classList.add('active');
+
+
+  if(name === 'overview')
+    loadOverview();
+
+
+  if(name === 'history')
+    loadHistory();
+
+}
+
 
 function productChanged(){
 
-  const productId =
-    document.getElementById(
-      'productSelect'
-    ).value;
-
-
-  const product =
+  const p =
     masterData.products.find(
-      p =>
-        String(p.productId) ===
-        String(productId)
+      x =>
+      String(x.productId)
+      ===
+      String(
+        $('productSelect').value
+      )
     );
 
 
-  const price =
-    product
-      ? Number(product.price) || 0
-      : 0;
+  $('productPrice').textContent =
+    rupiah(
+      p?.price || 0
+    );
 
 
-  document.getElementById(
-    'productPrice'
-  ).textContent =
-    rupiah(price);
-
-
-  calculate();
+  calc();
 
 }
 
 
-/* =====================================================
-CALCULATE
-===================================================== */
+function calc(){
 
-function calculate(){
-
-  const productId =
-    document.getElementById(
-      'productSelect'
-    ).value;
-
-
-  const product =
+  const p =
     masterData.products.find(
-      p =>
-        String(p.productId) ===
-        String(productId)
+      x =>
+      String(x.productId)
+      ===
+      String(
+        $('productSelect').value
+      )
     );
 
 
   const price =
-    product
-      ? Number(product.price) || 0
-      : 0;
+    Number(p?.price) || 0;
 
 
-  const cbHp =
-    numberValue(
-      document.getElementById(
-        'cbHp'
-      ).value
+  const cb =
+    num($('cbHp').value);
+
+  const vo =
+    num($('voucher').value);
+
+  const tr =
+    num($('tradeIn').value);
+
+  const ct =
+    num(
+      $('cashbackTambahanTradeIn')
+      .value
+    );
+
+  const pw =
+    num(
+      $('cashbackPwp').value
+    );
+
+  const bk =
+    num(
+      $('cashbackBank').value
+    );
+
+  const pl =
+    num(
+      $('potonganLain').value
     );
 
 
-  const voucher =
-    numberValue(
-      document.getElementById(
-        'voucher'
-      ).value
-    );
+  /*
+    PENTING:
+
+    Trade In TIDAK masuk Total Benefit.
+  */
+
+  const benefit =
+    cb +
+    vo +
+    ct +
+    pw +
+    bk +
+    pl;
 
 
-  const tradeIn =
-    numberValue(
-      document.getElementById(
-        'tradeIn'
-      ).value
-    );
+  /*
+    Harga yang dibayar:
 
+    Harga Normal
+    - Total Benefit
+    - Harga HP Trade In
+  */
 
-  const cashbackBank =
-    numberValue(
-      document.getElementById(
-        'cashbackBank'
-      ).value
-    );
-
-
-  const potonganLain =
-    numberValue(
-      document.getElementById(
-        'potonganLain'
-      ).value
-    );
-
-
-  const totalBenefit =
-    cbHp +
-    voucher +
-    tradeIn +
-    cashbackBank +
-    potonganLain;
-
-
-  const netPrice =
+  const pay =
     Math.max(
       0,
-      price - totalBenefit
+      price -
+      benefit -
+      tr
     );
 
 
-  document.getElementById(
-    'resultPrice'
-  ).textContent =
+  $('resultPrice').textContent =
     rupiah(price);
 
 
-  document.getElementById(
-    'resultBenefit'
-  ).textContent =
-    rupiah(totalBenefit);
+  $('resultBenefit').textContent =
+    rupiah(benefit);
 
 
-  document.getElementById(
-    'resultNet'
-  ).textContent =
-    rupiah(netPrice);
+  $('resultTrade').textContent =
+    rupiah(tr);
+
+
+  $('resultPay').textContent =
+    rupiah(pay);
+
+
+  [3,6,12,24]
+  .forEach(t=>{
+
+    const el =
+      $('i'+t);
+
+    el.textContent =
+      rupiah(
+        Math.ceil(pay/t)
+      );
+
+  });
+
+
+  return {
+
+    p,
+
+    price,
+
+    cb,
+
+    vo,
+
+    tr,
+
+    ct,
+
+    pw,
+
+    bk,
+
+    pl,
+
+    benefit,
+
+    pay
+
+  };
 
 }
 
 
-/* =====================================================
-SAVE
-===================================================== */
+async function save(){
 
-async function saveSimulation(){
-
-  if(!currentUser){
-    return;
-  }
+  const c =
+    calc();
 
 
-  const productId =
-    document.getElementById(
-      'productSelect'
-    ).value;
-
-
-  if(!productId){
-
-    showSaveMessage(
+  if(!c.p)
+    return msg(
+      'saveMsg',
       'error',
       'Silakan pilih produk.'
     );
-
-    return;
-
-  }
 
 
   const data = {
@@ -2054,106 +1757,98 @@ async function saveSimulation(){
       currentUser.nik,
 
     productId:
-      productId,
+      c.p.productId,
 
-    cbHp:
-      numberValue(
-        document.getElementById(
-          'cbHp'
-        ).value
-      ),
+    customerName:
+      $('customerName')
+      .value
+      .trim(),
 
-    voucher:
-      numberValue(
-        document.getElementById(
-          'voucher'
-        ).value
-      ),
+    customerPhone:
+      $('customerPhone')
+      .value
+      .trim(),
 
-    tradeIn:
-      numberValue(
-        document.getElementById(
-          'tradeIn'
-        ).value
-      ),
+    customerEmail:
+      $('customerEmail')
+      .value
+      .trim(),
+
+    cbHp:c.cb,
+
+    voucher:c.vo,
+
+    tradeIn:c.tr,
+
+    cashbackTambahanTradeIn:
+      c.ct,
+
+    cashbackPwp:
+      c.pw,
 
     cashbackBank:
-      numberValue(
-        document.getElementById(
-          'cashbackBank'
-        ).value
-      ),
+      c.bk,
 
     potonganLain:
-      numberValue(
-        document.getElementById(
-          'potonganLain'
-        ).value
-      )
+      c.pl
 
   };
 
 
-  const button =
-    document.getElementById(
-      'saveButton'
-    );
+  $('saveBtn').disabled =
+    true;
 
-
-  button.disabled = true;
-
-  button.textContent =
+  $('saveBtn').textContent =
     'Menyimpan...';
 
 
   try{
 
-    const result =
+    const r =
       await api({
         action:'save',
-        data:data
+        data
       });
 
 
-    if(!result.success){
-
-      throw new Error(
-        result.message ||
-        'Gagal menyimpan.'
+    if(!r.success)
+      throw Error(
+        r.message ||
+        'Gagal menyimpan'
       );
 
-    }
 
-
-    showSaveMessage(
+    msg(
+      'saveMsg',
       'success',
       'Simulasi berhasil disimpan.'
     );
 
 
-    resetCalculator(false);
+    resetCalc(false);
 
 
     setTimeout(
-      () => {
-        loadOverview();
-      },
-      500
+      loadOverview,
+      400
     );
 
 
-  }catch(error){
+  }catch(e){
 
-    showSaveMessage(
+    msg(
+      'saveMsg',
       'error',
-      error.message
+      e.message
     );
+
 
   }finally{
 
-    button.disabled = false;
+    $('saveBtn').disabled =
+      false;
 
-    button.textContent =
+    $('saveBtn').textContent =
       'Simpan Simulasi';
 
   }
@@ -2161,1442 +1856,684 @@ async function saveSimulation(){
 }
 
 
-/* =====================================================
-SAVE MESSAGE
-===================================================== */
+function resetCalc(clear=true){
 
-function showSaveMessage(
+  [
+    'productSelect',
+    'customerName',
+    'customerPhone',
+    'customerEmail',
+    'cbHp',
+    'voucher',
+    'tradeIn',
+    'cashbackTambahanTradeIn',
+    'cashbackPwp',
+    'cashbackBank',
+    'potonganLain'
+  ]
+  .forEach(
+    id =>
+    $(id).value=''
+  );
+
+
+  $('productPrice').textContent =
+    rupiah(0);
+
+  $('resultPrice').textContent =
+    rupiah(0);
+
+  $('resultBenefit').textContent =
+    rupiah(0);
+
+  $('resultTrade').textContent =
+    rupiah(0);
+
+  $('resultPay').textContent =
+    rupiah(0);
+
+
+  [3,6,12,24]
+  .forEach(
+    t =>
+    $('i'+t).textContent =
+    rupiah(0)
+  );
+
+
+  if(clear)
+    $('saveMsg').className =
+      'hidden';
+
+}
+
+
+function copyResult(){
+
+  const c =
+    calc();
+
+
+  if(!c.p)
+    return alert(
+      'Silakan pilih produk.'
+    );
+
+
+  const text =
+
+`KALKULATOR NASA
+
+Store : ${currentUser.storeName}
+ERO : ${currentUser.eroName}
+
+Customer : ${$('customerName').value || '-'}
+No. HP : ${$('customerPhone').value || '-'}
+
+Produk : ${c.p.productName}
+
+Harga Normal : ${rupiah(c.price)}
+
+Cashback HP : ${rupiah(c.cb)}
+Voucher : ${rupiah(c.vo)}
+Harga HP Trade In : ${rupiah(c.tr)}
+Cashback Tambahan Trade In : ${rupiah(c.ct)}
+Cashback PWP : ${rupiah(c.pw)}
+Cashback Bank : ${rupiah(c.bk)}
+Potongan Lain : ${rupiah(c.pl)}
+
+Total Benefit : ${rupiah(c.benefit)}
+
+YANG DIBAYARKAN : ${rupiah(c.pay)}
+
+3X : ${rupiah(Math.ceil(c.pay/3))}/bln
+6X : ${rupiah(Math.ceil(c.pay/6))}/bln
+12X : ${rupiah(Math.ceil(c.pay/12))}/bln
+24X : ${rupiah(Math.ceil(c.pay/24))}/bln`;
+
+
+  navigator
+    .clipboard
+    .writeText(text)
+    .then(
+      () =>
+      alert(
+        'Hasil berhasil dicopy.'
+      )
+    )
+    .catch(
+      () =>
+      alert(
+        'Copy otomatis gagal.'
+      )
+    );
+
+}
+
+
+function copyWA(){
+
+  const c =
+    calc();
+
+
+  if(!c.p)
+    return alert(
+      'Silakan pilih produk.'
+    );
+
+
+  const name =
+    $('customerName').value ||
+    'Kak';
+
+
+  const text =
+
+`Halo ${name}, berikut simulasi Samsung ${c.p.productName}:
+
+Harga normal: ${rupiah(c.price)}
+Total benefit: ${rupiah(c.benefit)}
+Trade In: ${rupiah(c.tr)}
+Yang dibayarkan: ${rupiah(c.pay)}
+
+Cicilan 0%:
+
+3x ${rupiah(Math.ceil(c.pay/3))}/bln
+6x ${rupiah(Math.ceil(c.pay/6))}/bln
+12x ${rupiah(Math.ceil(c.pay/12))}/bln
+24x ${rupiah(Math.ceil(c.pay/24))}/bln
+
+Simulasi dapat berubah mengikuti promo dan ketentuan yang berlaku.`;
+
+
+  navigator
+    .clipboard
+    .writeText(text)
+    .then(
+      () =>
+      alert(
+        'Pesan WhatsApp berhasil dicopy.'
+      )
+    )
+    .catch(
+      () =>
+      alert(
+        'Copy otomatis gagal.'
+      )
+    );
+
+}
+
+
+async function loadOverview(){
+
+  if(!currentUser)
+    return;
+
+
+  try{
+
+    const r =
+      await api({
+        action:'history',
+        storeId:
+          currentUser.storeId,
+        nik:
+          currentUser.nik
+      });
+
+
+    if(!r.success)
+      throw Error(
+        r.message ||
+        'Gagal mengambil data'
+      );
+
+
+    historyData =
+      r.data ||
+      r.history ||
+      [];
+
+
+    renderOverview();
+
+
+  }catch(e){
+
+    $('today').innerHTML =
+      `<div class="error">
+        ${esc(e.message)}
+      </div>`;
+
+  }
+
+}
+
+
+function renderOverview(){
+
+  const h =
+    historyData;
+
+
+  $('ovTotal').textContent =
+    h.length;
+
+
+  const today =
+    h.filter(
+      x =>
+      sameDay(
+        x.timestamp,
+        new Date()
+      )
+    );
+
+
+  $('ovToday').textContent =
+    today.length;
+
+
+  $('ovBenefit').textContent =
+    rupiah(
+      h.reduce(
+        (s,x)=>
+        s +
+        (Number(x.totalBenefit)||0),
+        0
+      )
+    );
+
+
+  const pc={};
+
+
+  h.forEach(
+    x =>
+    pc[x.productName||'-'] =
+      (pc[x.productName||'-']||0)+1
+  );
+
+
+  const ps =
+    Object.entries(pc)
+    .sort(
+      (a,b)=>
+      b[1]-a[1]
+    );
+
+
+  $('ovTop').textContent =
+    ps[0]?.[0] || '-';
+
+
+  const er={};
+
+
+  h.forEach(
+    x =>
+    er[x.eroName||'-'] =
+      (er[x.eroName||'-']||0)+1
+  );
+
+
+  const es =
+    Object.entries(er)
+    .sort(
+      (a,b)=>
+      b[1]-a[1]
+    );
+
+
+  $('eroRank').innerHTML =
+    es.slice(0,10)
+    .map(
+      (x,i)=>
+      `<div class="listrow">
+        <span>
+          <b>${i+1}.</b>
+          ${esc(x[0])}
+        </span>
+        <b>${x[1]}</b>
+      </div>`
+    )
+    .join('')
+    ||
+    '<div class="empty">Belum ada data.</div>';
+
+
+  $('prodRank').innerHTML =
+    ps.slice(0,10)
+    .map(
+      (x,i)=>
+      `<div class="listrow">
+        <span>
+          ${i+1}. ${esc(x[0])}
+        </span>
+        <b>${x[1]}</b>
+      </div>`
+    )
+    .join('')
+    ||
+    '<div class="empty">Belum ada data.</div>';
+
+
+  $('today').innerHTML =
+    today.slice(0,20)
+    .map(
+      x =>
+      `<div class="listrow">
+
+        <span>
+
+          <span class="badge">
+            ${esc(x.eroName||'-')}
+          </span>
+
+          ${esc(x.productName||'-')}
+
+        </span>
+
+        <b>
+          ${rupiah(x.netPrice)}
+        </b>
+
+      </div>`
+    )
+    .join('')
+    ||
+    '<div class="empty">
+      Belum ada simulasi hari ini.
+    </div>';
+
+}
+
+
+async function loadHistory(){
+
+  $('historyContent').innerHTML =
+    '<div class="loading">Memuat...</div>';
+
+
+  try{
+
+    const r =
+      await api({
+        action:'history',
+        storeId:
+          currentUser.storeId,
+        nik:
+          currentUser.nik
+      });
+
+
+    if(!r.success)
+      throw Error(r.message);
+
+
+    const h =
+      r.data ||
+      r.history ||
+      [];
+
+
+    $('historyCount').textContent =
+      h.length;
+
+
+    $('historyBenefit').textContent =
+      rupiah(
+        h.reduce(
+          (s,x)=>
+          s +
+          (Number(x.totalBenefit)||0),
+          0
+        )
+      );
+
+
+    if(!h.length){
+
+      $('historyContent').innerHTML =
+        '<div class="empty">
+          Belum ada simulasi.
+        </div>';
+
+      return;
+
+    }
+
+
+    $('historyContent').innerHTML =
+
+    `<div class="tablewrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>Tanggal</th>
+
+            <th>Customer</th>
+
+            <th>ERO</th>
+
+            <th>Produk</th>
+
+            <th>Harga</th>
+
+            <th>Benefit</th>
+
+            <th>Trade In</th>
+
+            <th>Yang Dibayar</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+        ${
+          h.map(
+            x =>
+
+            `<tr>
+
+              <td>
+                ${esc(
+                  formatDate(
+                    x.timestamp
+                  )
+                )}
+              </td>
+
+              <td>
+                <b>
+                  ${esc(
+                    x.customerName||'-'
+                  )}
+                </b>
+              </td>
+
+              <td>
+
+                <span class="badge">
+                  ${esc(
+                    x.eroName||'-'
+                  )}
+                </span>
+
+              </td>
+
+              <td>
+                ${esc(
+                  x.productName||'-'
+                )}
+              </td>
+
+              <td class="amt">
+                ${rupiah(x.price)}
+              </td>
+
+              <td class="amt">
+                ${rupiah(x.totalBenefit)}
+              </td>
+
+              <td class="amt">
+                ${rupiah(x.tradeIn)}
+              </td>
+
+              <td class="amt">
+
+                <b>
+                  ${rupiah(x.netPrice)}
+                </b>
+
+              </td>
+
+            </tr>`
+          ).join('')
+        }
+
+        </tbody>
+
+      </table>
+
+    </div>`;
+
+  }catch(e){
+
+    $('historyContent').innerHTML =
+      `<div class="error">
+        ${esc(e.message)}
+      </div>`;
+
+  }
+
+}
+
+
+function renderMaster(){
+
+  $('storeMaster').innerHTML =
+    masterData.stores
+    .map(
+      x =>
+
+      `<div class="master">
+
+        <b>
+          ${esc(x.storeName)}
+        </b>
+
+        ID:
+        ${esc(x.storeId)}
+
+        <br>
+
+        Status:
+        ${esc(x.status||'-')}
+
+      </div>`
+    )
+    .join('');
+
+
+  $('eroMaster').innerHTML =
+    masterData.eros
+    .map(
+      x =>
+
+      `<div class="master">
+
+        <b>
+          ${esc(x.eroName)}
+        </b>
+
+        NIK:
+        ${mask(x.nik)}
+
+        <br>
+
+        Store:
+        ${esc(x.storeId)}
+
+        <br>
+
+        Status:
+        ${esc(x.status||'-')}
+
+      </div>`
+    )
+    .join('');
+
+
+  $('productMaster').innerHTML =
+    masterData.products
+    .map(
+      x =>
+
+      `<div class="master">
+
+        <b>
+          ${esc(x.productName)}
+        </b>
+
+        Type:
+        ${esc(x.productType)}
+
+        <br>
+
+        Harga:
+        ${rupiah(x.price)}
+
+        <br>
+
+        Status:
+        ${esc(x.status||'-')}
+
+      </div>`
+    )
+    .join('');
+
+}
+
+
+function mask(v){
+
+  v =
+    String(v||'');
+
+  return v.length > 4
+    ? v.slice(0,2)+'••••'+v.slice(-2)
+    : '••••';
+
+}
+
+
+function sameDay(a,b){
+
+  const d =
+    new Date(a);
+
+  return d.toDateString()
+    ===
+    b.toDateString();
+
+}
+
+
+function formatDate(v){
+
+  const d =
+    new Date(v);
+
+
+  return isNaN(d)
+
+    ? String(v||'-')
+
+    :
+
+    d.toLocaleString(
+      'id-ID',
+      {
+        day:'2-digit',
+        month:'2-digit',
+        year:'numeric',
+        hour:'2-digit',
+        minute:'2-digit'
+      }
+    );
+
+}
+
+
+function msg(
+  id,
   type,
   text
 ){
 
-  const box =
-    document.getElementById(
-      'saveMessage'
-    );
+  const e =
+    $(id);
 
+  e.className =
+    type;
 
-  box.className =
-    type === 'success'
-      ? 'success-box'
-      : 'error-box';
-
-
-  box.textContent =
+  e.textContent =
     text;
 
 }
 
 
-/* =====================================================
-RESET
-===================================================== */
-
-function resetCalculator(
-  clearMessage=true
-){
-
-  document.getElementById(
-    'productSelect'
-  ).value = '';
-
-
-  document.getElementById(
-    'cbHp'
-  ).value = '';
-
-
-  document.getElementById(
-    'voucher'
-  ).value = '';
-
-
-  document.getElementById(
-    'tradeIn'
-  ).value = '';
-
-
-  document.getElementById(
-    'cashbackBank'
-  ).value = '';
-
-
-  document.getElementById(
-    'potonganLain'
-  ).value = '';
-
-
-  document.getElementById(
-    'productPrice'
-  ).textContent =
-    rupiah(0);
-
-
-  document.getElementById(
-    'resultPrice'
-  ).textContent =
-    rupiah(0);
-
-
-  document.getElementById(
-    'resultBenefit'
-  ).textContent =
-    rupiah(0);
-
-
-  document.getElementById(
-    'resultNet'
-  ).textContent =
-    rupiah(0);
-
-
-  if(clearMessage){
-
-    document.getElementById(
-      'saveMessage'
-    ).className =
-      'hidden';
-
-    document.getElementById(
-      'saveMessage'
-    ).textContent =
-      '';
-
-  }
-
-}
-
-
-/* =====================================================
-COPY
-===================================================== */
-
-function copyResult(){
-
-  if(!currentUser){
-    return;
-  }
-
-
-  const productId =
-    document.getElementById(
-      'productSelect'
-    ).value;
-
-
-  const product =
-    masterData.products.find(
-      p =>
-        String(p.productId) ===
-        String(productId)
-    );
-
-
-  if(!product){
-
-    alert(
-      'Silakan pilih produk terlebih dahulu.'
-    );
-
-    return;
-
-  }
-
-
-  const price =
-    Number(product.price) || 0;
-
-
-  const cbHp =
-    numberValue(
-      document.getElementById(
-        'cbHp'
-      ).value
-    );
-
-
-  const voucher =
-    numberValue(
-      document.getElementById(
-        'voucher'
-      ).value
-    );
-
-
-  const tradeIn =
-    numberValue(
-      document.getElementById(
-        'tradeIn'
-      ).value
-    );
-
-
-  const cashbackBank =
-    numberValue(
-      document.getElementById(
-        'cashbackBank'
-      ).value
-    );
-
-
-  const potonganLain =
-    numberValue(
-      document.getElementById(
-        'potonganLain'
-      ).value
-    );
-
-
-  const totalBenefit =
-    cbHp +
-    voucher +
-    tradeIn +
-    cashbackBank +
-    potonganLain;
-
-
-  const netPrice =
-    Math.max(
-      0,
-      price - totalBenefit
-    );
-
-
-  const text =
-`KALKULATOR NASA
-
-Store : ${currentUser.storeName}
-ERO   : ${currentUser.eroName}
-
-Produk : ${product.productName}
-Harga  : ${rupiah(price)}
-
-CB HP         : ${rupiah(cbHp)}
-Voucher       : ${rupiah(voucher)}
-Trade In      : ${rupiah(tradeIn)}
-Cashback Bank : ${rupiah(cashbackBank)}
-Potongan Lain : ${rupiah(potonganLain)}
-
-Total Benefit : ${rupiah(totalBenefit)}
-
-NET PRICE     : ${rupiah(netPrice)}`;
-
-
-  navigator.clipboard
-    .writeText(text)
-    .then(
-      () => alert(
-        'Hasil berhasil dicopy.'
-      )
-    )
-    .catch(
-      () => alert(
-        'Tidak bisa copy otomatis.'
-      )
-    );
-
-}
-
-
-/* =====================================================
-SHOW PAGE
-===================================================== */
-
-function showPage(
-  page,
-  button
-){
-
-  document.getElementById(
-    'pageOverview'
-  ).classList.add('hidden');
-
-
-  document.getElementById(
-    'pageCalculator'
-  ).classList.add('hidden');
-
-
-  document.getElementById(
-    'pageHistory'
-  ).classList.add('hidden');
-
-
-  document.getElementById(
-    'pageMaster'
-  ).classList.add('hidden');
-
-
-  document.querySelectorAll(
-    '.nav-btn'
-  ).forEach(
-    btn =>
-      btn.classList.remove('active')
-  );
-
-
-  if(button){
-    button.classList.add('active');
-  }
-
-
-  if(page === 'overview'){
-
-    document.getElementById(
-      'pageOverview'
-    ).classList.remove('hidden');
-
-    showOverview();
-
-  }
-
-
-  if(page === 'calculator'){
-
-    document.getElementById(
-      'pageCalculator'
-    ).classList.remove('hidden');
-
-  }
-
-
-  if(page === 'history'){
-
-    document.getElementById(
-      'pageHistory'
-    ).classList.remove('hidden');
-
-    loadHistory();
-
-  }
-
-
-  if(page === 'master'){
-
-    document.getElementById(
-      'pageMaster'
-    ).classList.remove('hidden');
-
-    renderMasterPage();
-
-  }
-
-}
-
-
-/* =====================================================
-OVERVIEW
-===================================================== */
-
-function showOverview(){
-
-  document.getElementById(
-    'pageOverview'
-  ).classList.remove('hidden');
-
-
-  loadOverview();
-
-}
-
-
-/* =====================================================
-LOAD OVERVIEW
-===================================================== */
-
-async function loadOverview(){
-
-  if(!currentUser){
-    return;
-  }
-
-
-  document.getElementById(
-    'eroRanking'
-  ).innerHTML =
-    '<div class="loading">Memuat data...</div>';
-
-
-  document.getElementById(
-    'productRanking'
-  ).innerHTML =
-    '<div class="loading">Memuat data...</div>';
-
-
-  document.getElementById(
-    'todayActivity'
-  ).innerHTML =
-    '<div class="loading">Memuat data...</div>';
-
-
-  try{
-
-    const result =
-      await api({
-
-        action:'history',
-
-        storeId:
-          currentUser.storeId,
-
-        nik:
-          currentUser.nik
-
-      });
-
-
-    if(!result.success){
-
-      throw new Error(
-        result.message ||
-        'Gagal mengambil data overview.'
-      );
-
-    }
-
-
-    allHistory =
-      result.data ||
-      result.history ||
-      [];
-
-
-    buildOverview(
-      allHistory
-    );
-
-
-  }catch(error){
-
-    document.getElementById(
-      'eroRanking'
-    ).innerHTML =
-      `<div class="error-box">${escapeHtml(error.message)}</div>`;
-
-  }
-
-}
-
-
-/* =====================================================
-BUILD OVERVIEW
-===================================================== */
-
-function buildOverview(
-  history
-){
-
-  const total =
-    history.length;
-
-
-  let totalBenefit = 0;
-
-
-  history.forEach(
-    item => {
-
-      totalBenefit +=
-        Number(
-          item.totalBenefit
-        ) || 0;
-
-    }
-  );
-
-
-  const today =
-    new Date();
-
-
-  const todayCount =
-    history.filter(
-      item =>
-        isSameDate(
-          item.timestamp,
-          today
-        )
-    ).length;
-
-
-  document.getElementById(
-    'ovTotal'
-  ).textContent =
-    total;
-
-
-  document.getElementById(
-    'ovToday'
-  ).textContent =
-    todayCount;
-
-
-  document.getElementById(
-    'ovBenefit'
-  ).textContent =
-    rupiah(totalBenefit);
-
-
-  buildEroRanking(
-    history
-  );
-
-
-  buildProductRanking(
-    history
-  );
-
-
-  buildTodayActivity(
-    history
-  );
-
-}
-
-
-/* =====================================================
-ERO RANKING
-===================================================== */
-
-function buildEroRanking(
-  history
-){
-
-  const counts = {};
-
-
-  history.forEach(
-    item => {
-
-      const name =
-        item.eroName ||
-        'Tidak diketahui';
-
-
-      if(!counts[name]){
-        counts[name] = 0;
-      }
-
-
-      counts[name]++;
-
-    }
-  );
-
-
-  const ranking =
-    Object.entries(counts)
-      .sort(
-        (a,b) =>
-          b[1] - a[1]
-      );
-
-
-  const box =
-    document.getElementById(
-      'eroRanking'
-    );
-
-
-  if(!ranking.length){
-
-    box.innerHTML =
-      '<div class="empty">Belum ada data.</div>';
-
-    return;
-
-  }
-
-
-  box.innerHTML =
-    ranking
-      .slice(0,10)
-      .map(
-        (item,index) => `
-
-        <div class="rank-item">
-
-          <div class="rank-left">
-
-            <div class="rank-number">
-              ${index + 1}
-            </div>
-
-            <div>
-
-              <div class="rank-name">
-                ${escapeHtml(item[0])}
-              </div>
-
-              <div class="rank-detail">
-                Simulasi
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="rank-value">
-            ${item[1]}
-          </div>
-
-        </div>
-
-        `
-      )
-      .join('');
-
-}
-
-
-/* =====================================================
-PRODUCT RANKING
-===================================================== */
-
-function buildProductRanking(
-  history
-){
-
-  const counts = {};
-
-
-  history.forEach(
-    item => {
-
-      const name =
-        item.productName ||
-        'Tidak diketahui';
-
-
-      if(!counts[name]){
-        counts[name] = 0;
-      }
-
-
-      counts[name]++;
-
-    }
-  );
-
-
-  const ranking =
-    Object.entries(counts)
-      .sort(
-        (a,b) =>
-          b[1] - a[1]
-      );
-
-
-  const box =
-    document.getElementById(
-      'productRanking'
-    );
-
-
-  if(!ranking.length){
-
-    document.getElementById(
-      'ovTopProduct'
-    ).textContent =
-      '-';
-
-
-    box.innerHTML =
-      '<div class="empty">Belum ada data.</div>';
-
-    return;
-
-  }
-
-
-  document.getElementById(
-    'ovTopProduct'
-  ).textContent =
-    ranking[0][0];
-
-
-  const max =
-    ranking[0][1];
-
-
-  box.innerHTML =
-    ranking
-      .slice(0,8)
-      .map(
-        item => {
-
-          const percentage =
-            max > 0
-              ? (item[1] / max) * 100
-              : 0;
-
-
-          return `
-
-          <div class="product-bar">
-
-            <div class="product-bar-head">
-
-              <span class="product-bar-name">
-                ${escapeHtml(item[0])}
-              </span>
-
-              <span class="product-bar-value">
-                ${item[1]} simulasi
-              </span>
-
-            </div>
-
-            <div class="bar-bg">
-
-              <div
-                class="bar-fill"
-                style="width:${percentage}%"
-              ></div>
-
-            </div>
-
-          </div>
-
-          `;
-
-        }
-      )
-      .join('');
-
-}
-
-
-/* =====================================================
-TODAY
-===================================================== */
-
-function buildTodayActivity(
-  history
-){
-
-  const today =
-    new Date();
-
-
-  const todayData =
-    history.filter(
-      item =>
-        isSameDate(
-          item.timestamp,
-          today
-        )
-    );
-
-
-  const box =
-    document.getElementById(
-      'todayActivity'
-    );
-
-
-  if(!todayData.length){
-
-    box.innerHTML =
-      '<div class="empty">Belum ada simulasi hari ini.</div>';
-
-    return;
-
-  }
-
-
-  let html = `
-
-  <div class="today-list">
-
-  <div class="history-table-wrap">
-
-  <table>
-
-  <thead>
-
-  <tr>
-
-    <th>Jam</th>
-    <th>ERO</th>
-    <th>Produk</th>
-    <th>Benefit</th>
-    <th>Net Price</th>
-
-  </tr>
-
-  </thead>
-
-  <tbody>
-
-  `;
-
-
-  todayData
-    .slice(0,20)
-    .forEach(
-      item => {
-
-        html += `
-
-        <tr>
-
-          <td>
-            ${escapeHtml(
-              getTime(item.timestamp)
-            )}
-          </td>
-
-          <td>
-            <span class="badge">
-              ${escapeHtml(
-                item.eroName || '-'
-              )}
-            </span>
-          </td>
-
-          <td>
-            ${escapeHtml(
-              item.productName || '-'
-            )}
-          </td>
-
-          <td class="amount">
-            ${rupiah(
-              Number(
-                item.totalBenefit
-              ) || 0
-            )}
-          </td>
-
-          <td class="amount">
-            <strong>
-              ${rupiah(
-                Number(
-                  item.netPrice
-                ) || 0
-              )}
-            </strong>
-          </td>
-
-        </tr>
-
-        `;
-
-      }
-    );
-
-
-  html += `
-
-  </tbody>
-
-  </table>
-
-  </div>
-
-  </div>
-
-  `;
-
-
-  box.innerHTML =
-    html;
-
-}
-
-
-/* =====================================================
-HISTORY
-===================================================== */
-
-async function loadHistory(){
-
-  if(!currentUser){
-    return;
-  }
-
-
-  const container =
-    document.getElementById(
-      'historyContent'
-    );
-
-
-  container.innerHTML =
-    '<div class="loading">Memuat riwayat...</div>';
-
-
-  try{
-
-    const result =
-      await api({
-
-        action:'history',
-
-        storeId:
-          currentUser.storeId,
-
-        nik:
-          currentUser.nik
-
-      });
-
-
-    if(!result.success){
-
-      throw new Error(
-        result.message ||
-        'Gagal mengambil riwayat.'
-      );
-
-    }
-
-
-    const history =
-      result.data ||
-      result.history ||
-      [];
-
-
-    renderHistory(
-      history
-    );
-
-
-  }catch(error){
-
-    container.innerHTML =
-      `<div class="error-box">${escapeHtml(error.message)}</div>`;
-
-  }
-
-}
-
-
-/* =====================================================
-RENDER HISTORY
-===================================================== */
-
-function renderHistory(
-  history
-){
-
-  document.getElementById(
-    'historyCount'
-  ).textContent =
-    history.length;
-
-
-  let totalBenefit = 0;
-
-
-  history.forEach(
-    item => {
-
-      totalBenefit +=
-        Number(
-          item.totalBenefit
-        ) || 0;
-
-    }
-  );
-
-
-  document.getElementById(
-    'historyBenefit'
-  ).textContent =
-    rupiah(totalBenefit);
-
-
-  const container =
-    document.getElementById(
-      'historyContent'
-    );
-
-
-  if(!history.length){
-
-    container.innerHTML =
-      '<div class="empty">Belum ada simulasi di Store ini.</div>';
-
-    return;
-
-  }
-
-
-  let html = `
-
-  <div class="history-table-wrap">
-
-  <table>
-
-  <thead>
-
-  <tr>
-
-    <th>Tanggal</th>
-    <th>ERO</th>
-    <th>Produk</th>
-    <th>Harga</th>
-    <th>Benefit</th>
-    <th>Net Price</th>
-
-  </tr>
-
-  </thead>
-
-  <tbody>
-
-  `;
-
-
-  history.forEach(
-    item => {
-
-      html += `
-
-      <tr>
-
-        <td>
-          ${escapeHtml(
-            formatDate(
-              item.timestamp
-            )
-          )}
-        </td>
-
-        <td>
-          <span class="badge">
-            ${escapeHtml(
-              item.eroName || '-'
-            )}
-          </span>
-        </td>
-
-        <td>
-          ${escapeHtml(
-            item.productName || '-'
-          )}
-        </td>
-
-        <td class="amount">
-          ${rupiah(
-            Number(item.price) || 0
-          )}
-        </td>
-
-        <td class="amount">
-          ${rupiah(
-            Number(
-              item.totalBenefit
-            ) || 0
-          )}
-        </td>
-
-        <td class="amount">
-
-          <strong>
-            ${rupiah(
-              Number(
-                item.netPrice
-              ) || 0
-            )}
-          </strong>
-
-        </td>
-
-      </tr>
-
-      `;
-
-    }
-  );
-
-
-  html += `
-
-  </tbody>
-
-  </table>
-
-  </div>
-
-  `;
-
-
-  container.innerHTML =
-    html;
-
-}
-
-
-/* =====================================================
-MASTER
-===================================================== */
-
-function renderMasterPage(){
-
-  renderMasterStores();
-
-  renderMasterEros();
-
-  renderMasterProducts();
-
-}
-
-
-/* =====================================================
-MASTER STORE
-===================================================== */
-
-function renderMasterStores(){
-
-  const box =
-    document.getElementById(
-      'storeMasterList'
-    );
-
-
-  if(!masterData.stores.length){
-
-    box.innerHTML =
-      '<div class="empty">Tidak ada Store.</div>';
-
-    return;
-
-  }
-
-
-  box.innerHTML =
-    masterData.stores
-      .map(
-        store => `
-
-        <div class="master-item">
-
-          <div class="master-name">
-            ${escapeHtml(
-              store.storeName || '-'
-            )}
-          </div>
-
-          <div class="master-detail">
-
-            ID:
-            ${escapeHtml(
-              store.storeId || '-'
-            )}
-
-            <br>
-
-            Status:
-            ${escapeHtml(
-              store.status || '-'
-            )}
-
-          </div>
-
-        </div>
-
-        `
-      )
-      .join('');
-
-}
-
-
-/* =====================================================
-MASTER ERO
-===================================================== */
-
-function renderMasterEros(){
-
-  const box =
-    document.getElementById(
-      'eroMasterList'
-    );
-
-
-  if(!masterData.eros.length){
-
-    box.innerHTML =
-      '<div class="empty">Tidak ada ERO.</div>';
-
-    return;
-
-  }
-
-
-  box.innerHTML =
-    masterData.eros
-      .map(
-        ero => {
-
-          const store =
-            masterData.stores.find(
-              s =>
-                String(s.storeId) ===
-                String(ero.storeId)
-            );
-
-
-          return `
-
-          <div class="master-item">
-
-            <div class="master-name">
-              ${escapeHtml(
-                ero.eroName || '-'
-              )}
-            </div>
-
-            <div class="master-detail">
-
-              NIK:
-              ${maskNik(
-                ero.nik
-              )}
-
-              <br>
-
-              Store:
-              ${escapeHtml(
-                store
-                  ? store.storeName
-                  : ero.storeId || '-'
-              )}
-
-              <br>
-
-              Status:
-              ${escapeHtml(
-                ero.status || '-'
-              )}
-
-            </div>
-
-          </div>
-
-          `;
-
-        }
-      )
-      .join('');
-
-}
-
-
-/* =====================================================
-MASTER PRODUCT
-===================================================== */
-
-function renderMasterProducts(){
-
-  const box =
-    document.getElementById(
-      'productMasterList'
-    );
-
-
-  if(!masterData.products.length){
-
-    box.innerHTML =
-      '<div class="empty">Tidak ada produk.</div>';
-
-    return;
-
-  }
-
-
-  box.innerHTML =
-    masterData.products
-      .map(
-        product => `
-
-        <div class="master-item">
-
-          <div class="master-name">
-            ${escapeHtml(
-              product.productName || '-'
-            )}
-          </div>
-
-          <div class="master-detail">
-
-            Type:
-            ${escapeHtml(
-              product.productType || '-'
-            )}
-
-            <br>
-
-            Harga:
-            <strong>
-              ${rupiah(
-                Number(
-                  product.price
-                ) || 0
-              )}
-            </strong>
-
-            <br>
-
-            Status:
-            ${escapeHtml(
-              product.status || '-'
-            )}
-
-          </div>
-
-        </div>
-
-        `
-      )
-      .join('');
-
-}
-
-
-/* =====================================================
-HELPERS
-===================================================== */
-
-function maskNik(nik){
-
-  const value =
-    String(nik || '');
-
-
-  if(value.length <= 4){
-    return '****';
-  }
-
-
-  return '****' +
-    value.slice(-4);
-
-}
-
-
-function escapeHtml(value){
-
-  return String(
-    value ?? ''
-  )
-  .replace(/&/g,'&amp;')
-  .replace(/</g,'&lt;')
-  .replace(/>/g,'&gt;')
-  .replace(/"/g,'&quot;')
-  .replace(/'/g,'&#039;');
-
-}
-
-
-function formatDate(value){
-
-  if(!value){
-    return '-';
-  }
-
-
-  const date =
-    new Date(value);
-
-
-  if(isNaN(date.getTime())){
-    return String(value);
-  }
-
-
-  return date.toLocaleString(
-    'id-ID',
-    {
-      day:'2-digit',
-      month:'2-digit',
-      year:'numeric',
-      hour:'2-digit',
-      minute:'2-digit'
-    }
-  );
-
-}
-
-
-function getTime(value){
-
-  if(!value){
-    return '-';
-  }
-
-
-  const date =
-    new Date(value);
-
-
-  if(isNaN(date.getTime())){
-    return '-';
-  }
-
-
-  return date.toLocaleTimeString(
-    'id-ID',
-    {
-      hour:'2-digit',
-      minute:'2-digit'
-    }
-  );
-
-}
-
-
-function isSameDate(
-  value,
-  target
-){
-
-  if(!value){
-    return false;
-  }
-
-
-  const date =
-    new Date(value);
-
-
-  if(isNaN(date.getTime())){
-    return false;
-  }
-
-
-  return (
-    date.getFullYear() ===
-      target.getFullYear() &&
-
-    date.getMonth() ===
-      target.getMonth() &&
-
-    date.getDate() ===
-      target.getDate()
-  );
-
-}
-
-
-/* =====================================================
-START
-===================================================== */
-
-document.addEventListener(
-  'DOMContentLoaded',
-  async function(){
-
-    await loadMaster();
-
-    checkSession();
-
-  }
-);
+init();
 
 </script>
 
