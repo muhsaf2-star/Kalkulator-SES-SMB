@@ -20,67 +20,31 @@ body{
 .header{
   background:#087bea;
   color:#fff;
-  padding:12px 16px;
+  padding:14px 16px;
   position:sticky;
   top:0;
-  z-index:20
+  z-index:20;
+  box-shadow:0 2px 10px rgba(0,0,0,.12)
 }
 
-.header-in{
+.header-inner{
   max-width:1100px;
   margin:auto;
   display:flex;
+  align-items:center;
   justify-content:space-between;
-  align-items:center
+  gap:12px
 }
 
 .logo{
-  font-size:19px;
+  font-size:20px;
   font-weight:800
 }
 
-.sub{
-  font-size:10px;
-  opacity:.9
-}
-
-.user{
+.subtitle{
   font-size:11px;
-  text-align:right
-}
-
-.nav{
-  background:#fff;
-  border-bottom:1px solid #e5e9ef;
-  position:sticky;
-  top:55px;
-  z-index:10
-}
-
-.nav-in{
-  max-width:1100px;
-  margin:auto;
-  display:flex;
-  gap:4px;
-  overflow:auto;
-  padding:6px 12px
-}
-
-.nav button{
-  border:0;
-  background:none;
-  padding:8px 12px;
-  border-radius:8px;
-  font-size:12px;
-  font-weight:700;
-  white-space:nowrap;
-  color:#667085;
-  cursor:pointer
-}
-
-.nav button.active{
-  background:#e8f3ff;
-  color:#087bea
+  opacity:.9;
+  margin-top:2px
 }
 
 .container{
@@ -89,353 +53,578 @@ body{
   padding:12px
 }
 
-.card,.stat{
+.nav{
+  display:flex;
+  gap:6px;
+  overflow-x:auto;
+  padding-bottom:8px;
+  margin-bottom:8px
+}
+
+.nav button{
+  border:0;
+  background:#fff;
+  color:#40506b;
+  padding:8px 12px;
+  border-radius:8px;
+  font-size:12px;
+  font-weight:700;
+  white-space:nowrap;
+  cursor:pointer;
+  box-shadow:0 1px 4px rgba(0,0,0,.08)
+}
+
+.nav button.active{
+  background:#087bea;
+  color:#fff
+}
+
+.card{
   background:#fff;
   border-radius:12px;
-  padding:14px;
-  margin-bottom:12px;
-  box-shadow:0 2px 8px #0000000d
+  padding:13px;
+  margin-bottom:10px;
+  box-shadow:0 2px 8px rgba(18,35,60,.07)
 }
 
 .title{
-  font-size:15px;
+  font-size:14px;
   font-weight:800;
-  margin-bottom:12px
-}
-
-.login{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:18px
-}
-
-.loginbox{
-  background:#fff;
-  width:100%;
-  max-width:420px;
-  padding:25px;
-  border-radius:16px;
-  box-shadow:0 5px 25px #00000012
-}
-
-.brand{
-  text-align:center;
-  color:#087bea;
-  font-size:27px;
-  font-weight:800;
-  margin-bottom:20px
-}
-
-.grid2{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px
-}
-
-.grid4{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px
+  margin-bottom:10px
 }
 
 .label{
   display:block;
   font-size:11px;
   font-weight:700;
-  margin-bottom:4px
+  margin-bottom:5px;
+  color:#52627a
 }
 
-input,select{
+input,
+select{
   width:100%;
-  height:40px;
-  border:1px solid #d8dee8;
+  height:38px;
+  border:1px solid #d8e0eb;
   border-radius:8px;
   padding:0 10px;
-  font-size:13px;
-  outline:0
+  outline:none;
+  background:#fff;
+  color:#172033;
+  font-size:13px
 }
 
-input:focus,select:focus{
-  border-color:#087bea
+input:focus,
+select:focus{
+  border-color:#087bea;
+  box-shadow:0 0 0 2px rgba(8,123,234,.1)
 }
 
-.btnrow{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:12px
+.grid2{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px
+}
+
+.grid3{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:9px
+}
+
+.grid4{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:9px
 }
 
 .btn{
   border:0;
   border-radius:8px;
-  height:40px;
-  padding:0 15px;
-  font-weight:700;
+  padding:10px 13px;
   font-size:12px;
+  font-weight:800;
   cursor:pointer
 }
 
-.primary{
+.btn-primary{
   background:#087bea;
   color:#fff
 }
 
-.secondary{
-  background:#edf2f7;
-  color:#172033
+.btn-secondary{
+  background:#edf3fa;
+  color:#23344e
 }
 
-.danger{
-  background:#e74c3c;
+.btn-success{
+  background:#20a464;
   color:#fff
 }
 
-.price{
-  background:#f0f7ff;
-  border:1px solid #cfe6ff;
-  border-radius:10px;
-  padding:12px;
+.btn-danger{
+  background:#e84b4b;
+  color:#fff
+}
+
+.btn-wa{
+  background:#20b968;
+  color:#fff
+}
+
+.button-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
   margin-top:10px
 }
 
+.price{
+  margin-top:9px;
+  padding:10px;
+  border-radius:8px;
+  background:#f5f8fc;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px
+}
+
 .price small{
-  color:#667085
+  color:#60708a;
+  font-size:10px;
+  font-weight:700
 }
 
 .price strong{
+  font-size:16px
+}
+
+.checkitem{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  min-height:36px;
+  padding:7px 9px;
+  background:#f6f9fc;
+  border:1px solid #e3e9f1;
+  border-radius:8px;
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer
+}
+
+.checkitem input{
+  width:16px;
+  height:16px;
+  margin:0
+}
+
+.acc-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:7px;
+  margin-bottom:9px
+}
+
+.acc-prices{
+  margin-top:4px
+}
+
+.radio-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px
+}
+
+.radio-row .checkitem{
+  flex:1 1 130px
+}
+
+.result-card{
+  background:linear-gradient(135deg,#087bea,#075fb7);
+  color:#fff
+}
+
+.result-card .title{
+  color:#fff
+}
+
+.result-main{
+  text-align:center;
+  padding:8px 0 12px
+}
+
+.result-main small{
+  display:block;
+  font-size:11px;
+  opacity:.9
+}
+
+.result-main strong{
+  display:block;
+  font-size:27px;
+  margin-top:3px
+}
+
+.result-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px
+}
+
+.result-item{
+  background:rgba(255,255,255,.13);
+  border-radius:8px;
+  padding:8px
+}
+
+.result-item small{
+  display:block;
+  font-size:9px;
+  opacity:.85
+}
+
+.result-item b{
+  display:block;
+  font-size:12px;
+  margin-top:3px
+}
+
+.installment{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:7px;
+  margin-top:9px
+}
+
+.installment-item{
+  background:#fff;
+  color:#172033;
+  border-radius:8px;
+  padding:9px;
+  text-align:center
+}
+
+.installment-item small{
+  display:block;
+  color:#64738b;
+  font-size:9px
+}
+
+.installment-item b{
+  display:block;
+  font-size:12px;
+  margin-top:3px
+}
+
+.receipt{
+  background:#fff;
+  border:1px solid #dfe6ef;
+  border-radius:10px;
+  padding:14px;
+  margin-top:10px
+}
+
+.receipt-head{
+  text-align:center;
+  font-weight:900;
+  font-size:15px;
+  line-height:1.4;
+  padding-bottom:10px;
+  border-bottom:1px dashed #cbd5e1;
+  margin-bottom:10px
+}
+
+.receipt-head small{
+  font-size:10px;
+  color:#63738a
+}
+
+.receipt-section{
+  font-size:10px;
+  font-weight:900;
+  color:#087bea;
+  margin:12px 0 5px;
+  border-bottom:1px solid #edf1f5;
+  padding-bottom:4px
+}
+
+.receipt-row{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  font-size:11px;
+  padding:4px 0
+}
+
+.receipt-row span:first-child{
+  color:#4c5c73
+}
+
+.receipt-row b{
+  white-space:nowrap
+}
+
+.receipt-total{
+  border-top:1px solid #e5eaf0;
+  margin-top:3px;
+  padding-top:7px
+}
+
+.receipt-pay{
+  margin-top:10px;
+  padding:12px;
+  border-radius:9px;
+  background:#eaf4ff;
+  text-align:center
+}
+
+.receipt-pay small{
+  display:block;
+  color:#4f6280;
+  font-size:10px;
+  font-weight:800
+}
+
+.receipt-pay strong{
   display:block;
   color:#087bea;
   font-size:22px;
   margin-top:3px
 }
 
-.benefits{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:9px
+.empty{
+  text-align:center;
+  color:#8290a5;
+  font-size:12px;
+  padding:25px 10px
 }
 
-.result{
-  background:#172033;
-  color:#fff;
-  border-radius:12px;
-  padding:15px;
-  margin-top:12px
-}
-
-.row{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  padding:7px 0;
-  border-bottom:1px solid #ffffff1f;
-  font-size:12px
-}
-
-.pay{
-  padding-top:12px;
-  margin-top:5px;
-  border-top:1px solid #ffffff33
-}
-
-.pay small{
-  opacity:.75
-}
-
-.pay strong{
-  display:block;
-  font-size:27px;
-  margin-top:3px
-}
-
-.install{
-  margin-top:12px
-}
-
-.install-title{
+.msg{
+  margin-top:8px;
+  padding:8px 10px;
+  border-radius:7px;
   font-size:11px;
-  font-weight:700;
-  margin-bottom:7px
-}
-
-.inst{
-  background:#fff;
-  color:#172033;
-  border-radius:9px;
-  padding:10px;
-  text-align:center
-}
-
-.inst b{
-  display:block;
-  font-size:16px;
-  color:#087bea;
-  margin-top:3px
-}
-
-.inst span{
-  font-size:10px;
-  color:#667085
-}
-
-.statgrid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px
-}
-
-.stat small{
-  font-size:9px;
-  color:#667085
-}
-
-.stat b{
-  display:block;
-  font-size:18px;
-  margin-top:4px
-}
-
-.twocol{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px
-}
-
-.listrow{
-  display:flex;
-  justify-content:space-between;
-  padding:9px 0;
-  border-bottom:1px solid #edf0f4;
-  font-size:11px
-}
-
-.badge{
-  background:#e8f3ff;
-  color:#087bea;
-  border-radius:20px;
-  padding:4px 7px;
   font-weight:700
 }
 
-.tablewrap{
-  overflow:auto
+.msg.success{
+  background:#e9f8ef;
+  color:#137642
+}
+
+.msg.error{
+  background:#fff0f0;
+  color:#b92f2f
+}
+
+.table-wrap{
+  overflow-x:auto
 }
 
 table{
   width:100%;
   border-collapse:collapse;
-  min-width:800px
-}
-
-th,td{
-  padding:8px;
-  border-bottom:1px solid #e7ebf0;
-  font-size:10px;
-  text-align:left
+  font-size:11px
 }
 
 th{
-  background:#f5f7fa
+  background:#087bea;
+  color:#fff;
+  text-align:left;
+  padding:8px
 }
 
-.amt{
-  text-align:right;
+td{
+  padding:8px;
+  border-bottom:1px solid #edf0f4;
   white-space:nowrap
 }
 
-.empty,.loading{
+tr:hover td{
+  background:#f6faff
+}
+
+.login{
+  max-width:450px;
+  margin:40px auto
+}
+
+.login-logo{
   text-align:center;
-  padding:25px;
-  color:#98a2b3;
+  margin-bottom:15px
+}
+
+.login-logo h1{
+  margin:0;
+  color:#087bea;
+  font-size:27px
+}
+
+.login-logo p{
+  margin:5px 0 0;
+  color:#718096;
   font-size:12px
 }
 
-.error{
-  background:#fff0ef;
-  color:#c0392b;
-  border:1px solid #ffc8c4;
-  border-radius:8px;
-  padding:9px;
-  font-size:11px;
-  margin-top:8px
+.user-info{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  font-size:11px
 }
 
-.success{
-  background:#ecfdf5;
-  color:#087a4b;
-  border:1px solid #b7ebd3;
-  border-radius:8px;
-  padding:9px;
-  font-size:11px;
-  margin-top:8px
-}
-
-.mastergrid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:9px
-}
-
-.master{
-  border:1px solid #e4e8ee;
-  border-radius:9px;
-  padding:10px;
-  font-size:10px
-}
-
-.master b{
-  font-size:12px;
+.user-info strong{
   display:block;
-  margin-bottom:4px
+  font-size:12px
 }
 
-@media(max-width:800px){
-
-  .statgrid{
-    grid-template-columns:1fr 1fr
-  }
-
-  .twocol{
-    grid-template-columns:1fr
-  }
-
-  .mastergrid{
-    grid-template-columns:1fr
-  }
+.small{
+  font-size:10px;
+  color:#718096
 }
 
-@media(max-width:600px){
+.admin-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px
+}
 
-  .grid2,
-  .benefits{
-    grid-template-columns:1fr
-  }
-
-  .grid4{
-    grid-template-columns:1fr 1fr
-  }
-
+@media(max-width:700px){
   .container{
-    padding:9px
+    padding:7px
   }
 
-  .card{
-    padding:12px
+  .header{
+    padding:10px
   }
 
   .logo{
-    font-size:16px
+    font-size:17px
   }
 
-  .user{
+  .subtitle{
     font-size:9px
   }
 
-  .pay strong{
-    font-size:24px
+  .card{
+    padding:10px;
+    border-radius:9px
+  }
+
+  .title{
+    font-size:12px;
+    margin-bottom:8px
+  }
+
+  .grid2{
+    gap:6px
+  }
+
+  .grid3{
+    gap:6px
+  }
+
+  .grid4{
+    gap:5px
+  }
+
+  input,
+  select{
+    height:34px;
+    font-size:12px;
+    border-radius:7px
+  }
+
+  .label{
+    font-size:9px
+  }
+
+  .acc-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:5px
+  }
+
+  .checkitem{
+    min-height:31px;
+    padding:5px 7px;
+    font-size:10px
+  }
+
+  .radio-row .checkitem{
+    flex:1 1 100px
+  }
+
+  .result-main strong{
+    font-size:23px
+  }
+
+  .result-grid{
+    gap:5px
+  }
+
+  .result-item{
+    padding:6px
+  }
+
+  .result-item small{
+    font-size:8px
+  }
+
+  .result-item b{
+    font-size:10px
+  }
+
+  .installment{
+    gap:4px
+  }
+
+  .installment-item{
+    padding:6px 3px
+  }
+
+  .installment-item b{
+    font-size:10px
+  }
+
+  .btn{
+    padding:8px 10px;
+    font-size:10px
+  }
+
+  .admin-grid{
+    grid-template-columns:1fr
+  }
+}
+
+@media print{
+  body{
+    background:#fff
+  }
+
+  .header,
+  .nav,
+  .no-print,
+  #calculatorPage > .card:not(.printable),
+  .button-row{
+    display:none!important
+  }
+
+  .container{
+    max-width:420px;
+    padding:0
+  }
+
+  .receipt{
+    border:0;
+    box-shadow:none;
+    margin:0
+  }
+
+  .receipt-pay{
+    break-inside:avoid
   }
 }
 </style>
@@ -443,50 +632,71 @@ th{
 
 <body>
 
-<!-- LOGIN -->
-<div id="loginPage" class="login">
+<div id="loginPage">
 
-  <div class="loginbox">
+  <div class="container">
 
-    <div class="brand">
-      KALKULATOR NASA
-    </div>
+    <div class="login">
 
-    <div style="text-align:center;color:#667085;font-size:11px;margin-top:-14px;margin-bottom:20px">
-      Samsung Sales Calculator
-    </div>
+      <div class="login-logo">
+        <h1>Kalkulator NASA</h1>
+        <p>Samsung Sales Simulation</p>
+      </div>
 
-    <label class="label">
-      Store
-    </label>
+      <div class="card">
 
-    <select id="loginStore">
-      <option>Memuat Store...</option>
-    </select>
+        <div class="title">
+          Login ERO
+        </div>
 
-    <div style="height:10px"></div>
+        <div style="margin-bottom:9px">
 
-    <label class="label">
-      NIK
-    </label>
+          <label class="label">
+            Pilih Store
+          </label>
 
-    <input
-      id="loginNik"
-      placeholder="Masukkan NIK"
-      autocomplete="off"
-    >
+          <select id="loginStore">
+            <option value="">
+              Memuat store...
+            </option>
+          </select>
 
-    <div id="loginMsg" class="hidden"></div>
+        </div>
 
-    <div class="btnrow">
-      <button
-        id="loginBtn"
-        class="btn primary"
-        style="width:100%"
-        onclick="login()"
-      >
-        Lanjut
-      </button>
+        <div>
+
+          <label class="label">
+            NIK ERO
+          </label>
+
+          <input
+            id="loginNik"
+            type="text"
+            placeholder="Masukkan NIK"
+            autocomplete="off"
+          >
+
+        </div>
+
+        <div class="button-row">
+
+          <button
+            class="btn btn-primary"
+            id="loginBtn"
+            onclick="login()"
+          >
+            Masuk
+          </button>
+
+        </div>
+
+        <div
+          id="loginMsg"
+          class="hidden"
+        ></div>
+
+      </div>
+
     </div>
 
   </div>
@@ -494,278 +704,44 @@ th{
 </div>
 
 
-<!-- APPLICATION -->
-<div id="app" class="hidden">
+<div id="appPage" class="hidden">
 
-<header class="header">
+  <div class="header">
 
-  <div class="header-in">
-
-    <div>
-      <div class="logo">
-        KALKULATOR NASA
-      </div>
-
-      <div class="sub">
-        Samsung Sales Calculator
-      </div>
-    </div>
-
-    <div class="user">
-      <div id="headStore">-</div>
-      <div id="headEro">-</div>
-    </div>
-
-  </div>
-
-</header>
-
-
-<nav class="nav">
-
-  <div class="nav-in">
-
-    <button
-      class="active"
-      onclick="page('overview',this)"
-    >
-      Overview
-    </button>
-
-    <button
-      onclick="page('calculator',this)"
-    >
-      Kalkulator
-    </button>
-
-    <button
-      onclick="page('history',this)"
-    >
-      Riwayat
-    </button>
-
-    <button
-      onclick="page('master',this)"
-    >
-      Master
-    </button>
-
-    <button onclick="logout()">
-      Keluar
-    </button>
-
-  </div>
-
-</nav>
-
-
-<main class="container">
-
-
-<!-- OVERVIEW -->
-
-<section id="overview">
-
-  <div class="statgrid">
-
-    <div class="stat">
-      <small>TOTAL SIMULASI</small>
-      <b id="ovTotal">0</b>
-      <small>Store</small>
-    </div>
-
-    <div class="stat">
-      <small>HARI INI</small>
-      <b id="ovToday">0</b>
-      <small>Simulasi</small>
-    </div>
-
-    <div class="stat">
-      <small>TOTAL BENEFIT</small>
-      <b id="ovBenefit">Rp 0</b>
-      <small>Semua simulasi</small>
-    </div>
-
-    <div class="stat">
-      <small>PRODUK TERATAS</small>
-      <b id="ovTop">-</b>
-      <small>Jumlah simulasi</small>
-    </div>
-
-  </div>
-
-
-  <div class="twocol">
-
-    <div class="card">
-
-      <div class="title">
-        🏆 ERO Paling Aktif
-      </div>
-
-      <div id="eroRank" class="loading">
-        Memuat...
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <div class="title">
-        📱 Produk Paling Banyak Disimulasikan
-      </div>
-
-      <div id="prodRank" class="loading">
-        Memuat...
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="title">
-      📅 Aktivitas Hari Ini
-    </div>
-
-    <div id="today" class="loading">
-      Memuat...
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- CALCULATOR -->
-
-<section id="calculator" class="hidden">
-
-  <div class="card">
-
-    <div class="title">
-      Simulasi Harga
-    </div>
-
-
-    <div class="grid2">
+    <div class="header-inner">
 
       <div>
 
-        <label class="label">
-          Store
-        </label>
+        <div class="logo">
+          Kalkulator NASA
+        </div>
 
-        <input
-          id="calcStore"
-          readonly
-        >
-
-      </div>
-
-
-      <div>
-
-        <label class="label">
-          ERO / Sales
-        </label>
-
-        <input
-          id="calcEro"
-          readonly
-        >
+        <div class="subtitle">
+          Samsung Sales Simulation
+        </div>
 
       </div>
 
-    </div>
+      <div class="user-info">
 
+        <div>
 
-    <div style="height:10px"></div>
+          <strong id="headerEro">
+            -
+          </strong>
 
+          <span id="headerStore">
+            -
+          </span>
 
-    <label class="label">
-      Produk
-    </label>
+        </div>
 
-    <select
-      id="productSelect"
-      onchange="productChanged()"
-    >
-      <option value="">
-        Pilih Produk
-      </option>
-    </select>
-
-
-    <div class="price">
-
-      <small>
-        Harga Produk
-      </small>
-
-      <strong id="productPrice">
-        Rp 0
-      </strong>
-
-    </div>
-
-  </div>
-
-
-  <!-- CUSTOMER -->
-
-  <div class="card">
-
-    <div class="title">
-      Data Customer
-    </div>
-
-
-    <div class="grid2">
-
-      <div>
-
-        <label class="label">
-          Nama Customer
-        </label>
-
-        <input
-          id="customerName"
-          placeholder="Nama customer"
+        <button
+          class="btn btn-secondary"
+          onclick="logout()"
         >
-
-      </div>
-
-
-      <div>
-
-        <label class="label">
-          No. HP
-        </label>
-
-        <input
-          id="customerPhone"
-          placeholder="08xxxxxxxxxx"
-          inputmode="tel"
-        >
-
-      </div>
-
-
-      <div>
-
-        <label class="label">
-          Email
-        </label>
-
-        <input
-          id="customerEmail"
-          placeholder="email@contoh.com"
-          type="email"
-        >
+          Keluar
+        </button>
 
       </div>
 
@@ -774,261 +750,843 @@ th{
   </div>
 
 
-  <!-- BENEFITS -->
+  <div class="container">
 
-  <div class="card">
+    <div class="nav">
 
-    <div class="title">
-      Benefit / Potongan
-    </div>
+      <button
+        class="active"
+        onclick="page('calculator',this)"
+      >
+        Kalkulator
+      </button>
 
+      <button
+        onclick="page('history',this)"
+      >
+        History
+      </button>
 
-    <div class="benefits">
-
-
-      <div>
-
-        <label class="label">
-          Cashback HP
-        </label>
-
-        <input
-          id="cbHp"
-          inputmode="numeric"
-          oninput="fmt(this);calc()"
-        >
-
-      </div>
-
-
-      <div>
-
-        <label class="label">
-          Voucher
-        </label>
-
-        <input
-          id="voucher"
-          inputmode="numeric"
-          oninput="fmt(this);calc()"
-        >
-
-      </div>
-
-
-      <div>
-
-        <label class="label">
-          Harga HP Trade In
-        </label>
-
-        <input
-          id="tradeIn"
-          inputmode="numeric"
-          oninput="fmt(this);calc()"
-        >
-
-      </div>
-
-
-      <div>
-
-        <label class="label">
-          Cashback Tambahan Trade In
-        </label>
-
-        <input
-          id="cashbackTambahanTradeIn"
-          inputmode="numeric"
-          oninput="fmt(this);calc()"
-        >
-
-      </div>
-
-
-      <div>
-
-        <label class="label">
-          Cashback PWP
-        </label>
-
-        <input
-          id="cashbackPwp"
-          inputmode="numeric"
-          oninput="fmt(this);calc()"
-        >
-
-      </div>
-
-
-      <div>
-
-        <label class="label">
-          Cashback Bank
-        </label>
-
-        <input
-          id="cashbackBank"
-          inputmode="numeric"
-          oninput="fmt(this);calc()"
-        >
-
-      </div>
-
-
-      <div>
-
-        <label class="label">
-          Potongan Lain
-        </label>
-
-        <input
-          id="potonganLain"
-          inputmode="numeric"
-          oninput="fmt(this);calc()"
-        >
-
-      </div>
+      <button
+        onclick="page('admin',this)"
+      >
+        Admin
+      </button>
 
     </div>
 
 
-    <!-- RESULT -->
+    <!-- ==================================================
+         CALCULATOR
+         ================================================== -->
 
-    <div class="result">
+    <div id="calculatorPage">
 
+      <div class="card">
 
-      <div class="row">
+        <div class="title">
+          Data Customer
+        </div>
 
-        <span>
-          Harga Normal
-        </span>
+        <div class="grid2">
 
-        <b id="resultPrice">
-          Rp 0
-        </b>
+          <div>
+
+            <label class="label">
+              Nama Customer
+            </label>
+
+            <input
+              id="customerName"
+              type="text"
+              placeholder="Nama customer"
+              oninput="renderReceipt()"
+            >
+
+          </div>
+
+          <div>
+
+            <label class="label">
+              No. HP / WhatsApp
+            </label>
+
+            <input
+              id="customerPhone"
+              type="tel"
+              placeholder="08xxxxxxxxxx"
+              oninput="renderReceipt()"
+            >
+
+          </div>
+
+        </div>
+
+        <div style="margin-top:8px">
+
+          <label class="label">
+            Email Customer
+          </label>
+
+          <input
+            id="customerEmail"
+            type="email"
+            placeholder="email@contoh.com"
+            oninput="renderReceipt()"
+          >
+
+        </div>
 
       </div>
 
 
-      <div class="row">
+      <div class="card">
 
-        <span>
-          Total Benefit
-        </span>
+        <div class="title">
+          Pilih HP
+        </div>
 
-        <b id="resultBenefit">
-          Rp 0
-        </b>
+        <select
+          id="productSelect"
+          onchange="productChanged()"
+        >
 
-      </div>
+          <option value="">
+            Pilih produk...
+          </option>
 
+        </select>
 
-      <div class="row">
+        <div class="price">
 
-        <span>
-          Harga HP Trade In
-        </span>
+          <small>
+            Harga HP
+          </small>
 
-        <b id="resultTrade">
-          Rp 0
-        </b>
+          <strong id="productPrice">
+            Rp 0
+          </strong>
 
-      </div>
-
-
-      <div class="pay">
-
-        <small>
-          YANG DIBAYARKAN
-        </small>
-
-        <strong id="resultPay">
-          Rp 0
-        </strong>
+        </div>
 
       </div>
 
 
-      <!-- INSTALLMENT -->
+      <!-- ACC -->
 
-      <div class="install">
+      <div class="card">
 
-        <div class="install-title">
-          Cicilan 0%
+        <div class="title">
+          ACC / Aksesoris
+        </div>
+
+        <div class="acc-grid">
+
+          <label class="checkitem">
+            <input
+              type="checkbox"
+              class="accCheck"
+              data-cat="Casing"
+              onchange="calc();renderReceipt()"
+            >
+            Casing
+          </label>
+
+          <label class="checkitem">
+            <input
+              type="checkbox"
+              class="accCheck"
+              data-cat="Antigores"
+              onchange="calc();renderReceipt()"
+            >
+            Antigores
+          </label>
+
+          <label class="checkitem">
+            <input
+              type="checkbox"
+              class="accCheck"
+              data-cat="Adaptor"
+              onchange="calc();renderReceipt()"
+            >
+            Adaptor
+          </label>
+
+          <label class="checkitem">
+            <input
+              type="checkbox"
+              class="accCheck"
+              data-cat="Cable"
+              onchange="calc();renderReceipt()"
+            >
+            Cable
+          </label>
+
+          <label class="checkitem">
+            <input
+              type="checkbox"
+              class="accCheck"
+              data-cat="Audio"
+              onchange="calc();renderReceipt()"
+            >
+            Audio
+          </label>
+
+          <label class="checkitem">
+            <input
+              type="checkbox"
+              class="accCheck"
+              data-cat="Lainnya"
+              onchange="calc();renderReceipt()"
+            >
+            Lainnya
+          </label>
+
         </div>
 
 
-        <div class="grid4">
+        <div class="grid2 acc-prices">
+
+          <div>
+
+            <label class="label">
+              Casing
+            </label>
+
+            <input
+              id="accCasing"
+              inputmode="numeric"
+              placeholder="Rp 0"
+              oninput="fmt(this);calc();renderReceipt()"
+            >
+
+          </div>
+
+          <div>
+
+            <label class="label">
+              Antigores
+            </label>
+
+            <input
+              id="accAntigores"
+              inputmode="numeric"
+              placeholder="Rp 0"
+              oninput="fmt(this);calc();renderReceipt()"
+            >
+
+          </div>
+
+          <div>
+
+            <label class="label">
+              Adaptor
+            </label>
+
+            <input
+              id="accAdaptor"
+              inputmode="numeric"
+              placeholder="Rp 0"
+              oninput="fmt(this);calc();renderReceipt()"
+            >
+
+          </div>
+
+          <div>
+
+            <label class="label">
+              Cable
+            </label>
+
+            <input
+              id="accCable"
+              inputmode="numeric"
+              placeholder="Rp 0"
+              oninput="fmt(this);calc();renderReceipt()"
+            >
+
+          </div>
+
+          <div>
+
+            <label class="label">
+              Audio
+            </label>
+
+            <input
+              id="accAudio"
+              inputmode="numeric"
+              placeholder="Rp 0"
+              oninput="fmt(this);calc();renderReceipt()"
+            >
+
+          </div>
+
+          <div>
+
+            <label class="label">
+              Lainnya
+            </label>
+
+            <input
+              id="accLainnya"
+              inputmode="numeric"
+              placeholder="Rp 0"
+              oninput="fmt(this);calc();renderReceipt()"
+            >
+
+          </div>
+
+        </div>
 
 
-          <div class="inst">
+        <div class="price">
 
-            <span>
-              3X
-            </span>
+          <small>
+            Total ACC
+          </small>
+
+          <strong id="accTotal">
+            Rp 0
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- SCP -->
+
+      <div class="card">
+
+        <div class="title">
+          SCP / Service Contract
+        </div>
+
+        <div class="radio-row">
+
+          <label class="checkitem">
+
+            <input
+              type="radio"
+              name="scpDuration"
+              value="1 Tahun"
+              onchange="calc();renderReceipt()"
+            >
+
+            1 Tahun
+
+          </label>
+
+          <label class="checkitem">
+
+            <input
+              type="radio"
+              name="scpDuration"
+              value="2 Tahun"
+              onchange="calc();renderReceipt()"
+            >
+
+            2 Tahun
+
+          </label>
+
+        </div>
+
+        <div style="margin-top:8px">
+
+          <label class="label">
+            Harga SCP
+          </label>
+
+          <input
+            id="scpPrice"
+            inputmode="numeric"
+            placeholder="Rp 0"
+            oninput="fmt(this);calc();renderReceipt()"
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- OPERATOR -->
+
+      <div class="card">
+
+        <div class="title">
+          Operator
+        </div>
+
+        <div class="radio-row">
+
+          <label class="checkitem">
+
+            <input
+              type="radio"
+              name="operator"
+              value="XL"
+              onchange="calc();renderReceipt()"
+            >
+
+            XL
+
+          </label>
+
+          <label class="checkitem">
+
+            <input
+              type="radio"
+              name="operator"
+              value="Indosat"
+              onchange="calc();renderReceipt()"
+            >
+
+            Indosat
+
+          </label>
+
+          <label class="checkitem">
+
+            <input
+              type="radio"
+              name="operator"
+              value="Telkomsel"
+              onchange="calc();renderReceipt()"
+            >
+
+            Telkomsel
+
+          </label>
+
+          <label class="checkitem">
+
+            <input
+              type="radio"
+              name="operator"
+              value=""
+              onchange="calc();renderReceipt()"
+            >
+
+            Tidak Ada
+
+          </label>
+
+        </div>
+
+        <div style="margin-top:8px">
+
+          <label class="label">
+            Harga Operator
+          </label>
+
+          <input
+            id="operatorPrice"
+            inputmode="numeric"
+            placeholder="Rp 0"
+            oninput="fmt(this);calc();renderReceipt()"
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- BENEFIT -->
+
+      <div class="card">
+
+        <div class="title">
+          Benefit / Cashback
+        </div>
+
+        <div class="grid2">
+
+          <div>
+
+            <label class="label">
+              Cashback HP
+            </label>
+
+            <input
+              id="cbHp"
+              inputmode="numeric"
+              placeholder="Rp 0"
+              oninput="fmt(this);calc();renderReceipt()"
+            >
+
+          </div>
+
+          <div>
+
+            <label class="label">
+              Voucher
+            </label>
+
+            <input
+              id="voucher"
+              inputmode="numeric"
+              placeholder="Rp 0"
+              oninput="fmt(this);calc();renderReceipt()"
+            >
+
+          </div>
+
+          <div>
+
+            <label class="label">
+              Cashback Tambahan Trade In
+            </label>
+
+            <input
+              id="cashbackTambahanTradeIn"
+              inputmode="numeric"
+              placeholder="Rp 0"
+              oninput="fmt(this);calc();renderReceipt()"
+            >
+
+          </div>
+
+          <div>
+
+            <label class="label">
+              Cashback PWP
+            </label>
+
+            <input
+              id="cashbackPwp"
+              inputmode="numeric"
+              placeholder="Rp 0"
+              oninput="fmt(this);calc();renderReceipt()"
+            >
+
+          </div>
+
+          <div>
+
+            <label class="label">
+              Cashback Bank
+            </label>
+
+            <input
+              id="cashbackBank"
+              inputmode="numeric"
+              placeholder="Rp 0"
+              oninput="fmt(this);calc();renderReceipt()"
+            >
+
+          </div>
+
+          <div>
+
+            <label class="label">
+              Potongan Lain
+            </label>
+
+            <input
+              id="potonganLain"
+              inputmode="numeric"
+              placeholder="Rp 0"
+              oninput="fmt(this);calc();renderReceipt()"
+            >
+
+          </div>
+
+        </div>
+
+        <div style="margin-top:8px">
+
+          <label class="label">
+            Harga HP Trade In
+          </label>
+
+          <input
+            id="tradeIn"
+            inputmode="numeric"
+            placeholder="Rp 0"
+            oninput="fmt(this);calc();renderReceipt()"
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- RESULT -->
+
+      <div class="card result-card">
+
+        <div class="title">
+          Ringkasan Harga
+        </div>
+
+        <div class="result-main">
+
+          <small>
+            YANG DIBAYARKAN
+          </small>
+
+          <strong id="resultPay">
+            Rp 0
+          </strong>
+
+        </div>
+
+        <div class="result-grid">
+
+          <div class="result-item">
+
+            <small>
+              Total Item
+            </small>
+
+            <b id="resultPrice">
+              Rp 0
+            </b>
+
+          </div>
+
+          <div class="result-item">
+
+            <small>
+              Total Benefit
+            </small>
+
+            <b id="resultBenefit">
+              Rp 0
+            </b>
+
+          </div>
+
+          <div class="result-item">
+
+            <small>
+              Trade In
+            </small>
+
+            <b id="resultTrade">
+              Rp 0
+            </b>
+
+          </div>
+
+        </div>
+
+        <div class="installment">
+
+          <div class="installment-item">
+
+            <small>
+              3x / bulan
+            </small>
 
             <b id="i3">
               Rp 0
             </b>
 
-            <span>
-              / bulan
-            </span>
-
           </div>
 
+          <div class="installment-item">
 
-          <div class="inst">
-
-            <span>
-              6X
-            </span>
+            <small>
+              6x / bulan
+            </small>
 
             <b id="i6">
               Rp 0
             </b>
 
-            <span>
-              / bulan
-            </span>
-
           </div>
 
+          <div class="installment-item">
 
-          <div class="inst">
-
-            <span>
-              12X
-            </span>
+            <small>
+              12x / bulan
+            </small>
 
             <b id="i12">
               Rp 0
             </b>
 
-            <span>
-              / bulan
-            </span>
-
           </div>
 
+          <div class="installment-item">
 
-          <div class="inst">
-
-            <span>
-              24X
-            </span>
+            <small>
+              24x / bulan
+            </small>
 
             <b id="i24">
               Rp 0
             </b>
 
-            <span>
-              / bulan
-            </span>
-
           </div>
 
+        </div>
+
+      </div>
+
+
+      <!-- RECEIPT -->
+
+      <div class="card printable">
+
+        <div class="title">
+          Nota / Summary Customer
+        </div>
+
+        <div
+          class="receipt"
+          id="receiptBox"
+        >
+
+          <div class="empty">
+            Pilih produk untuk melihat nota.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- BUTTON -->
+
+      <div class="card no-print">
+
+        <div class="button-row">
+
+          <button
+            class="btn btn-primary"
+            id="saveBtn"
+            onclick="save()"
+          >
+            Simpan Simulasi
+          </button>
+
+          <button
+            class="btn btn-secondary"
+            onclick="copyResult()"
+          >
+            Copy Hasil
+          </button>
+
+          <button
+            class="btn btn-wa"
+            onclick="sendWA()"
+          >
+            WhatsApp
+          </button>
+
+          <button
+            class="btn btn-secondary"
+            onclick="printReceipt()"
+          >
+            📸 Screenshot / Nota
+          </button>
+
+          <button
+            class="btn btn-danger"
+            onclick="resetCalc()"
+          >
+            Reset
+          </button>
+
+        </div>
+
+        <div
+          id="saveMsg"
+          class="hidden"
+        ></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         HISTORY
+         ================================================== -->
+
+    <div
+      id="historyPage"
+      class="hidden"
+    >
+
+      <div class="card">
+
+        <div class="title">
+          History Simulasi
+        </div>
+
+        <div class="button-row">
+
+          <button
+            class="btn btn-primary"
+            onclick="loadHistory()"
+          >
+            Refresh History
+          </button>
+
+        </div>
+
+        <div
+          id="historyMsg"
+          class="hidden"
+        ></div>
+
+        <div
+          class="table-wrap"
+          style="margin-top:10px"
+        >
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  Tanggal
+                </th>
+
+                <th>
+                  Customer
+                </th>
+
+                <th>
+                  HP
+                </th>
+
+                <th>
+                  Total
+                </th>
+
+                <th>
+                  Bayar
+                </th>
+
+              </tr>
+
+            </thead>
+
+            <tbody id="historyBody">
+
+              <tr>
+
+                <td
+                  colspan="5"
+                  style="text-align:center"
+                >
+                  Memuat...
+
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
 
         </div>
 
@@ -1037,140 +1595,234 @@ th{
     </div>
 
 
-    <div id="saveMsg" class="hidden"></div>
-
-
-    <div class="btnrow">
-
-      <button
-        id="saveBtn"
-        class="btn primary"
-        onclick="save()"
-      >
-        Simpan Simulasi
-      </button>
-
-      <button
-        class="btn secondary"
-        onclick="copyResult()"
-      >
-        Copy Hasil
-      </button>
-
-      <button
-        class="btn secondary"
-        onclick="copyWA()"
-      >
-        Copy WhatsApp
-      </button>
-
-      <button
-        class="btn secondary"
-        onclick="resetCalc()"
-      >
-        Reset
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- HISTORY -->
-
-<section id="history" class="hidden">
-
-  <div class="card">
-
-    <div class="title">
-
-      Riwayat Simulasi
-
-      <span
-        id="historyCount"
-        class="badge"
-      >
-        0
-      </span>
-
-    </div>
-
+    <!-- ==================================================
+         ADMIN
+         ================================================== -->
 
     <div
-      style="font-size:11px;color:#667085;margin-bottom:10px"
+      id="adminPage"
+      class="hidden"
     >
-      Total benefit:
-      <b id="historyBenefit">
-        Rp 0
-      </b>
-    </div>
+
+      <div class="card">
+
+        <div class="title">
+          Admin / Master Data
+        </div>
+
+        <div class="small">
+          Menu ini digunakan untuk melihat dan mengelola master Store, ERO, dan Produk.
+        </div>
+
+      </div>
 
 
-    <div
-      id="historyContent"
-      class="loading"
-    >
-      Memuat...
+      <div class="admin-grid">
+
+        <div class="card">
+
+          <div class="title">
+            Tambah Store
+          </div>
+
+          <label class="label">
+            Store ID
+          </label>
+
+          <input
+            id="adminStoreId"
+            placeholder="Contoh: SMB"
+          >
+
+          <div style="margin-top:7px">
+
+            <label class="label">
+              Store Name
+            </label>
+
+            <input
+              id="adminStoreName"
+              placeholder="Nama Store"
+            >
+
+          </div>
+
+          <div class="button-row">
+
+            <button
+              class="btn btn-primary"
+              onclick="addStore()"
+            >
+              Tambah Store
+            </button>
+
+          </div>
+
+          <div
+            id="adminStoreMsg"
+            class="hidden"
+          ></div>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="title">
+            Tambah ERO
+          </div>
+
+          <label class="label">
+            NIK
+          </label>
+
+          <input
+            id="adminNik"
+            placeholder="NIK ERO"
+          >
+
+          <div style="margin-top:7px">
+
+            <label class="label">
+              Nama ERO
+            </label>
+
+            <input
+              id="adminEroName"
+              placeholder="Nama ERO"
+            >
+
+          </div>
+
+          <div style="margin-top:7px">
+
+            <label class="label">
+              Store
+            </label>
+
+            <select id="adminEroStore">
+
+              <option value="">
+                Pilih store
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="button-row">
+
+            <button
+              class="btn btn-primary"
+              onclick="addEro()"
+            >
+              Tambah ERO
+            </button>
+
+          </div>
+
+          <div
+            id="adminEroMsg"
+            class="hidden"
+          ></div>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="title">
+            Tambah Produk
+          </div>
+
+          <label class="label">
+            Product ID
+          </label>
+
+          <input
+            id="adminProductId"
+            placeholder="P009"
+          >
+
+          <div style="margin-top:7px">
+
+            <label class="label">
+              Type
+            </label>
+
+            <select id="adminProductType">
+
+              <option value="S">
+                S
+              </option>
+
+              <option value="Z">
+                Z
+              </option>
+
+              <option value="A">
+                A
+              </option>
+
+              <option value="TAB">
+                TAB
+              </option>
+
+            </select>
+
+          </div>
+
+          <div style="margin-top:7px">
+
+            <label class="label">
+              Nama Produk
+            </label>
+
+            <input
+              id="adminProductName"
+              placeholder="Nama produk"
+            >
+
+          </div>
+
+          <div style="margin-top:7px">
+
+            <label class="label">
+              Harga
+            </label>
+
+            <input
+              id="adminProductPrice"
+              inputmode="numeric"
+              placeholder="Rp 0"
+              oninput="fmt(this)"
+            >
+
+          </div>
+
+          <div class="button-row">
+
+            <button
+              class="btn btn-primary"
+              onclick="addProduct()"
+            >
+              Tambah Produk
+            </button>
+
+          </div>
+
+          <div
+            id="adminProductMsg"
+            class="hidden"
+          ></div>
+
+        </div>
+
+      </div>
+
     </div>
 
   </div>
-
-</section>
-
-
-<!-- MASTER -->
-
-<section id="master" class="hidden">
-
-
-  <div class="card">
-
-    <div class="title">
-      Store
-    </div>
-
-    <div
-      id="storeMaster"
-      class="mastergrid"
-    ></div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="title">
-      ERO / Sales
-    </div>
-
-    <div
-      id="eroMaster"
-      class="mastergrid"
-    ></div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="title">
-      Produk
-    </div>
-
-    <div
-      id="productMaster"
-      class="mastergrid"
-    ></div>
-
-  </div>
-
-
-</section>
-
-
-</main>
 
 </div>
 
@@ -1180,60 +1832,75 @@ th{
 const API_URL =
 'https://script.google.com/macros/s/AKfycbwN5G4zAEXZ27Qyu7WeUIsWmDgPHOCvjxBPWJ2-CHWDoqBjODud3sZ-8XFTW9YoAY5iMg/exec';
 
-
-let currentUser = null;
-
 let masterData = {
   stores:[],
   eros:[],
   products:[]
 };
 
+let currentUser = null;
 let historyData = [];
 
 
-const $ = id =>
-  document.getElementById(id);
+function $(id){
+  return document.getElementById(id);
+}
 
 
-const rupiah = n =>
-  'Rp ' + (Number(n)||0).toLocaleString('id-ID');
+function rupiah(value){
 
+  const n = Number(value) || 0;
 
-const num = v =>
-  Number(
-    String(v ?? '')
-      .replace(/\./g,'')
-      .replace(/,/g,'')
-      .replace(/[^\d-]/g,'')
-  ) || 0;
-
-
-function fmt(el){
-
-  let n = num(el.value);
-
-  el.value =
-    n
-      ? n.toLocaleString('id-ID')
-      : '';
+  return new Intl.NumberFormat(
+    'id-ID',
+    {
+      style:'currency',
+      currency:'IDR',
+      minimumFractionDigits:0
+    }
+  ).format(n);
 
 }
 
 
-function esc(v){
+function num(value){
 
-  return String(v ?? '')
-    .replace(
-      /[&<>"']/g,
-      m => ({
-        '&':'&amp;',
-        '<':'&lt;',
-        '>':'&gt;',
-        '"':'&quot;',
-        "'":'&#39;'
-      }[m])
-    );
+  if(value === null || value === undefined){
+    return 0;
+  }
+
+  let s = String(value)
+    .replace(/Rp/gi,'')
+    .replace(/\./g,'')
+    .replace(/,/g,'')
+    .replace(/\s/g,'');
+
+  const n = Number(s);
+
+  return isFinite(n) ? Math.max(0,n) : 0;
+
+}
+
+
+function fmt(el){
+
+  if(!el) return;
+
+  const n = num(el.value);
+
+  el.value = n ? new Intl.NumberFormat('id-ID').format(n) : '';
+
+}
+
+
+function esc(value){
+
+  return String(value ?? '')
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#039;');
 
 }
 
@@ -1245,8 +1912,7 @@ async function api(payload){
     {
       method:'POST',
       headers:{
-        'Content-Type':
-          'text/plain;charset=utf-8'
+        'Content-Type':'text/plain;charset=utf-8'
       },
       body:JSON.stringify(payload)
     }
@@ -1255,36 +1921,47 @@ async function api(payload){
   const t = await r.text();
 
   try{
-
     return JSON.parse(t);
-
   }catch(e){
-
     throw Error(
       'Response server tidak valid.'
     );
-
   }
 
 }
 
 
-async function init(){
+function msg(id,type,text){
+
+  const el = $(id);
+
+  if(!el) return;
+
+  el.className =
+    'msg ' +
+    (type === 'success' ? 'success' : 'error');
+
+  el.textContent = text;
+
+}
+
+
+async function loadMaster(){
 
   try{
 
-    const r =
-      await api({
-        action:'master'
-      });
+    const r = await api({
+      action:'master'
+    });
 
+    if(!r.success){
 
-    if(!r.success)
       throw Error(
         r.message ||
-        'Gagal mengambil master'
+        'Gagal mengambil master data.'
       );
 
+    }
 
     masterData = {
       stores:r.stores || [],
@@ -1292,36 +1969,8 @@ async function init(){
       products:r.products || []
     };
 
-
-    renderStores();
-
-    renderProducts();
-
-    renderMaster();
-
-
-    const s =
-      sessionStorage.getItem(
-        'nasa_user'
-      );
-
-
-    if(s){
-
-      currentUser =
-        JSON.parse(s);
-
-      if(
-        currentUser.storeId &&
-        currentUser.nik
-      ){
-
-        openApp();
-
-      }
-
-    }
-
+    fillStores();
+    fillProducts();
 
   }catch(e){
 
@@ -1336,68 +1985,78 @@ async function init(){
 }
 
 
-function renderStores(){
+function fillStores(){
 
-  $('loginStore').innerHTML =
-    '<option value="">Pilih Store</option>';
+  const select = $('loginStore');
 
+  select.innerHTML =
+    '<option value="">Pilih Store...</option>';
 
-  masterData.stores
-    .filter(
-      x =>
-        String(
-          x.status || 'ACTIVE'
-        ).toUpperCase()
-        === 'ACTIVE'
-    )
-    .forEach(x=>{
+  masterData.stores.forEach(store=>{
+
+    const option =
+      document.createElement('option');
+
+    option.value =
+      store.storeId;
+
+    option.textContent =
+      store.storeName;
+
+    select.appendChild(option);
+
+  });
+
+  const admin =
+    $('adminEroStore');
+
+  if(admin){
+
+    admin.innerHTML =
+      '<option value="">Pilih store...</option>';
+
+    masterData.stores.forEach(store=>{
 
       const option =
         document.createElement('option');
 
       option.value =
-        x.storeId;
+        store.storeId;
 
       option.textContent =
-        x.storeName;
+        store.storeName;
 
-      $('loginStore')
-        .appendChild(option);
+      admin.appendChild(option);
 
     });
+
+  }
 
 }
 
 
-function renderProducts(){
+function fillProducts(){
 
-  $('productSelect').innerHTML =
-    '<option value="">Pilih Produk</option>';
+  const select =
+    $('productSelect');
 
+  select.innerHTML =
+    '<option value="">Pilih produk...</option>';
 
-  masterData.products
-    .filter(
-      x =>
-        String(
-          x.status || 'ACTIVE'
-        ).toUpperCase()
-        === 'ACTIVE'
-    )
-    .forEach(x=>{
+  masterData.products.forEach(product=>{
 
-      const option =
-        document.createElement('option');
+    const option =
+      document.createElement('option');
 
-      option.value =
-        x.productId;
+    option.value =
+      product.productId;
 
-      option.textContent =
-        x.productName;
+    option.textContent =
+      product.productName;
 
-      $('productSelect')
-        .appendChild(option);
+    select.appendChild(option);
 
-    });
+  });
 
 }
 
@@ -1410,28 +2069,30 @@ async function login(){
   const nik =
     $('loginNik').value.trim();
 
+  if(!storeId){
 
-  if(!storeId)
     return msg(
       'loginMsg',
       'error',
       'Silakan pilih Store.'
     );
 
+  }
 
-  if(!nik)
+  if(!nik){
+
     return msg(
       'loginMsg',
       'error',
       'Silakan masukkan NIK.'
     );
 
+  }
 
   $('loginBtn').disabled = true;
 
   $('loginBtn').textContent =
     'Memeriksa...';
-
 
   try{
 
@@ -1442,35 +2103,33 @@ async function login(){
         nik:nik
       });
 
+    if(!r.success){
 
-    if(!r.success)
       throw Error(
         r.message ||
-        'NIK tidak valid.'
+        'Login gagal.'
       );
 
+    }
 
-    currentUser = {
+    currentUser =
+      r.user;
 
-      nik:r.user.nik,
+    $('loginPage')
+      .classList
+      .add('hidden');
 
-      eroName:r.user.eroName,
+    $('appPage')
+      .classList
+      .remove('hidden');
 
-      storeId:r.user.storeId,
+    $('headerEro').textContent =
+      currentUser.eroName;
 
-      storeName:r.user.storeName
+    $('headerStore').textContent =
+      currentUser.storeName;
 
-    };
-
-
-    sessionStorage.setItem(
-      'nasa_user',
-      JSON.stringify(currentUser)
-    );
-
-
-    openApp();
-
+    await loadHistory();
 
   }catch(e){
 
@@ -1480,131 +2139,175 @@ async function login(){
       e.message
     );
 
-
   }finally{
 
     $('loginBtn').disabled = false;
 
     $('loginBtn').textContent =
-      'Lanjut';
+      'Masuk';
 
   }
 
 }
 
 
-function openApp(){
+function logout(){
 
-  $('loginPage')
+  currentUser = null;
+
+  $('appPage')
     .classList
     .add('hidden');
 
-  $('app')
+  $('loginPage')
     .classList
     .remove('hidden');
 
+  $('loginNik').value = '';
 
-  $('headStore').textContent =
-    currentUser.storeName;
+  $('loginStore').value = '';
 
-  $('headEro').textContent =
-    currentUser.eroName;
-
-
-  $('calcStore').value =
-    currentUser.storeName;
-
-  $('calcEro').value =
-    currentUser.eroName;
-
-
-  loadOverview();
+  resetCalc(false);
 
 }
 
 
-function logout(){
+function page(name,button){
 
-  if(
-    !confirm(
-      'Keluar dari Kalkulator NASA?'
+  document
+    .querySelectorAll(
+      '#calculatorPage,#historyPage,#adminPage'
     )
-  )
-    return;
+    .forEach(el=>{
+      el.classList.add('hidden');
+    });
 
-
-  sessionStorage.removeItem(
-    'nasa_user'
-  );
-
-  location.reload();
-
-}
-
-
-function page(name,btn){
-
-  [
-    'overview',
-    'calculator',
-    'history',
-    'master'
-  ]
-  .forEach(
-    x =>
-      $(x)
-        .classList
-        .add('hidden')
-  );
-
-
-  $(name)
+  $(name+'Page')
     .classList
     .remove('hidden');
-
 
   document
     .querySelectorAll('.nav button')
-    .forEach(
-      x =>
-        x.classList.remove('active')
-    );
+    .forEach(btn=>{
+      btn.classList.remove('active');
+    });
 
+  if(button){
+    button.classList.add('active');
+  }
 
-  if(btn)
-    btn.classList.add('active');
-
-
-  if(name === 'overview')
-    loadOverview();
-
-
-  if(name === 'history')
+  if(name === 'history'){
     loadHistory();
+  }
 
 }
 
 
 function productChanged(){
 
-  const p =
+  const id =
+    $('productSelect').value;
+
+  const product =
     masterData.products.find(
       x =>
-        String(x.productId)
-        ===
-        String(
-          $('productSelect').value
-        )
+        String(x.productId) ===
+        String(id)
     );
-
 
   $('productPrice').textContent =
-    rupiah(
-      p?.price || 0
-    );
-
+    rupiah(product?.price || 0);
 
   calc();
+  renderReceipt();
+
+}
+
+
+function getAcc(){
+
+  const map = {
+
+    Casing:[
+      'accCasing',
+      'Casing'
+    ],
+
+    Antigores:[
+      'accAntigores',
+      'Antigores'
+    ],
+
+    Adaptor:[
+      'accAdaptor',
+      'Adaptor'
+    ],
+
+    Cable:[
+      'accCable',
+      'Cable'
+    ],
+
+    Audio:[
+      'accAudio',
+      'Audio'
+    ],
+
+    Lainnya:[
+      'accLainnya',
+      'Lainnya'
+    ]
+
+  };
+
+  const items = [];
+
+  let total = 0;
+
+  document
+    .querySelectorAll('.accCheck')
+    .forEach(ch=>{
+
+      const cat =
+        ch.dataset.cat;
+
+      const ids =
+        map[cat];
+
+      const price =
+        num($(ids[0]).value);
+
+      if(ch.checked){
+
+        items.push({
+          category:cat,
+          price:price
+        });
+
+        total += price;
+
+      }
+
+    });
+
+  return {
+    items,
+    total
+  };
+
+}
+
+
+function getRadio(name){
+
+  const el =
+    document.querySelector(
+      `input[name="${name}"]:checked`
+    );
+
+  return el
+    ? el.value
+    : '';
 
 }
 
@@ -1614,17 +2317,27 @@ function calc(){
   const p =
     masterData.products.find(
       x =>
-        String(x.productId)
-        ===
-        String(
-          $('productSelect').value
-        )
+        String(x.productId) ===
+        String($('productSelect').value)
     );
-
 
   const price =
     Number(p?.price) || 0;
 
+  const acc =
+    getAcc();
+
+  const scpDuration =
+    getRadio('scpDuration');
+
+  const scpPrice =
+    num($('scpPrice').value);
+
+  const operator =
+    getRadio('operator');
+
+  const operatorPrice =
+    num($('operatorPrice').value);
 
   const cb =
     num($('cbHp').value);
@@ -1637,34 +2350,29 @@ function calc(){
 
   const ct =
     num(
-      $('cashbackTambahanTradeIn')
-        .value
+      $('cashbackTambahanTradeIn').value
     );
 
   const pw =
     num(
-      $('cashbackPwp')
-        .value
+      $('cashbackPwp').value
     );
 
   const bk =
     num(
-      $('cashbackBank')
-        .value
+      $('cashbackBank').value
     );
 
   const pl =
     num(
-      $('potonganLain')
-        .value
+      $('potonganLain').value
     );
 
-
-  /*
-    PENTING:
-
-    Trade In TIDAK masuk Total Benefit.
-  */
+  const itemTotal =
+    price +
+    acc.total +
+    scpPrice +
+    operatorPrice;
 
   const benefit =
     cb +
@@ -1674,96 +2382,323 @@ function calc(){
     bk +
     pl;
 
-
-  /*
-    Harga yang dibayar:
-
-    Harga Normal
-    - Total Benefit
-    - Harga HP Trade In
-  */
-
   const pay =
     Math.max(
       0,
-      price -
+      itemTotal -
       benefit -
       tr
     );
 
-
   $('resultPrice').textContent =
-    rupiah(price);
+    rupiah(itemTotal);
 
+  $('accTotal').textContent =
+    rupiah(acc.total);
 
   $('resultBenefit').textContent =
     rupiah(benefit);
 
-
   $('resultTrade').textContent =
     rupiah(tr);
-
 
   $('resultPay').textContent =
     rupiah(pay);
 
+  [3,6,12,24].forEach(t=>{
 
-  [3,6,12,24]
-    .forEach(t=>{
+    $('i'+t).textContent =
+      rupiah(
+        Math.ceil(pay/t)
+      );
 
-      const el =
-        $('i'+t);
-
-      el.textContent =
-        rupiah(
-          Math.ceil(pay/t)
-        );
-
-    });
-
+  });
 
   return {
-
     p,
-
     price,
-
+    acc,
+    scpDuration,
+    scpPrice,
+    operator,
+    operatorPrice,
+    itemTotal,
     cb,
-
     vo,
-
     tr,
-
     ct,
-
     pw,
-
     bk,
-
     pl,
-
     benefit,
-
     pay
-
   };
 
 }
 
 
-async function save(){
+function receiptText(){
 
   const c =
     calc();
 
+  if(!c.p){
+    return '';
+  }
 
-  if(!c.p)
+  const lines = [];
+
+  lines.push(
+    'KALKULATOR NASA',
+    'RINGKASAN PEMBELIAN',
+    ''
+  );
+
+  lines.push(
+    `Store : ${currentUser?.storeName || '-'}`,
+    `ERO : ${currentUser?.eroName || '-'}`,
+    `Customer : ${$('customerName').value || '-'}`,
+    `No. HP : ${$('customerPhone').value || '-'}`,
+    ''
+  );
+
+  lines.push(
+    'ITEM PEMBELIAN'
+  );
+
+  lines.push(
+    `${c.p.productName} : ${rupiah(c.price)}`
+  );
+
+  c.acc.items.forEach(x=>{
+
+    lines.push(
+      `${x.category} : ${rupiah(x.price)}`
+    );
+
+  });
+
+  if(c.scpDuration){
+
+    lines.push(
+      `SCP ${c.scpDuration} : ${rupiah(c.scpPrice)}`
+    );
+
+  }
+
+  if(c.operator){
+
+    lines.push(
+      `Operator ${c.operator} : ${rupiah(c.operatorPrice)}`
+    );
+
+  }
+
+  lines.push(
+    `TOTAL HARGA : ${rupiah(c.itemTotal)}`,
+    '',
+    'BENEFIT / CASHBACK'
+  );
+
+  lines.push(
+    `Cashback HP : -${rupiah(c.cb)}`,
+    `Voucher : -${rupiah(c.vo)}`,
+    `Cashback Tambahan Trade In : -${rupiah(c.ct)}`,
+    `Cashback PWP : -${rupiah(c.pw)}`,
+    `Cashback Bank : -${rupiah(c.bk)}`,
+    `Potongan Lain : -${rupiah(c.pl)}`,
+    `TOTAL BENEFIT : -${rupiah(c.benefit)}`,
+    `Harga HP Trade In : -${rupiah(c.tr)}`,
+    '',
+    `YANG DIBAYARKAN : ${rupiah(c.pay)}`,
+    '',
+    'CICILAN 0%'
+  );
+
+  [3,6,12,24].forEach(t=>{
+
+    lines.push(
+      `${t}x : ${rupiah(Math.ceil(c.pay/t))}/bulan`
+    );
+
+  });
+
+  lines.push(
+    '',
+    'Simulasi dapat berubah mengikuti promo dan ketentuan yang berlaku.'
+  );
+
+  return lines.join('\n');
+
+}
+
+
+function renderReceipt(){
+
+  const c =
+    calc();
+
+  if(!c.p){
+
+    $('receiptBox').innerHTML =
+      '<div class="empty">Pilih produk untuk melihat nota.</div>';
+
+    return;
+
+  }
+
+  const rows = [];
+
+  rows.push(
+    `<div class="receipt-head">
+      KALKULATOR NASA<br>
+      <small>RINGKASAN PEMBELIAN</small>
+    </div>`
+  );
+
+  rows.push(
+    `<div>Customer : <b>${esc($('customerName').value || '-')}</b></div>`
+  );
+
+  rows.push(
+    `<div>No. HP : ${esc($('customerPhone').value || '-')}</div>`
+  );
+
+  rows.push(
+    '<div class="receipt-section">ITEM PEMBELIAN</div>'
+  );
+
+  rows.push(
+    `<div class="receipt-row">
+      <span>${esc(c.p.productName)}</span>
+      <b>${rupiah(c.price)}</b>
+    </div>`
+  );
+
+  c.acc.items.forEach(x=>{
+
+    rows.push(
+      `<div class="receipt-row">
+        <span>${esc(x.category)}</span>
+        <b>${rupiah(x.price)}</b>
+      </div>`
+    );
+
+  });
+
+  if(c.scpDuration){
+
+    rows.push(
+      `<div class="receipt-row">
+        <span>SCP ${esc(c.scpDuration)}</span>
+        <b>${rupiah(c.scpPrice)}</b>
+      </div>`
+    );
+
+  }
+
+  if(c.operator){
+
+    rows.push(
+      `<div class="receipt-row">
+        <span>Operator ${esc(c.operator)}</span>
+        <b>${rupiah(c.operatorPrice)}</b>
+      </div>`
+    );
+
+  }
+
+  rows.push(
+    `<div class="receipt-row receipt-total">
+      <span>TOTAL HARGA</span>
+      <b>${rupiah(c.itemTotal)}</b>
+    </div>`
+  );
+
+  rows.push(
+    '<div class="receipt-section">BENEFIT / CASHBACK</div>'
+  );
+
+  [
+    ['Cashback HP',c.cb],
+    ['Voucher',c.vo],
+    ['Cashback Tambahan Trade In',c.ct],
+    ['Cashback PWP',c.pw],
+    ['Cashback Bank',c.bk],
+    ['Potongan Lain',c.pl]
+  ].forEach(x=>{
+
+    if(x[1]){
+
+      rows.push(
+        `<div class="receipt-row">
+          <span>${esc(x[0])}</span>
+          <b>-${rupiah(x[1])}</b>
+        </div>`
+      );
+
+    }
+
+  });
+
+  rows.push(
+    `<div class="receipt-row receipt-total">
+      <span>TOTAL BENEFIT</span>
+      <b>-${rupiah(c.benefit)}</b>
+    </div>`
+  );
+
+  if(c.tr){
+
+    rows.push(
+      `<div class="receipt-row">
+        <span>Harga HP Trade In</span>
+        <b>-${rupiah(c.tr)}</b>
+      </div>`
+    );
+
+  }
+
+  rows.push(
+    `<div class="receipt-pay">
+      <small>YANG DIBAYARKAN</small>
+      <strong>${rupiah(c.pay)}</strong>
+    </div>`
+  );
+
+  rows.push(
+    '<div class="receipt-section">CICILAN 0%</div>'
+  );
+
+  [3,6,12,24].forEach(t=>{
+
+    rows.push(
+      `<div class="receipt-row">
+        <span>${t}x / bulan</span>
+        <b>${rupiah(Math.ceil(c.pay/t))}</b>
+      </div>`
+    );
+
+  });
+
+  $('receiptBox').innerHTML =
+    rows.join('');
+
+}/* =====================================================
+   SAVE SIMULATION
+   ===================================================== */
+
+async function save(){
+
+  const c = calc();
+
+  if(!c.p){
     return msg(
       'saveMsg',
       'error',
       'Silakan pilih produk.'
     );
-
+  }
 
   const data = {
 
@@ -1777,25 +2712,63 @@ async function save(){
       c.p.productId,
 
     customerName:
-      $('customerName')
-        .value
-        .trim(),
+      $('customerName').value.trim(),
 
     customerPhone:
-      $('customerPhone')
-        .value
-        .trim(),
+      $('customerPhone').value.trim(),
 
     customerEmail:
-      $('customerEmail')
-        .value
-        .trim(),
+      $('customerEmail').value.trim(),
 
-    cbHp:c.cb,
+    /* ACC */
 
-    voucher:c.vo,
+    accItems:
+      c.acc.items,
 
-    tradeIn:c.tr,
+    accCasing:
+      num($('accCasing').value),
+
+    accAntigores:
+      num($('accAntigores').value),
+
+    accAdaptor:
+      num($('accAdaptor').value),
+
+    accCable:
+      num($('accCable').value),
+
+    accAudio:
+      num($('accAudio').value),
+
+    accLainnya:
+      num($('accLainnya').value),
+
+    /* SCP */
+
+    scpDuration:
+      c.scpDuration,
+
+    scpPrice:
+      c.scpPrice,
+
+    /* OPERATOR */
+
+    operator:
+      c.operator,
+
+    operatorPrice:
+      c.operatorPrice,
+
+    /* BENEFIT */
+
+    cbHp:
+      c.cb,
+
+    voucher:
+      c.vo,
+
+    tradeIn:
+      c.tr,
 
     cashbackTambahanTradeIn:
       c.ct,
@@ -1812,8 +2785,7 @@ async function save(){
   };
 
 
-  $('saveBtn').disabled =
-    true;
+  $('saveBtn').disabled = true;
 
   $('saveBtn').textContent =
     'Menyimpan...';
@@ -1828,11 +2800,14 @@ async function save(){
       });
 
 
-    if(!r.success)
+    if(!r.success){
+
       throw Error(
         r.message ||
-        'Gagal menyimpan'
+        'Gagal menyimpan simulasi.'
       );
+
+    }
 
 
     msg(
@@ -1842,13 +2817,10 @@ async function save(){
     );
 
 
-    resetCalc(false);
+    renderReceipt();
 
 
-    setTimeout(
-      loadOverview,
-      400
-    );
+    await loadHistory();
 
 
   }catch(e){
@@ -1859,11 +2831,9 @@ async function save(){
       e.message
     );
 
-
   }finally{
 
-    $('saveBtn').disabled =
-      false;
+    $('saveBtn').disabled = false;
 
     $('saveBtn').textContent =
       'Simpan Simulasi';
@@ -1873,28 +2843,81 @@ async function save(){
 }
 
 
+/* =====================================================
+   RESET CALCULATOR
+   ===================================================== */
+
 function resetCalc(clear=true){
 
   [
+
     'productSelect',
+
     'customerName',
+
     'customerPhone',
+
     'customerEmail',
+
+    'accCasing',
+
+    'accAntigores',
+
+    'accAdaptor',
+
+    'accCable',
+
+    'accAudio',
+
+    'accLainnya',
+
+    'scpPrice',
+
+    'operatorPrice',
+
     'cbHp',
+
     'voucher',
+
     'tradeIn',
+
     'cashbackTambahanTradeIn',
+
     'cashbackPwp',
+
     'cashbackBank',
+
     'potonganLain'
-  ]
-  .forEach(
-    id =>
-      $(id).value=''
-  );
+
+  ].forEach(id=>{
+
+    if($(id)){
+      $(id).value = '';
+    }
+
+  });
+
+
+  document
+    .querySelectorAll('.accCheck')
+    .forEach(x=>{
+      x.checked = false;
+    });
+
+
+  document
+    .querySelectorAll(
+      'input[name="scpDuration"], input[name="operator"]'
+    )
+    .forEach(x=>{
+      x.checked = false;
+    });
 
 
   $('productPrice').textContent =
+    rupiah(0);
+
+  $('accTotal').textContent =
     rupiah(0);
 
   $('resultPrice').textContent =
@@ -1910,337 +2933,288 @@ function resetCalc(clear=true){
     rupiah(0);
 
 
-  [3,6,12,24]
-    .forEach(
-      t =>
-        $('i'+t).textContent =
-          rupiah(0)
-    );
+  [3,6,12,24].forEach(t=>{
+
+    $('i'+t).textContent =
+      rupiah(0);
+
+  });
 
 
-  if(clear)
+  $('receiptBox').innerHTML =
+    '<div class="empty">Pilih produk untuk melihat nota.</div>';
+
+
+  if(clear){
+
     $('saveMsg').className =
       'hidden';
 
-}
-
-
-function copyResult(){
-
-  const c =
-    calc();
-
-
-  if(!c.p)
-    return alert(
-      'Silakan pilih produk.'
-    );
-
-
-  const text =
-    'KALKULATOR NASA\n\n' +
-    'Store : ' + currentUser.storeName + '\n' +
-    'ERO : ' + currentUser.eroName + '\n\n' +
-    'Customer : ' + ($('customerName').value || '-') + '\n' +
-    'No. HP : ' + ($('customerPhone').value || '-') + '\n\n' +
-    'Produk : ' + c.p.productName + '\n\n' +
-    'Harga Normal : ' + rupiah(c.price) + '\n' +
-    'Cashback HP : ' + rupiah(c.cb) + '\n' +
-    'Voucher : ' + rupiah(c.vo) + '\n' +
-    'Harga HP Trade In : ' + rupiah(c.tr) + '\n' +
-    'Cashback Tambahan Trade In : ' + rupiah(c.ct) + '\n' +
-    'Cashback PWP : ' + rupiah(c.pw) + '\n' +
-    'Cashback Bank : ' + rupiah(c.bk) + '\n' +
-    'Potongan Lain : ' + rupiah(c.pl) + '\n\n' +
-    'Total Benefit : ' + rupiah(c.benefit) + '\n\n' +
-    'YANG DIBAYARKAN : ' + rupiah(c.pay) + '\n\n' +
-    '3X : ' + rupiah(Math.ceil(c.pay/3)) + '/bln\n' +
-    '6X : ' + rupiah(Math.ceil(c.pay/6)) + '/bln\n' +
-    '12X : ' + rupiah(Math.ceil(c.pay/12)) + '/bln\n' +
-    '24X : ' + rupiah(Math.ceil(c.pay/24)) + '/bln';
-
-
-  navigator
-    .clipboard
-    .writeText(text)
-    .then(
-      () =>
-        alert(
-          'Hasil berhasil dicopy.'
-        )
-    )
-    .catch(
-      () =>
-        alert(
-          'Copy otomatis gagal.'
-        )
-    );
-
-}
-
-
-function copyWA(){
-
-  const c =
-    calc();
-
-
-  if(!c.p)
-    return alert(
-      'Silakan pilih produk.'
-    );
-
-
-  const name =
-    $('customerName').value ||
-    'Kak';
-
-
-  const text =
-    'Halo ' + name +
-    ', berikut simulasi Samsung ' +
-    c.p.productName + ':\n\n' +
-
-    'Harga normal: ' +
-    rupiah(c.price) + '\n' +
-
-    'Total benefit: ' +
-    rupiah(c.benefit) + '\n' +
-
-    'Trade In: ' +
-    rupiah(c.tr) + '\n' +
-
-    'Yang dibayarkan: ' +
-    rupiah(c.pay) + '\n\n' +
-
-    'Cicilan 0%:\n\n' +
-
-    '3x ' +
-    rupiah(Math.ceil(c.pay/3)) +
-    '/bln\n' +
-
-    '6x ' +
-    rupiah(Math.ceil(c.pay/6)) +
-    '/bln\n' +
-
-    '12x ' +
-    rupiah(Math.ceil(c.pay/12)) +
-    '/bln\n' +
-
-    '24x ' +
-    rupiah(Math.ceil(c.pay/24)) +
-    '/bln\n\n' +
-
-    'Simulasi dapat berubah mengikuti promo dan ketentuan yang berlaku.';
-
-
-  navigator
-    .clipboard
-    .writeText(text)
-    .then(
-      () =>
-        alert(
-          'Pesan WhatsApp berhasil dicopy.'
-        )
-    )
-    .catch(
-      () =>
-        alert(
-          'Copy otomatis gagal.'
-        )
-    );
-
-}
-
-
-async function loadOverview(){
-
-  if(!currentUser)
-    return;
-
-
-  try{
-
-    const r =
-      await api({
-        action:'history',
-        storeId:
-          currentUser.storeId,
-        nik:
-          currentUser.nik
-      });
-
-
-    if(!r.success)
-      throw Error(
-        r.message ||
-        'Gagal mengambil data'
-      );
-
-
-    historyData =
-      r.data ||
-      r.history ||
-      [];
-
-
-    renderOverview();
-
-
-  }catch(e){
-
-    $('today').innerHTML =
-      '<div class="error">' +
-      esc(e.message) +
-      '</div>';
+    $('saveMsg').textContent =
+      '';
 
   }
 
 }
 
 
-function renderOverview(){
+/* =====================================================
+   COPY NOTA
+   ===================================================== */
 
-  const h =
-    historyData;
+function copyResult(){
 
+  const text =
+    receiptText();
 
-  $('ovTotal').textContent =
-    h.length;
+  if(!text){
 
-
-  const today =
-    h.filter(
-      x =>
-        sameDay(
-          x.timestamp,
-          new Date()
-        )
+    return alert(
+      'Silakan pilih produk terlebih dahulu.'
     );
 
-
-  $('ovToday').textContent =
-    today.length;
+  }
 
 
-  $('ovBenefit').textContent =
-    rupiah(
-      h.reduce(
-        (s,x)=>
-          s +
-          (Number(x.totalBenefit)||0),
-        0
-      )
-    );
+  if(
+    navigator.clipboard &&
+    navigator.clipboard.writeText
+  ){
 
+    navigator.clipboard
+      .writeText(text)
+      .then(()=>{
 
-  const pc={};
+        alert(
+          'Nota berhasil dicopy.'
+        );
 
+      })
+      .catch(()=>{
 
-  h.forEach(
-    x =>
-      pc[x.productName||'-'] =
-        (pc[x.productName||'-']||0)+1
-  );
+        fallbackCopy(text);
 
+      });
 
-  const ps =
-    Object.entries(pc)
-      .sort(
-        (a,b)=>
-          b[1]-a[1]
-      );
+  }else{
 
+    fallbackCopy(text);
 
-  $('ovTop').textContent =
-    ps[0]?.[0] || '-';
-
-
-  const er={};
-
-
-  h.forEach(
-    x =>
-      er[x.eroName||'-'] =
-        (er[x.eroName||'-']||0)+1
-  );
-
-
-  const es =
-    Object.entries(er)
-      .sort(
-        (a,b)=>
-          b[1]-a[1]
-      );
-
-
-  $('eroRank').innerHTML =
-    es.slice(0,10)
-      .map(
-        (x,i)=>
-          '<div class="listrow">' +
-            '<span>' +
-              '<b>' + (i+1) + '.</b> ' +
-              esc(x[0]) +
-            '</span>' +
-            '<b>' + x[1] + '</b>' +
-          '</div>'
-      )
-      .join('')
-      ||
-      '<div class="empty">Belum ada data.</div>';
-
-
-  $('prodRank').innerHTML =
-    ps.slice(0,10)
-      .map(
-        (x,i)=>
-          '<div class="listrow">' +
-            '<span>' +
-              (i+1) + '. ' +
-              esc(x[0]) +
-            '</span>' +
-            '<b>' + x[1] + '</b>' +
-          '</div>'
-      )
-      .join('')
-      ||
-      '<div class="empty">Belum ada data.</div>';
-
-
-  $('today').innerHTML =
-    today.slice(0,20)
-      .map(
-        x =>
-          '<div class="listrow">' +
-
-            '<span>' +
-
-              '<span class="badge">' +
-                esc(x.eroName||'-') +
-              '</span> ' +
-
-              esc(x.productName||'-') +
-
-            '</span>' +
-
-            '<b>' +
-              rupiah(x.netPrice) +
-            '</b>' +
-
-          '</div>'
-      )
-      .join('')
-      ||
-      '<div class="empty">Belum ada simulasi hari ini.</div>';
+  }
 
 }
 
 
+function fallbackCopy(text){
+
+  const area =
+    document.createElement('textarea');
+
+  area.value = text;
+
+  area.style.position =
+    'fixed';
+
+  area.style.left =
+    '-9999px';
+
+  document.body.appendChild(area);
+
+  area.focus();
+
+  area.select();
+
+  try{
+
+    document.execCommand(
+      'copy'
+    );
+
+    alert(
+      'Nota berhasil dicopy.'
+    );
+
+  }catch(e){
+
+    alert(
+      'Copy otomatis gagal. Silakan gunakan tombol Screenshot / Nota.'
+    );
+
+  }
+
+  document.body.removeChild(area);
+
+}
+
+
+/* =====================================================
+   WHATSAPP
+   ===================================================== */
+
+function normalizePhone(v){
+
+  let x =
+    String(v || '')
+      .replace(/[^0-9+]/g,'');
+
+
+  if(
+    x.startsWith('+62')
+  ){
+
+    x =
+      x.slice(1);
+
+  }
+
+
+  if(
+    x.startsWith('08')
+  ){
+
+    x =
+      '62' + x.slice(1);
+
+  }
+
+
+  return x;
+
+}
+
+
+function sendWA(){
+
+  const c =
+    calc();
+
+
+  if(!c.p){
+
+    return alert(
+      'Silakan pilih produk terlebih dahulu.'
+    );
+
+  }
+
+
+  const raw =
+    $('customerPhone')
+      .value
+      .trim();
+
+
+  /*
+   * NO HP TIDAK WAJIB
+   *
+   * Kalau kosong:
+   * tetap boleh simpan
+   * dan customer bisa menerima screenshot.
+   */
+
+  if(!raw){
+
+    return alert(
+      'No. HP Customer kosong.\n\n' +
+      'Tidak masalah, simulasi tetap bisa digunakan. ' +
+      'Silakan gunakan Screenshot / Nota untuk dikirim ke customer.'
+    );
+
+  }
+
+
+  const phone =
+    normalizePhone(raw);
+
+
+  if(
+    !/^62[0-9]{9,13}$/.test(phone)
+  ){
+
+    return alert(
+      'Format No. HP Customer tidak valid.\n\n' +
+      'Contoh:\n' +
+      '081234567890\n' +
+      '6281234567890\n' +
+      '+6281234567890'
+    );
+
+  }
+
+
+  const text =
+    receiptText();
+
+
+  const url =
+    'https://wa.me/' +
+    phone +
+    '?text=' +
+    encodeURIComponent(text);
+
+
+  window.open(
+    url,
+    '_blank'
+  );
+
+}
+
+
+/* =====================================================
+   SCREENSHOT / PRINT NOTA
+   ===================================================== */
+
+function printReceipt(){
+
+  const c =
+    calc();
+
+
+  if(!c.p){
+
+    return alert(
+      'Silakan pilih produk terlebih dahulu.'
+    );
+
+  }
+
+
+  renderReceipt();
+
+  window.print();
+
+}
+
+
+/* =====================================================
+   LOAD HISTORY
+   ===================================================== */
+
 async function loadHistory(){
 
-  $('historyContent').innerHTML =
-    '<div class="loading">Memuat...</div>';
+  if(!currentUser){
+
+    return;
+
+  }
+
+
+  const body =
+    $('historyBody');
+
+
+  if(body){
+
+    body.innerHTML = `
+      <tr>
+        <td colspan="5" style="text-align:center">
+          Memuat history...
+        </td>
+      </tr>
+    `;
+
+  }
 
 
   try{
@@ -2255,307 +3229,820 @@ async function loadHistory(){
       });
 
 
-    if(!r.success)
-      throw Error(r.message);
+    if(!r.success){
 
-
-    const h =
-      r.data ||
-      r.history ||
-      [];
-
-
-    $('historyCount').textContent =
-      h.length;
-
-
-    $('historyBenefit').textContent =
-      rupiah(
-        h.reduce(
-          (s,x)=>
-            s +
-            (Number(x.totalBenefit)||0),
-          0
-        )
+      throw Error(
+        r.message ||
+        'Gagal mengambil history.'
       );
-
-
-    if(!h.length){
-
-      $('historyContent').innerHTML =
-        '<div class="empty">' +
-          'Belum ada simulasi.' +
-        '</div>';
-
-      return;
 
     }
 
 
-    let rows = '';
-
-    h.forEach(x => {
-
-      rows +=
-        '<tr>' +
-
-          '<td>' +
-            esc(
-              formatDate(
-                x.timestamp
-              )
-            ) +
-          '</td>' +
-
-          '<td>' +
-            '<b>' +
-              esc(
-                x.customerName||'-'
-              ) +
-            '</b>' +
-          '</td>' +
-
-          '<td>' +
-            '<span class="badge">' +
-              esc(
-                x.eroName||'-'
-              ) +
-            '</span>' +
-          '</td>' +
-
-          '<td>' +
-            esc(
-              x.productName||'-'
-            ) +
-          '</td>' +
-
-          '<td class="amt">' +
-            rupiah(x.price) +
-          '</td>' +
-
-          '<td class="amt">' +
-            rupiah(x.totalBenefit) +
-          '</td>' +
-
-          '<td class="amt">' +
-            rupiah(x.tradeIn) +
-          '</td>' +
-
-          '<td class="amt">' +
-            '<b>' +
-              rupiah(x.netPrice) +
-            '</b>' +
-          '</td>' +
-
-        '</tr>';
-
-    });
+    historyData =
+      Array.isArray(r.history)
+        ? r.history
+        : [];
 
 
-    $('historyContent').innerHTML =
-      '<div class="tablewrap">' +
-
-        '<table>' +
-
-          '<thead>' +
-
-            '<tr>' +
-
-              '<th>Tanggal</th>' +
-
-              '<th>Customer</th>' +
-
-              '<th>ERO</th>' +
-
-              '<th>Produk</th>' +
-
-              '<th>Harga</th>' +
-
-              '<th>Benefit</th>' +
-
-              '<th>Trade In</th>' +
-
-              '<th>Yang Dibayar</th>' +
-
-            '</tr>' +
-
-          '</thead>' +
-
-          '<tbody>' +
-
-            rows +
-
-          '</tbody>' +
-
-        '</table>' +
-
-      '</div>';
+    renderHistory();
 
 
   }catch(e){
 
-    $('historyContent').innerHTML =
-      '<div class="error">' +
-        esc(e.message) +
-      '</div>';
+    if(body){
+
+      body.innerHTML = `
+        <tr>
+          <td
+            colspan="5"
+            style="text-align:center;color:#b92f2f"
+          >
+            ${esc(e.message)}
+          </td>
+        </tr>
+      `;
+
+    }
 
   }
 
 }
 
 
-function renderMaster(){
+/* =====================================================
+   RENDER HISTORY
+   ===================================================== */
 
-  $('storeMaster').innerHTML =
-    masterData.stores
-      .map(
-        x =>
-          '<div class="master">' +
+function renderHistory(){
 
-            '<b>' +
-              esc(x.storeName) +
-            '</b>' +
-
-            'ID: ' +
-            esc(x.storeId) +
-
-            '<br>' +
-
-            'Status: ' +
-            esc(x.status||'-') +
-
-          '</div>'
-      )
-      .join('');
+  const body =
+    $('historyBody');
 
 
-  $('eroMaster').innerHTML =
-    masterData.eros
-      .map(
-        x =>
-          '<div class="master">' +
+  if(!body){
 
-            '<b>' +
-              esc(x.eroName) +
-            '</b>' +
+    return;
 
-            'NIK: ' +
-            mask(x.nik) +
-
-            '<br>' +
-
-            'Store: ' +
-            esc(x.storeId) +
-
-            '<br>' +
-
-            'Status: ' +
-            esc(x.status||'-') +
-
-          '</div>'
-      )
-      .join('');
+  }
 
 
-  $('productMaster').innerHTML =
-    masterData.products
-      .map(
-        x =>
-          '<div class="master">' +
+  if(
+    !historyData ||
+    !historyData.length
+  ){
 
-            '<b>' +
-              esc(x.productName) +
-            '</b>' +
+    body.innerHTML = `
+      <tr>
+        <td
+          colspan="5"
+          style="text-align:center"
+        >
+          Belum ada history simulasi.
+        </td>
+      </tr>
+    `;
 
-            'Type: ' +
-            esc(x.productType) +
+    return;
 
-            '<br>' +
+  }
 
-            'Harga: ' +
-            rupiah(x.price) +
 
-            '<br>' +
+  body.innerHTML =
+    historyData
+      .map((x,index)=>{
 
-            'Status: ' +
-            esc(x.status||'-') +
+        let dateText = '-';
 
-          '</div>'
-      )
+
+        if(x.timestamp){
+
+          try{
+
+            dateText =
+              new Date(
+                x.timestamp
+              ).toLocaleString(
+                'id-ID',
+                {
+                  day:'2-digit',
+                  month:'2-digit',
+                  year:'numeric',
+                  hour:'2-digit',
+                  minute:'2-digit'
+                }
+              );
+
+          }catch(e){
+
+            dateText =
+              String(x.timestamp);
+
+          }
+
+        }
+
+
+        const customer =
+          x.customerName ||
+          '-';
+
+
+        const product =
+          x.productName ||
+          '-';
+
+
+        const total =
+          rupiah(
+            Number(
+              x.totalItemPrice ||
+              x.price ||
+              0
+            )
+          );
+
+
+        const pay =
+          rupiah(
+            Number(
+              x.netPrice ||
+              x.yangDibayarkan ||
+              0
+            )
+          );
+
+
+        return `
+
+          <tr
+            onclick="loadFromHistory(historyData[${index}])"
+            style="cursor:pointer"
+            title="Klik untuk membuka kembali simulasi"
+          >
+
+            <td>
+              ${esc(dateText)}
+            </td>
+
+            <td>
+              <b>${esc(customer)}</b>
+            </td>
+
+            <td>
+              ${esc(product)}
+            </td>
+
+            <td>
+              ${total}
+            </td>
+
+            <td>
+              <b>${pay}</b>
+            </td>
+
+          </tr>
+
+        `;
+
+      })
       .join('');
 
 }
 
 
-function mask(v){
+/* =====================================================
+   LOAD HISTORY → CALCULATOR
+   ===================================================== */
 
-  v =
-    String(v||'');
+function loadFromHistory(x){
 
-  return v.length > 4
-    ? v.slice(0,2)+'••••'+v.slice(-2)
-    : '••••';
+  if(!x){
 
-}
+    return;
 
-
-function sameDay(a,b){
-
-  const d =
-    new Date(a);
-
-  return d.toDateString()
-    ===
-    b.toDateString();
-
-}
+  }
 
 
-function formatDate(v){
+  /*
+   * Pindah ke halaman calculator
+   */
 
-  const d =
-    new Date(v);
-
-
-  return isNaN(d)
-
-    ? String(v||'-')
-
-    :
-
-    d.toLocaleString(
-      'id-ID',
-      {
-        day:'2-digit',
-        month:'2-digit',
-        year:'numeric',
-        hour:'2-digit',
-        minute:'2-digit'
-      }
+  const calculatorButton =
+    document.querySelector(
+      '.nav button:first-child'
     );
 
+
+  page(
+    'calculator',
+    calculatorButton
+  );
+
+
+  /*
+   * PRODUCT
+   */
+
+  $('productSelect').value =
+    x.productId || '';
+
+
+  productChanged();
+
+
+  /*
+   * CUSTOMER
+   */
+
+  $('customerName').value =
+    x.customerName || '';
+
+
+  $('customerPhone').value =
+    x.customerPhone || '';
+
+
+  $('customerEmail').value =
+    x.customerEmail || '';
+
+
+  /*
+   * ACC
+   */
+
+  const accMap = {
+
+    Casing:
+      'accCasing',
+
+    Antigores:
+      'accAntigores',
+
+    Adaptor:
+      'accAdaptor',
+
+    Cable:
+      'accCable',
+
+    Audio:
+      'accAudio',
+
+    Lainnya:
+      'accLainnya'
+
+  };
+
+
+  document
+    .querySelectorAll('.accCheck')
+    .forEach(ch=>{
+
+      const id =
+        accMap[ch.dataset.cat];
+
+      const value =
+        Number(
+          x[id] || 0
+        );
+
+
+      ch.checked =
+        value > 0;
+
+
+      if(value){
+
+        $(id).value =
+          String(value);
+
+        fmt($(id));
+
+      }else{
+
+        $(id).value =
+          '';
+
+      }
+
+    });
+
+
+  /*
+   * SCP
+   */
+
+  document
+    .querySelectorAll(
+      'input[name="scpDuration"]'
+    )
+    .forEach(r=>{
+
+      r.checked =
+        String(r.value) ===
+        String(
+          x.scpDuration || ''
+        );
+
+    });
+
+
+  $('scpPrice').value =
+    x.scpPrice
+      ? String(x.scpPrice)
+      : '';
+
+
+  if(x.scpPrice){
+
+    fmt(
+      $('scpPrice')
+    );
+
+  }
+
+
+  /*
+   * OPERATOR
+   */
+
+  document
+    .querySelectorAll(
+      'input[name="operator"]'
+    )
+    .forEach(r=>{
+
+      r.checked =
+        String(r.value) ===
+        String(
+          x.operator || ''
+        );
+
+    });
+
+
+  $('operatorPrice').value =
+    x.operatorPrice
+      ? String(x.operatorPrice)
+      : '';
+
+
+  if(x.operatorPrice){
+
+    fmt(
+      $('operatorPrice')
+    );
+
+  }
+
+
+  /*
+   * BENEFIT
+   */
+
+  const benefitFields = [
+
+    [
+      'cbHp',
+      'cbHp'
+    ],
+
+    [
+      'voucher',
+      'voucher'
+    ],
+
+    [
+      'tradeIn',
+      'tradeIn'
+    ],
+
+    [
+      'cashbackTambahanTradeIn',
+      'cashbackTambahanTradeIn'
+    ],
+
+    [
+      'cashbackPwp',
+      'cashbackPwp'
+    ],
+
+    [
+      'cashbackBank',
+      'cashbackBank'
+    ],
+
+    [
+      'potonganLain',
+      'potonganLain'
+    ]
+
+  ];
+
+
+  benefitFields.forEach(
+    ([id,key])=>{
+
+      const value =
+        Number(
+          x[key] || 0
+        );
+
+
+      $(id).value =
+        value
+          ? String(value)
+          : '';
+
+
+      if(value){
+
+        fmt($(id));
+
+      }
+
+    }
+  );
+
+
+  /*
+   * HITUNG ULANG
+   */
+
+  calc();
+
+  renderReceipt();
+
+
+  /*
+   * SCROLL KE ATAS
+   */
+
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
+
+
+  /*
+   * INFO
+   */
+
+  setTimeout(()=>{
+
+    alert(
+      'History berhasil dibuka kembali.\n\n' +
+      'Silakan edit jika diperlukan, lalu tekan "Simpan Simulasi" untuk membuat simulasi baru.'
+    );
+
+  },100);
+
 }
 
 
-function msg(
-  id,
-  type,
-  text
-){
+/* =====================================================
+   ADMIN - ADD STORE
+   ===================================================== */
 
-  const e =
-    $(id);
+async function addStore(){
 
-  e.className =
-    type;
+  const storeId =
+    $('adminStoreId')
+      .value
+      .trim();
 
-  e.textContent =
-    text;
+  const storeName =
+    $('adminStoreName')
+      .value
+      .trim();
+
+
+  if(!storeId){
+
+    return msg(
+      'adminStoreMsg',
+      'error',
+      'Store ID belum diisi.'
+    );
+
+  }
+
+
+  if(!storeName){
+
+    return msg(
+      'adminStoreMsg',
+      'error',
+      'Nama Store belum diisi.'
+    );
+
+  }
+
+
+  try{
+
+    const r =
+      await api({
+        action:'addstore',
+        storeId:storeId,
+        storeName:storeName
+      });
+
+
+    if(!r.success){
+
+      throw Error(
+        r.message ||
+        'Gagal menambahkan store.'
+      );
+
+    }
+
+
+    msg(
+      'adminStoreMsg',
+      'success',
+      'Store berhasil ditambahkan.'
+    );
+
+
+    $('adminStoreId').value =
+      '';
+
+    $('adminStoreName').value =
+      '';
+
+
+    await loadMaster();
+
+
+  }catch(e){
+
+    msg(
+      'adminStoreMsg',
+      'error',
+      e.message
+    );
+
+  }
 
 }
 
 
-init();
+/* =====================================================
+   ADMIN - ADD ERO
+   ===================================================== */
+
+async function addEro(){
+
+  const nik =
+    $('adminNik')
+      .value
+      .trim();
+
+  const eroName =
+    $('adminEroName')
+      .value
+      .trim();
+
+  const storeId =
+    $('adminEroStore')
+      .value;
+
+
+  if(!nik){
+
+    return msg(
+      'adminEroMsg',
+      'error',
+      'NIK belum diisi.'
+    );
+
+  }
+
+
+  if(!eroName){
+
+    return msg(
+      'adminEroMsg',
+      'error',
+      'Nama ERO belum diisi.'
+    );
+
+  }
+
+
+  if(!storeId){
+
+    return msg(
+      'adminEroMsg',
+      'error',
+      'Store belum dipilih.'
+    );
+
+  }
+
+
+  try{
+
+    const r =
+      await api({
+        action:'addero',
+        nik:nik,
+        eroName:eroName,
+        storeId:storeId
+      });
+
+
+    if(!r.success){
+
+      throw Error(
+        r.message ||
+        'Gagal menambahkan ERO.'
+      );
+
+    }
+
+
+    msg(
+      'adminEroMsg',
+      'success',
+      'ERO berhasil ditambahkan.'
+    );
+
+
+    $('adminNik').value =
+      '';
+
+    $('adminEroName').value =
+      '';
+
+    $('adminEroStore').value =
+      '';
+
+
+    await loadMaster();
+
+
+  }catch(e){
+
+    msg(
+      'adminEroMsg',
+      'error',
+      e.message
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   ADMIN - ADD PRODUCT
+   ===================================================== */
+
+async function addProduct(){
+
+  const productId =
+    $('adminProductId')
+      .value
+      .trim();
+
+  const productType =
+    $('adminProductType')
+      .value;
+
+  const productName =
+    $('adminProductName')
+      .value
+      .trim();
+
+  const price =
+    num(
+      $('adminProductPrice').value
+    );
+
+
+  if(!productId){
+
+    return msg(
+      'adminProductMsg',
+      'error',
+      'Product ID belum diisi.'
+    );
+
+  }
+
+
+  if(!productName){
+
+    return msg(
+      'adminProductMsg',
+      'error',
+      'Nama produk belum diisi.'
+    );
+
+  }
+
+
+  if(!price){
+
+    return msg(
+      'adminProductMsg',
+      'error',
+      'Harga produk belum diisi.'
+    );
+
+  }
+
+
+  try{
+
+    const r =
+      await api({
+        action:'addproduct',
+        productId:productId,
+        productType:productType,
+        productName:productName,
+        price:price
+      });
+
+
+    if(!r.success){
+
+      throw Error(
+        r.message ||
+        'Gagal menambahkan produk.'
+      );
+
+    }
+
+
+    msg(
+      'adminProductMsg',
+      'success',
+      'Produk berhasil ditambahkan.'
+    );
+
+
+    $('adminProductId').value =
+      '';
+
+    $('adminProductName').value =
+      '';
+
+    $('adminProductPrice').value =
+      '';
+
+
+    await loadMaster();
+
+
+  }catch(e){
+
+    msg(
+      'adminProductMsg',
+      'error',
+      e.message
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   INIT
+   ===================================================== */
+
+async function init(){
+
+  try{
+
+    await loadMaster();
+
+  }catch(e){
+
+    console.error(e);
+
+  }
+
+}
+
+
+/* =====================================================
+   AUTO LOAD
+   ===================================================== */
+
+document.addEventListener(
+  'DOMContentLoaded',
+  function(){
+
+    init();
+
+  }
+);
+
 
 </script>
 
