@@ -1193,20 +1193,20 @@ let historyData = [];
 
 
 const $ = id =>
-document.getElementById(id);
+  document.getElementById(id);
 
 
 const rupiah = n =>
-'Rp ' + (Number(n)||0).toLocaleString('id-ID');
+  'Rp ' + (Number(n)||0).toLocaleString('id-ID');
 
 
 const num = v =>
-Number(
-  String(v ?? '')
-  .replace(/\./g,'')
-  .replace(/,/g,'')
-  .replace(/[^\d-]/g,'')
-) || 0;
+  Number(
+    String(v ?? '')
+      .replace(/\./g,'')
+      .replace(/,/g,'')
+      .replace(/[^\d-]/g,'')
+  ) || 0;
 
 
 function fmt(el){
@@ -1246,7 +1246,7 @@ async function api(payload){
       method:'POST',
       headers:{
         'Content-Type':
-        'text/plain;charset=utf-8'
+          'text/plain;charset=utf-8'
       },
       body:JSON.stringify(payload)
     }
@@ -1345,17 +1345,24 @@ function renderStores(){
   masterData.stores
     .filter(
       x =>
-      String(
-        x.status || 'ACTIVE'
-      ).toUpperCase()
-      === 'ACTIVE'
+        String(
+          x.status || 'ACTIVE'
+        ).toUpperCase()
+        === 'ACTIVE'
     )
     .forEach(x=>{
 
-      $('loginStore').innerHTML +=
-      `<option value="${esc(x.storeId)}">
-        ${esc(x.storeName)}
-      </option>`;
+      const option =
+        document.createElement('option');
+
+      option.value =
+        x.storeId;
+
+      option.textContent =
+        x.storeName;
+
+      $('loginStore')
+        .appendChild(option);
 
     });
 
@@ -1371,17 +1378,24 @@ function renderProducts(){
   masterData.products
     .filter(
       x =>
-      String(
-        x.status || 'ACTIVE'
-      ).toUpperCase()
-      === 'ACTIVE'
+        String(
+          x.status || 'ACTIVE'
+        ).toUpperCase()
+        === 'ACTIVE'
     )
     .forEach(x=>{
 
-      $('productSelect').innerHTML +=
-      `<option value="${esc(x.productId)}">
-        ${esc(x.productName)}
-      </option>`;
+      const option =
+        document.createElement('option');
+
+      option.value =
+        x.productId;
+
+      option.textContent =
+        x.productName;
+
+      $('productSelect')
+        .appendChild(option);
 
     });
 
@@ -1424,8 +1438,8 @@ async function login(){
     const r =
       await api({
         action:'validate',
-        storeId,
-        nik
+        storeId:storeId,
+        nik:nik
       });
 
 
@@ -1538,9 +1552,9 @@ function page(name,btn){
   ]
   .forEach(
     x =>
-    $(x)
-    .classList
-    .add('hidden')
+      $(x)
+        .classList
+        .add('hidden')
   );
 
 
@@ -1553,7 +1567,7 @@ function page(name,btn){
     .querySelectorAll('.nav button')
     .forEach(
       x =>
-      x.classList.remove('active')
+        x.classList.remove('active')
     );
 
 
@@ -1576,11 +1590,11 @@ function productChanged(){
   const p =
     masterData.products.find(
       x =>
-      String(x.productId)
-      ===
-      String(
-        $('productSelect').value
-      )
+        String(x.productId)
+        ===
+        String(
+          $('productSelect').value
+        )
     );
 
 
@@ -1600,11 +1614,11 @@ function calc(){
   const p =
     masterData.products.find(
       x =>
-      String(x.productId)
-      ===
-      String(
-        $('productSelect').value
-      )
+        String(x.productId)
+        ===
+        String(
+          $('productSelect').value
+        )
     );
 
 
@@ -1624,22 +1638,25 @@ function calc(){
   const ct =
     num(
       $('cashbackTambahanTradeIn')
-      .value
+        .value
     );
 
   const pw =
     num(
-      $('cashbackPwp').value
+      $('cashbackPwp')
+        .value
     );
 
   const bk =
     num(
-      $('cashbackBank').value
+      $('cashbackBank')
+        .value
     );
 
   const pl =
     num(
-      $('potonganLain').value
+      $('potonganLain')
+        .value
     );
 
 
@@ -1692,17 +1709,17 @@ function calc(){
 
 
   [3,6,12,24]
-  .forEach(t=>{
+    .forEach(t=>{
 
-    const el =
-      $('i'+t);
+      const el =
+        $('i'+t);
 
-    el.textContent =
-      rupiah(
-        Math.ceil(pay/t)
-      );
+      el.textContent =
+        rupiah(
+          Math.ceil(pay/t)
+        );
 
-  });
+    });
 
 
   return {
@@ -1761,18 +1778,18 @@ async function save(){
 
     customerName:
       $('customerName')
-      .value
-      .trim(),
+        .value
+        .trim(),
 
     customerPhone:
       $('customerPhone')
-      .value
-      .trim(),
+        .value
+        .trim(),
 
     customerEmail:
       $('customerEmail')
-      .value
-      .trim(),
+        .value
+        .trim(),
 
     cbHp:c.cb,
 
@@ -1807,7 +1824,7 @@ async function save(){
     const r =
       await api({
         action:'save',
-        data
+        data:data
       });
 
 
@@ -1873,7 +1890,7 @@ function resetCalc(clear=true){
   ]
   .forEach(
     id =>
-    $(id).value=''
+      $(id).value=''
   );
 
 
@@ -1894,11 +1911,11 @@ function resetCalc(clear=true){
 
 
   [3,6,12,24]
-  .forEach(
-    t =>
-    $('i'+t).textContent =
-    rupiah(0)
-  );
+    .forEach(
+      t =>
+        $('i'+t).textContent =
+          rupiah(0)
+    );
 
 
   if(clear)
@@ -1921,35 +1938,26 @@ function copyResult(){
 
 
   const text =
-
-`KALKULATOR NASA
-
-Store : ${currentUser.storeName}
-ERO : ${currentUser.eroName}
-
-Customer : ${$('customerName').value || '-'}
-No. HP : ${$('customerPhone').value || '-'}
-
-Produk : ${c.p.productName}
-
-Harga Normal : ${rupiah(c.price)}
-
-Cashback HP : ${rupiah(c.cb)}
-Voucher : ${rupiah(c.vo)}
-Harga HP Trade In : ${rupiah(c.tr)}
-Cashback Tambahan Trade In : ${rupiah(c.ct)}
-Cashback PWP : ${rupiah(c.pw)}
-Cashback Bank : ${rupiah(c.bk)}
-Potongan Lain : ${rupiah(c.pl)}
-
-Total Benefit : ${rupiah(c.benefit)}
-
-YANG DIBAYARKAN : ${rupiah(c.pay)}
-
-3X : ${rupiah(Math.ceil(c.pay/3))}/bln
-6X : ${rupiah(Math.ceil(c.pay/6))}/bln
-12X : ${rupiah(Math.ceil(c.pay/12))}/bln
-24X : ${rupiah(Math.ceil(c.pay/24))}/bln`;
+    'KALKULATOR NASA\n\n' +
+    'Store : ' + currentUser.storeName + '\n' +
+    'ERO : ' + currentUser.eroName + '\n\n' +
+    'Customer : ' + ($('customerName').value || '-') + '\n' +
+    'No. HP : ' + ($('customerPhone').value || '-') + '\n\n' +
+    'Produk : ' + c.p.productName + '\n\n' +
+    'Harga Normal : ' + rupiah(c.price) + '\n' +
+    'Cashback HP : ' + rupiah(c.cb) + '\n' +
+    'Voucher : ' + rupiah(c.vo) + '\n' +
+    'Harga HP Trade In : ' + rupiah(c.tr) + '\n' +
+    'Cashback Tambahan Trade In : ' + rupiah(c.ct) + '\n' +
+    'Cashback PWP : ' + rupiah(c.pw) + '\n' +
+    'Cashback Bank : ' + rupiah(c.bk) + '\n' +
+    'Potongan Lain : ' + rupiah(c.pl) + '\n\n' +
+    'Total Benefit : ' + rupiah(c.benefit) + '\n\n' +
+    'YANG DIBAYARKAN : ' + rupiah(c.pay) + '\n\n' +
+    '3X : ' + rupiah(Math.ceil(c.pay/3)) + '/bln\n' +
+    '6X : ' + rupiah(Math.ceil(c.pay/6)) + '/bln\n' +
+    '12X : ' + rupiah(Math.ceil(c.pay/12)) + '/bln\n' +
+    '24X : ' + rupiah(Math.ceil(c.pay/24)) + '/bln';
 
 
   navigator
@@ -1957,15 +1965,15 @@ YANG DIBAYARKAN : ${rupiah(c.pay)}
     .writeText(text)
     .then(
       () =>
-      alert(
-        'Hasil berhasil dicopy.'
-      )
+        alert(
+          'Hasil berhasil dicopy.'
+        )
     )
     .catch(
       () =>
-      alert(
-        'Copy otomatis gagal.'
-      )
+        alert(
+          'Copy otomatis gagal.'
+        )
     );
 
 }
@@ -1989,22 +1997,41 @@ function copyWA(){
 
 
   const text =
+    'Halo ' + name +
+    ', berikut simulasi Samsung ' +
+    c.p.productName + ':\n\n' +
 
-`Halo ${name}, berikut simulasi Samsung ${c.p.productName}:
+    'Harga normal: ' +
+    rupiah(c.price) + '\n' +
 
-Harga normal: ${rupiah(c.price)}
-Total benefit: ${rupiah(c.benefit)}
-Trade In: ${rupiah(c.tr)}
-Yang dibayarkan: ${rupiah(c.pay)}
+    'Total benefit: ' +
+    rupiah(c.benefit) + '\n' +
 
-Cicilan 0%:
+    'Trade In: ' +
+    rupiah(c.tr) + '\n' +
 
-3x ${rupiah(Math.ceil(c.pay/3))}/bln
-6x ${rupiah(Math.ceil(c.pay/6))}/bln
-12x ${rupiah(Math.ceil(c.pay/12))}/bln
-24x ${rupiah(Math.ceil(c.pay/24))}/bln
+    'Yang dibayarkan: ' +
+    rupiah(c.pay) + '\n\n' +
 
-Simulasi dapat berubah mengikuti promo dan ketentuan yang berlaku.`;
+    'Cicilan 0%:\n\n' +
+
+    '3x ' +
+    rupiah(Math.ceil(c.pay/3)) +
+    '/bln\n' +
+
+    '6x ' +
+    rupiah(Math.ceil(c.pay/6)) +
+    '/bln\n' +
+
+    '12x ' +
+    rupiah(Math.ceil(c.pay/12)) +
+    '/bln\n' +
+
+    '24x ' +
+    rupiah(Math.ceil(c.pay/24)) +
+    '/bln\n\n' +
+
+    'Simulasi dapat berubah mengikuti promo dan ketentuan yang berlaku.';
 
 
   navigator
@@ -2012,15 +2039,15 @@ Simulasi dapat berubah mengikuti promo dan ketentuan yang berlaku.`;
     .writeText(text)
     .then(
       () =>
-      alert(
-        'Pesan WhatsApp berhasil dicopy.'
-      )
+        alert(
+          'Pesan WhatsApp berhasil dicopy.'
+        )
     )
     .catch(
       () =>
-      alert(
-        'Copy otomatis gagal.'
-      )
+        alert(
+          'Copy otomatis gagal.'
+        )
     );
 
 }
@@ -2063,9 +2090,9 @@ async function loadOverview(){
   }catch(e){
 
     $('today').innerHTML =
-      `<div class="error">
-        ${esc(e.message)}
-      </div>`;
+      '<div class="error">' +
+      esc(e.message) +
+      '</div>';
 
   }
 
@@ -2085,10 +2112,10 @@ function renderOverview(){
   const today =
     h.filter(
       x =>
-      sameDay(
-        x.timestamp,
-        new Date()
-      )
+        sameDay(
+          x.timestamp,
+          new Date()
+        )
     );
 
 
@@ -2100,8 +2127,8 @@ function renderOverview(){
     rupiah(
       h.reduce(
         (s,x)=>
-        s +
-        (Number(x.totalBenefit)||0),
+          s +
+          (Number(x.totalBenefit)||0),
         0
       )
     );
@@ -2112,17 +2139,17 @@ function renderOverview(){
 
   h.forEach(
     x =>
-    pc[x.productName||'-'] =
-      (pc[x.productName||'-']||0)+1
+      pc[x.productName||'-'] =
+        (pc[x.productName||'-']||0)+1
   );
 
 
   const ps =
     Object.entries(pc)
-    .sort(
-      (a,b)=>
-      b[1]-a[1]
-    );
+      .sort(
+        (a,b)=>
+          b[1]-a[1]
+      );
 
 
   $('ovTop').textContent =
@@ -2134,79 +2161,78 @@ function renderOverview(){
 
   h.forEach(
     x =>
-    er[x.eroName||'-'] =
-      (er[x.eroName||'-']||0)+1
+      er[x.eroName||'-'] =
+        (er[x.eroName||'-']||0)+1
   );
 
 
   const es =
     Object.entries(er)
-    .sort(
-      (a,b)=>
-      b[1]-a[1]
-    );
+      .sort(
+        (a,b)=>
+          b[1]-a[1]
+      );
 
 
   $('eroRank').innerHTML =
     es.slice(0,10)
-    .map(
-      (x,i)=>
-      `<div class="listrow">
-        <span>
-          <b>${i+1}.</b>
-          ${esc(x[0])}
-        </span>
-        <b>${x[1]}</b>
-      </div>`
-    )
-    .join('')
-    ||
-    '<div class="empty">Belum ada data.</div>';
+      .map(
+        (x,i)=>
+          '<div class="listrow">' +
+            '<span>' +
+              '<b>' + (i+1) + '.</b> ' +
+              esc(x[0]) +
+            '</span>' +
+            '<b>' + x[1] + '</b>' +
+          '</div>'
+      )
+      .join('')
+      ||
+      '<div class="empty">Belum ada data.</div>';
 
 
   $('prodRank').innerHTML =
     ps.slice(0,10)
-    .map(
-      (x,i)=>
-      `<div class="listrow">
-        <span>
-          ${i+1}. ${esc(x[0])}
-        </span>
-        <b>${x[1]}</b>
-      </div>`
-    )
-    .join('')
-    ||
-    '<div class="empty">Belum ada data.</div>';
+      .map(
+        (x,i)=>
+          '<div class="listrow">' +
+            '<span>' +
+              (i+1) + '. ' +
+              esc(x[0]) +
+            '</span>' +
+            '<b>' + x[1] + '</b>' +
+          '</div>'
+      )
+      .join('')
+      ||
+      '<div class="empty">Belum ada data.</div>';
 
 
   $('today').innerHTML =
     today.slice(0,20)
-    .map(
-      x =>
-      `<div class="listrow">
+      .map(
+        x =>
+          '<div class="listrow">' +
 
-        <span>
+            '<span>' +
 
-          <span class="badge">
-            ${esc(x.eroName||'-')}
-          </span>
+              '<span class="badge">' +
+                esc(x.eroName||'-') +
+              '</span> ' +
 
-          ${esc(x.productName||'-')}
+              esc(x.productName||'-') +
 
-        </span>
+            '</span>' +
 
-        <b>
-          ${rupiah(x.netPrice)}
-        </b>
+            '<b>' +
+              rupiah(x.netPrice) +
+            '</b>' +
 
-      </div>`
-    )
-    .join('')
-    ||
-    '<div class="empty">
-      Belum ada simulasi hari ini.
-    </div>';
+          '</div>'
+      )
+      .join('')
+      ||
+      '<div class="empty">Belum ada simulasi hari ini.</div>';
 
 }
 
@@ -2247,8 +2273,8 @@ async function loadHistory(){
       rupiah(
         h.reduce(
           (s,x)=>
-          s +
-          (Number(x.totalBenefit)||0),
+            s +
+            (Number(x.totalBenefit)||0),
           0
         )
       );
@@ -2257,122 +2283,121 @@ async function loadHistory(){
     if(!h.length){
 
       $('historyContent').innerHTML =
-        '<div class="empty">
-          Belum ada simulasi.
-        </div>';
+        '<div class="empty">' +
+          'Belum ada simulasi.' +
+        '</div>';
 
       return;
 
     }
 
 
+    let rows = '';
+
+    h.forEach(x => {
+
+      rows +=
+        '<tr>' +
+
+          '<td>' +
+            esc(
+              formatDate(
+                x.timestamp
+              )
+            ) +
+          '</td>' +
+
+          '<td>' +
+            '<b>' +
+              esc(
+                x.customerName||'-'
+              ) +
+            '</b>' +
+          '</td>' +
+
+          '<td>' +
+            '<span class="badge">' +
+              esc(
+                x.eroName||'-'
+              ) +
+            '</span>' +
+          '</td>' +
+
+          '<td>' +
+            esc(
+              x.productName||'-'
+            ) +
+          '</td>' +
+
+          '<td class="amt">' +
+            rupiah(x.price) +
+          '</td>' +
+
+          '<td class="amt">' +
+            rupiah(x.totalBenefit) +
+          '</td>' +
+
+          '<td class="amt">' +
+            rupiah(x.tradeIn) +
+          '</td>' +
+
+          '<td class="amt">' +
+            '<b>' +
+              rupiah(x.netPrice) +
+            '</b>' +
+          '</td>' +
+
+        '</tr>';
+
+    });
+
+
     $('historyContent').innerHTML =
+      '<div class="tablewrap">' +
 
-    `<div class="tablewrap">
+        '<table>' +
 
-      <table>
+          '<thead>' +
 
-        <thead>
+            '<tr>' +
 
-          <tr>
+              '<th>Tanggal</th>' +
 
-            <th>Tanggal</th>
+              '<th>Customer</th>' +
 
-            <th>Customer</th>
+              '<th>ERO</th>' +
 
-            <th>ERO</th>
+              '<th>Produk</th>' +
 
-            <th>Produk</th>
+              '<th>Harga</th>' +
 
-            <th>Harga</th>
+              '<th>Benefit</th>' +
 
-            <th>Benefit</th>
+              '<th>Trade In</th>' +
 
-            <th>Trade In</th>
+              '<th>Yang Dibayar</th>' +
 
-            <th>Yang Dibayar</th>
+            '</tr>' +
 
-          </tr>
+          '</thead>' +
 
-        </thead>
+          '<tbody>' +
 
+            rows +
 
-        <tbody>
+          '</tbody>' +
 
-        ${
-          h.map(
-            x =>
+        '</table>' +
 
-            `<tr>
+      '</div>';
 
-              <td>
-                ${esc(
-                  formatDate(
-                    x.timestamp
-                  )
-                )}
-              </td>
-
-              <td>
-                <b>
-                  ${esc(
-                    x.customerName||'-'
-                  )}
-                </b>
-              </td>
-
-              <td>
-
-                <span class="badge">
-                  ${esc(
-                    x.eroName||'-'
-                  )}
-                </span>
-
-              </td>
-
-              <td>
-                ${esc(
-                  x.productName||'-'
-                )}
-              </td>
-
-              <td class="amt">
-                ${rupiah(x.price)}
-              </td>
-
-              <td class="amt">
-                ${rupiah(x.totalBenefit)}
-              </td>
-
-              <td class="amt">
-                ${rupiah(x.tradeIn)}
-              </td>
-
-              <td class="amt">
-
-                <b>
-                  ${rupiah(x.netPrice)}
-                </b>
-
-              </td>
-
-            </tr>`
-          ).join('')
-        }
-
-        </tbody>
-
-      </table>
-
-    </div>`;
 
   }catch(e){
 
     $('historyContent').innerHTML =
-      `<div class="error">
-        ${esc(e.message)}
-      </div>`;
+      '<div class="error">' +
+        esc(e.message) +
+      '</div>';
 
   }
 
@@ -2383,84 +2408,81 @@ function renderMaster(){
 
   $('storeMaster').innerHTML =
     masterData.stores
-    .map(
-      x =>
+      .map(
+        x =>
+          '<div class="master">' +
 
-      `<div class="master">
+            '<b>' +
+              esc(x.storeName) +
+            '</b>' +
 
-        <b>
-          ${esc(x.storeName)}
-        </b>
+            'ID: ' +
+            esc(x.storeId) +
 
-        ID:
-        ${esc(x.storeId)}
+            '<br>' +
 
-        <br>
+            'Status: ' +
+            esc(x.status||'-') +
 
-        Status:
-        ${esc(x.status||'-')}
-
-      </div>`
-    )
-    .join('');
+          '</div>'
+      )
+      .join('');
 
 
   $('eroMaster').innerHTML =
     masterData.eros
-    .map(
-      x =>
+      .map(
+        x =>
+          '<div class="master">' +
 
-      `<div class="master">
+            '<b>' +
+              esc(x.eroName) +
+            '</b>' +
 
-        <b>
-          ${esc(x.eroName)}
-        </b>
+            'NIK: ' +
+            mask(x.nik) +
 
-        NIK:
-        ${mask(x.nik)}
+            '<br>' +
 
-        <br>
+            'Store: ' +
+            esc(x.storeId) +
 
-        Store:
-        ${esc(x.storeId)}
+            '<br>' +
 
-        <br>
+            'Status: ' +
+            esc(x.status||'-') +
 
-        Status:
-        ${esc(x.status||'-')}
-
-      </div>`
-    )
-    .join('');
+          '</div>'
+      )
+      .join('');
 
 
   $('productMaster').innerHTML =
     masterData.products
-    .map(
-      x =>
+      .map(
+        x =>
+          '<div class="master">' +
 
-      `<div class="master">
+            '<b>' +
+              esc(x.productName) +
+            '</b>' +
 
-        <b>
-          ${esc(x.productName)}
-        </b>
+            'Type: ' +
+            esc(x.productType) +
 
-        Type:
-        ${esc(x.productType)}
+            '<br>' +
 
-        <br>
+            'Harga: ' +
+            rupiah(x.price) +
 
-        Harga:
-        ${rupiah(x.price)}
+            '<br>' +
 
-        <br>
+            'Status: ' +
+            esc(x.status||'-') +
 
-        Status:
-        ${esc(x.status||'-')}
-
-      </div>`
-    )
-    .join('');
+          '</div>'
+      )
+      .join('');
 
 }
 
